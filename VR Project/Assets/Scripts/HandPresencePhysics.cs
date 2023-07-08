@@ -1,79 +1,118 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandPresencePhysics : MonoBehaviour
 {
     public Transform target;
+    public Collider[] handColliders;
+    public bool isGrabbing;
+    public ControllerInteractors controller;
+    private float baseMoveSpeed = 1f;
+    private Collider otherCollider;
     public GameObject colliderGroup;
     private Rigidbody rb;
-    public Collider[] handColliders;
-    public bool isColliding;
-    private Collider otherCollider;
-    public bool isGrabbing = false;
-    public ControllerInteractors controllerInteractor;
+
+    private float positionSmoothTime = 0.1f;
+    private Vector3 targetPositionVelocity;
+
+    public float weight = 0f;
+    private float weightScale = 0.01f;
+
     // Start is called before the first frame update
     void Start()
     {
         colliderGroup.SetActive(false);
         rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider collision)
     {
-        isColliding = true;
         if (collision.gameObject.CompareTag("Interactable"))
         {
-            otherCollider = collision.collider;
-        }
-        else
-        {
-            otherCollider = null;
+            otherCollider = collision.gameObject.GetComponent<Collider>();
         }
     }
-    private void OnCollisionExit(Collision collision)
+
+    public void EnableHandCollision()
     {
-        isColliding = false;
-    }
-    public void EnableHandCollider()
-    {
-        if(!isGrabbing)
+        if (otherCollider != null)
         {
             foreach (var collider in handColliders)
             {
-                Physics.IgnoreCollision(collider, otherCollider, false);
+                Physics.IgnoreCollision(otherCollider, collider, false);
             }
         }
     }
-    public void DisableHandCollider()
+
+    public void DisableHandCollision()
     {
-        foreach (var collider in handColliders)
+        if (otherCollider != null)
         {
-            Physics.IgnoreCollision(collider, otherCollider, true);
+            foreach (var collider in handColliders)
+            {
+                Physics.IgnoreCollision(otherCollider, collider, true);
+            }
         }
-    }
-    public void IsGrabbing()
-    {
-        isGrabbing = true;
-    }
-    public void IsNotGrabbing()
-    {
-        isGrabbing = false;
     }
 
     void FixedUpdate()
     {
-        if(transform.position.y > 0.1)
+        if (transform.position.y > 0.1)
         {
             colliderGroup.SetActive(true);
         }
+        if(controller.isGrabbing)
+        {
+            weight = controller.neoMass;
+            if(weight > 10)
+            {
+                positionSmoothTime = 0.1f;
+            }
+            if(weight < 10) 
+            {
+                positionSmoothTime = 0.01f * weight;
+            }
+            if(weight == 1)
+            {
+                weight = 0;
+                positionSmoothTime = 0;
+            }
+        }
+        else
+        {
+            weight = 0;
+            positionSmoothTime = 0;
+        }
+        // Smooth out the target position using interpolation
+        Vector3 smoothedTargetPosition = Vector3.SmoothDamp(transform.position, target.position, ref targetPositionVelocity, positionSmoothTime);
 
-        rb.velocity = (target.position - transform.position) / Time.fixedDeltaTime;
+        // Calculate the desired velocity
+        Vector3 velocity = (smoothedTargetPosition - transform.position) / Time.fixedDeltaTime;
+
+        // Calculate the desired angular velocity
         Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
-        rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
+        rotationDifference.ToAngleAxis(out float angleInDegrees, out Vector3 rotationAxis);
+        Vector3 rotationDifferenceInDegrees = angleInDegrees * rotationAxis;
+        Vector3 angularVelocity = (rotationDifferenceInDegrees * Mathf.Deg2Rad / Time.fixedDeltaTime);
 
-        Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
+        // Adjust move speed based on weight, y-position, and direction of movement
+        float currentMoveSpeed = baseMoveSpeed / (weight * weightScale);
+        if (smoothedTargetPosition.y > transform.position.y)
+        {
+            currentMoveSpeed /= Mathf.Max(1f, transform.position.y);
+        }
 
-        rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
+        // Apply interpolation to gradually move towards the desired velocity/angular velocity
+        rb.velocity = Vector3.Lerp(rb.velocity, velocity, currentMoveSpeed * Time.fixedDeltaTime);
+        rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, angularVelocity, currentMoveSpeed * Time.fixedDeltaTime);
     }
 }
+
+
+
+
