@@ -13,6 +13,7 @@ public class HandPresencePhysics : MonoBehaviour
     private float baseMoveSpeed = 1f;
     private Collider otherCollider;
     public GameObject colliderGroup;
+    public GameObject colliderGroupJoint;
     private Rigidbody rb;
 
     private float positionSmoothTime = 0.1f;
@@ -25,6 +26,7 @@ public class HandPresencePhysics : MonoBehaviour
     void Start()
     {
         colliderGroup.SetActive(false);
+        colliderGroupJoint.SetActive(false);
         rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -65,18 +67,12 @@ public class HandPresencePhysics : MonoBehaviour
         if (transform.position.y > 0.1)
         {
             colliderGroup.SetActive(true);
+            colliderGroupJoint.SetActive(true);
         }
         if(controller.isGrabbing)
         {
             weight = controller.neoMass;
-            if(weight > 10)
-            {
-                positionSmoothTime = 0.1f;
-            }
-            if(weight < 10) 
-            {
-                positionSmoothTime = 0.01f * weight;
-            }
+            positionSmoothTime = 0.01f * weight;
             if(weight == 1)
             {
                 weight = 0;
