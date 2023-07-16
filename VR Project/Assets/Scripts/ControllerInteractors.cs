@@ -27,9 +27,9 @@ public class ControllerInteractors : XRDirectInteractor
             handPresence.transform.position = attach.position;
             handPresence.transform.rotation = attach.rotation;
             colliders.SetActive(true);
-            joint = args.interactableObject.transform.AddComponent<ConfigurableJoint>();
+            joint = handPresence.AddComponent<ConfigurableJoint>();
             joint.enableCollision = false;
-            joint.connectedBody = handPresence.GetComponent<Rigidbody>();
+            joint.connectedBody = rb;
 
             joint.xMotion = ConfigurableJointMotion.Locked;
             joint.yMotion = ConfigurableJointMotion.Locked;
@@ -45,6 +45,7 @@ public class ControllerInteractors : XRDirectInteractor
             isGrabbing = true;
         }
     }
+
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         if (args.interactableObject is XRGrabInteractableTwoAttach || args.interactableObject is XRGrabInteractableMultiAttach)

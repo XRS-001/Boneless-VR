@@ -19,9 +19,9 @@ TagManager:
   - LeftHandPhysics
   - RightHandPhysics
   - Head
-  - 
-  - 
-  - 
+  - SecondHandGrab
+  - PhysicsInteractable
+  - Climbable
   - 
   - 
   - 

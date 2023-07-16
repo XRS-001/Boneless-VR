@@ -64,7 +64,7 @@ public class HandPresencePhysics : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (transform.position.y > 0.1)
+        if (transform.position.y > 0.2)
         {
             colliderGroup.SetActive(true);
             colliderGroupJoint.SetActive(true);
