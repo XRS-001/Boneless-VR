@@ -6,18 +6,22 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ControllerInteractors : XRDirectInteractor
 {
+    public Transform handTargetHandPresence;
+    public Transform handTargetRig;
     public HandData handRig;
     public GameObject colliders;
     private Rigidbody rb;
-    private bool isSelecting;
     private Transform attach;
     public float neoMass;
     public GameObject handPresence;
+    public ClimbingPhysics handPhysics;
     private ConfigurableJoint joint;
     public bool isGrabbing;
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        if(args.interactableObject is XRGrabInteractableTwoAttach || args.interactableObject is XRGrabInteractableMultiAttach)
+        if(args.interactableObject is XRGrabInteractableTwoAttach 
+            || args.interactableObject is XRGrabInteractableMultiAttach
+            || args.interactableObject is XRGrabInteractablePistol)
         {
             rb = args.interactableObject.transform.GetComponent<Rigidbody>();
             neoMass = rb.mass;
@@ -48,13 +52,19 @@ public class ControllerInteractors : XRDirectInteractor
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        if (args.interactableObject is XRGrabInteractableTwoAttach || args.interactableObject is XRGrabInteractableMultiAttach)
+        if (args.interactableObject is XRGrabInteractableTwoAttach 
+            || args.interactableObject is XRGrabInteractableMultiAttach
+            || args.interactableObject is XRGrabInteractablePistol)
         {
-            rb.mass = neoMass;
-            joint.connectedBody.useGravity = true;
-            joint.connectedBody = null;
-            Destroy(joint);
-            isGrabbing = false;
+            DestroyJoint();
         }
+    }
+    public void DestroyJoint()
+    {
+        rb.mass = neoMass;
+        joint.connectedBody.useGravity = true;
+        joint.connectedBody = null;
+        Destroy(joint);
+        isGrabbing = false;
     }
 }

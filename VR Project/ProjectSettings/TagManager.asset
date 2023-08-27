@@ -7,6 +7,9 @@ TagManager:
   - Interactable
   - LeftHand
   - RightHand
+  - ClimbingSurface
+  - PistolMagazine
+  - Pierceable
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Head
   - SecondHandGrab
   - PhysicsInteractable
-  - Climbable
+  - Sliceable
   - 
   - 
   - 

@@ -15,6 +15,8 @@ public class GrabHandPose : MonoBehaviour
     public HandData rightHandPose;
     public HandData leftHandPose;
 
+    XRGrabInteractable grabInteractable;
+
     private Vector3 startingHandPosition;
     private Vector3 finalHandPosition;
     private Quaternion startingHandRotation;
@@ -26,7 +28,7 @@ public class GrabHandPose : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
+        grabInteractable = GetComponent<XRGrabInteractable>();
 
         grabInteractable.selectEntered.AddListener(SetupPose);
         grabInteractable.selectExited.AddListener(UnSetPose);
@@ -57,7 +59,7 @@ public class GrabHandPose : MonoBehaviour
     }
     public void UnSetPose(BaseInteractionEventArgs args)
     {
-        if (args.interactorObject is XRDirectInteractor)
+        if (args.interactorObject is XRDirectInteractor && gameObject.activeInHierarchy)
         {
             HandData handData = args.interactorObject.transform.GetComponentInChildren<ControllerInteractors>().handRig;
             handData.animator.enabled = true;
@@ -65,7 +67,6 @@ public class GrabHandPose : MonoBehaviour
             StartCoroutine(SetHandDataRoutine(handData, startingHandPosition, startingHandRotation, startingFingerRotations, finalHandPosition, finalHandRotation, finalFingerRotations));
         }
     }
-
     public void SetHandDataValues(HandData h1, HandData h2)
     {
         startingHandPosition = new Vector3(h1.root.localPosition.x / h1.root.localScale.x, h1.root.localPosition.y / h1.root.localScale.y, h1.root.localPosition.z / h1.root.localScale.z);

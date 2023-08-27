@@ -40,23 +40,12 @@ public class ContinuousMovementPhysics : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = CheckIfGrounded();
-
         if (!onlyMoveWhenGrounded || (onlyMoveWhenGrounded && isGrounded))
         {
-            Quaternion yaw = quaternion.Euler(0, directionSource.eulerAngles.y, 0);
+            Quaternion yaw = Quaternion.Euler(0, 1 * directionSource.eulerAngles.y, 0);
             Vector3 direction = yaw * new Vector3(inputMoveAxis.x, 0, inputMoveAxis.y);
-
             Vector3 targetMovePosition = rb.position + direction * Time.fixedDeltaTime * speed;
-
-            Vector3 axis = Vector3.up;
-            float angle = turnSpeed * Time.fixedDeltaTime * inputTurnAxis;
-
-            Quaternion q = Quaternion.AngleAxis(angle, axis);
-
-            rb.MoveRotation(rb.rotation * q);
-            Vector3 newPosition = q * (targetMovePosition - turnSource.position) + turnSource.position;
-
-            rb.MovePosition(newPosition);
+            rb.MovePosition(targetMovePosition);
         }
     }
 

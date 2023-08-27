@@ -8,6 +8,7 @@ public class HandPresence : MonoBehaviour
 {
     public InputActionProperty trigger;
     public InputActionProperty grip;
+    public ClimbingPhysics handPhysics;
     public Animator handAnimator;
     void Start()
     {
@@ -18,7 +19,16 @@ public class HandPresence : MonoBehaviour
         handAnimator.SetFloat("Trigger", triggerValue);
 
         float gripValue = grip.action.ReadValue<float>();
-        handAnimator.SetFloat("Grip", gripValue);
+
+        if (handPhysics.isGrabbing)
+        {
+            handAnimator.SetBool("Climbing", true);
+        }
+        else
+        {
+            handAnimator.SetBool("Climbing", false);
+            handAnimator.SetFloat("Grip", gripValue);
+        }
     }
 
     // Update is called once per frame

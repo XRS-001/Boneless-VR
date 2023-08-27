@@ -6,14 +6,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandPresencePhysics : MonoBehaviour
 {
+    public Transform handRigModelTransform;
+    private float maxDistance = 0.1f;
     public Transform target;
     public Collider[] handColliders;
-    public bool isGrabbing;
     public ControllerInteractors controller;
     private float baseMoveSpeed = 1f;
-    private Collider otherCollider;
-    public GameObject colliderGroup;
-    public GameObject colliderGroupJoint;
     private Rigidbody rb;
 
     private float positionSmoothTime = 0.1f;
@@ -25,49 +23,23 @@ public class HandPresencePhysics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        colliderGroup.SetActive(false);
-        colliderGroupJoint.SetActive(false);
+        foreach(Collider collider in handColliders)
+        {
+            collider.enabled = false;
+        }
         rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-    }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Interactable"))
-        {
-            otherCollider = collision.gameObject.GetComponent<Collider>();
-        }
-    }
-
-    public void EnableHandCollision()
-    {
-        if (otherCollider != null)
-        {
-            foreach (var collider in handColliders)
-            {
-                Physics.IgnoreCollision(otherCollider, collider, false);
-            }
-        }
-    }
-
-    public void DisableHandCollision()
-    {
-        if (otherCollider != null)
-        {
-            foreach (var collider in handColliders)
-            {
-                Physics.IgnoreCollision(otherCollider, collider, true);
-            }
-        }
     }
 
     void FixedUpdate()
     {
         if (transform.position.y > 0.2)
         {
-            colliderGroup.SetActive(true);
-            colliderGroupJoint.SetActive(true);
+            foreach(Collider collider in handColliders)
+            {
+                collider.enabled = true;
+            }
         }
         if(controller.isGrabbing)
         {
@@ -106,6 +78,16 @@ public class HandPresencePhysics : MonoBehaviour
         // Apply interpolation to gradually move towards the desired velocity/angular velocity
         rb.velocity = Vector3.Lerp(rb.velocity, velocity, currentMoveSpeed * Time.fixedDeltaTime);
         rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, angularVelocity, currentMoveSpeed * Time.fixedDeltaTime);
+    }
+    void Update()
+    {
+        if (controller.isGrabbing && Vector3.Distance(transform.position, handRigModelTransform.position) > maxDistance && weight > 5)
+        {
+            Vector3 direction = (transform.position - handRigModelTransform.position).normalized;
+            Vector3 desiredPosition = handRigModelTransform.position + direction * maxDistance;
+            Vector3 force = (desiredPosition - transform.position) * 100f;
+            rb.AddForce(force);
+        }
     }
 }
 
