@@ -21,17 +21,17 @@ TagManager:
   - Player
   - LeftHandPhysics
   - RightHandPhysics
-  - Head
+  - BodyPresence
   - SecondHandGrab
-  - PhysicsInteractable
+  - Ground
   - Sliceable
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Body
+  - LeftForeArm
+  - RightForeArm
+  - LeftForeArmPresence
+  - RightForeArmPresence
+  - Puppet Controller
+  - Ragdoll
   - 
   - 
   - 
