@@ -1859,6 +1859,9 @@ MonoBehaviour:
   m_AddDefaultGrabTransformers: 1
   rightAttach: {fileID: 3019893319198799821}
   leftAttach: {fileID: 3019893318600061782}
+  rightHandGrabbing: 0
+  leftHandGrabbing: 0
+  isGrabbing: 0
   controllerGrabbing: {fileID: 0}
 --- !u!114 &5089751914878533304
 MonoBehaviour:

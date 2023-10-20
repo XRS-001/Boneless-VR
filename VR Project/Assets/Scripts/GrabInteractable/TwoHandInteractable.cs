@@ -6,8 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class TwoHandInteractable : XRGrabInteractableTwoAttach
 {
     public Collider secondHandGrabPointCollider;
-    public Transform rightAttachSecond;
-    public Transform leftAttachSecond;
     public XRSimpleInteractable secondHandGrabPoint;
     private XRBaseInteractor secondInteractor;
     private Quaternion attachInitialRotation; 
@@ -18,10 +16,15 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     private XRBaseInteractor interactor;
     bool secondHandGrabbing;
     private Rigidbody rb;
+    public Transform leftPresence;
+    public Transform rightPresence;
+    public bool dynamicY;
+    public bool dynamicX;
+    public bool dynamicZ;
+    public float handleLength;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         secondHandGrabPoint.selectEntered.AddListener(OnSecondHandGrab);
         secondHandGrabPoint.selectExited.AddListener(OnSecondHandRelease);
     }
@@ -29,6 +32,70 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     // Update is called once per frame
     void Update()
     {
+        if (!leftHandGrabbing && !secondHandGrabbing)
+        {
+            Vector3 originalPosition = leftAttach.localPosition;
+            Vector3 position = leftPresence.position;
+            leftAttach.position = position;
+            Vector3 localPosition = leftAttach.localPosition;
+            if (!dynamicX)
+            {
+                localPosition.x = originalPosition.x;
+            }
+            else
+            {
+                localPosition.x = Mathf.Clamp(localPosition.x, -handleLength, handleLength);
+            }
+            if (!dynamicY)
+            {
+                localPosition.y = originalPosition.y;
+            }
+            else
+            {
+                localPosition.y = Mathf.Clamp(localPosition.y, -handleLength, handleLength);
+            }
+            if (!dynamicZ)
+            {
+                localPosition.z = originalPosition.z;
+            }
+            else
+            {
+                localPosition.z = Mathf.Clamp(localPosition.z, -handleLength, handleLength);
+            }
+            leftAttach.localPosition = localPosition;
+        }
+        if (!rightHandGrabbing && !secondHandGrabbing)
+        {
+            Vector3 originalPosition = rightAttach.localPosition;
+            Vector3 position = rightPresence.position;
+            rightAttach.position = position;
+            Vector3 localPosition = rightAttach.localPosition;
+            if (!dynamicX)
+            {
+                localPosition.x = originalPosition.x;
+            }
+            else
+            {
+                localPosition.x = Mathf.Clamp(localPosition.x, -handleLength, handleLength);
+            }
+            if (!dynamicY)
+            {
+                localPosition.y = originalPosition.y;
+            }
+            else
+            {
+                localPosition.y = Mathf.Clamp(localPosition.y, -handleLength, handleLength);
+            }
+            if (!dynamicZ)
+            {
+                localPosition.z = originalPosition.z;
+            }
+            else
+            {
+                localPosition.z = Mathf.Clamp(localPosition.z, -handleLength, handleLength);
+            }
+            rightAttach.localPosition = localPosition;
+        }
         if (secondHandGrabbing == false && interactor)
         {
             try
@@ -44,13 +111,13 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         {
             if (rightHandGrabbing)
             {
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.position = leftAttachSecond.position;
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.rotation = leftAttachSecond.rotation;
+                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.position = leftAttach.position;
+                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.rotation = leftAttach.rotation;
             }
             if (leftHandGrabbing)
             {
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.position = rightAttachSecond.position;
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.rotation = rightAttachSecond.rotation;
+                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.position = rightAttach.position;
+                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.rotation = rightAttach.rotation;
             }
             if (snapToSecondHand)
                 interactor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation();
@@ -101,6 +168,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     {
         interactor = selectingInteractor;
         secondHandGrabPointCollider.enabled = true;
+        secondHandGrabPoint.enabled = true;
         Debug.Log("FIRST HAND GRAB");
         base.OnSelectEntered(args);
         attachInitialRotation = args.interactorObject.transform.GetComponent<ControllerInteractors>().attachTransform.localRotation;
@@ -110,7 +178,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         secondHandGrabPointCollider.enabled = false;
         Debug.Log("FIRST HAND RELEASE");
         base.OnSelectExited(args);
-        if (rightHandGrabbing || leftHandGrabbing)
+        if (secondHandGrabbing)
         {
             secondHandGrabPoint.enabled = false;
             secondHandGrabPoint.enabled = true;
@@ -134,6 +202,15 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
                 initialRotationOffset = Quaternion.Inverse(GetTwoHandRotation()) * interactor.transform.GetComponent<ControllerInteractors>().attachTransform.rotation;
             }
             catch { }
+        }
+        else
+        {
+            rightHandGrabbing = false;
+            leftHandGrabbing = false;
+        }
+        if (!rightHandGrabbing && !leftHandGrabbing)
+        {
+            secondHandGrabPoint.enabled = false;
         }
         args.interactorObject.transform.GetComponent<ControllerInteractors>().attachTransform.localRotation = attachInitialRotation;
     }
