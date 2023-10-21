@@ -812,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 844563322572671650}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1041,7 +1041,7 @@ GameObject:
   - component: {fileID: 844563322700065638}
   - component: {fileID: 844563322700065639}
   - component: {fileID: 844563322700065560}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: LeftHandPhysics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1519,7 @@ GameObject:
   - component: {fileID: 844563322777212059}
   - component: {fileID: 844563322777212061}
   - component: {fileID: 844563322777212058}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Custom Right Hand Model with Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1835,7 +1835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844563322918739222}
   - component: {fileID: 844563322918739209}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2138,7 +2138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 844563323256369401}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2173,7 +2173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844563323306476576}
   - component: {fileID: 844563323306476579}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2218,7 +2218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844563323327407634}
   - component: {fileID: 844563323327407637}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2295,7 +2295,7 @@ GameObject:
   - component: {fileID: 844563323386178046}
   - component: {fileID: 844563323386178032}
   - component: {fileID: 844563323386178033}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Custom Left Hand Model with Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2435,7 +2435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844563323427085582}
   - component: {fileID: 844563323427085569}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3841,7 +3841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844563324414609506}
   - component: {fileID: 844563324414609509}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3886,7 +3886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844563324419503761}
   - component: {fileID: 844563324419503760}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4222,7 +4222,7 @@ GameObject:
   - component: {fileID: 844563324615402812}
   - component: {fileID: 844563324615402813}
   - component: {fileID: 844563324615402814}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: RightHandPhysics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

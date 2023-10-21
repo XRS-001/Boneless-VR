@@ -88,10 +88,7 @@ public class ControllerInteractors : XRDirectInteractor
     }
     public IEnumerator DelayEnter()
     {
-        foreach (Collider collider in handPresence.GetComponent<HandPresencePhysics>().handColliders)
-        {
-            collider.isTrigger = true;
-        }
+        handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
         handPhysics.transform.position = attach.position;
         handPhysics.transform.rotation = attach.rotation;
         handPresence.transform.position = attach.position;
@@ -100,11 +97,8 @@ public class ControllerInteractors : XRDirectInteractor
     }
     public IEnumerator DelayExit()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
-        foreach (Collider collider in handPresence.GetComponent<HandPresencePhysics>().handColliders)
-        {
-            collider.isTrigger = false;
-        }
+        handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
     }
 }
