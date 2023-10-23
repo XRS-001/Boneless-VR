@@ -1616,7 +1616,7 @@ GameObject:
   - component: {fileID: 542082786}
   m_Layer: 6
   m_Name: Magazine
-  m_TagString: PistolMagazine
+  m_TagString: Magazine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

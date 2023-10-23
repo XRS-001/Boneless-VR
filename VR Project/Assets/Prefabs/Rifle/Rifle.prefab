@@ -12254,7 +12254,7 @@ MonoBehaviour:
   ammoCapacity: 0
   bulletFirePosition: {fileID: 5494168654398010829}
   casingEjectPosition: {fileID: 5494168655262010305}
-  magazine: {fileID: 3952848622957410378, guid: c43c132b8510fa34db9668ad6df9f06e,
+  magazine: {fileID: 2520935208786600843, guid: 364945f35663fbf46a9a259ecb935ecf,
     type: 3}
   magazineName: RifleMag
   animatedMagazine: {fileID: 2196409190622066570}

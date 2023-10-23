@@ -330,7 +330,7 @@ MonoBehaviour:
   locked: 1
   distance: 0
   doorDistance: 0
-  handleClick: {fileID: 8300000, guid: 93e1de2ccf384354e9b9107ba99a2966, type: 3}
+  handleClick: {fileID: 8300000, guid: 7d07014d85549c241b38218f1b889eeb, type: 3}
 --- !u!82 &3757364587755377155
 AudioSource:
   m_ObjectHideFlags: 0

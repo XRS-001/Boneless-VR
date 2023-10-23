@@ -30,7 +30,7 @@ public class RifleFire : MonoBehaviour
     public GameObject magazine;
     public string magazineName;
     public GameObject animatedMagazine;
-    private GameObject pistolMagazine;
+    private GameObject gunMagazine;
     private bool hasSlide = true;
     public GameObject bullet;
     public GameObject casing;
@@ -160,8 +160,8 @@ public class RifleFire : MonoBehaviour
 
         if (isInGun && magRelease > 0.1f)
         {
-            animator.Play("Release");
-            StartCoroutine(Delay());
+            isInGun = false;
+            ReleaseMagazine();
         }
     }
 
@@ -172,11 +172,11 @@ public class RifleFire : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        pistolMagazine = other.gameObject;
-        float angle = Quaternion.Angle(pistolMagazine.transform.rotation, transform.rotation);
-        if (pistolMagazine.CompareTag("PistolMagazine"))
+        gunMagazine = other.gameObject;
+        float angle = Quaternion.Angle(gunMagazine.transform.rotation, transform.rotation);
+        if (gunMagazine.CompareTag("Magazine"))
         {
-            if (angle < threshold && pistolMagazine.GetComponent<GunMagazine>().magazineName == magazineName && !isInGun && other.gameObject.GetComponent<XRGrabInteractableTwoAttach>().isSelected)
+            if (angle < threshold && gunMagazine.GetComponent<GunMagazine>().magazineName == magazineName && !isInGun && other.gameObject.GetComponent<XRGrabInteractableTwoAttach>().isSelected)
             {
                 if (ammoCapacity > 0)
                 {
@@ -187,11 +187,11 @@ public class RifleFire : MonoBehaviour
                     hasSlide = false;
                 }
                 audioSource.PlayOneShot(gunLoad);
-                ammoCapacity += pistolMagazine.GetComponent<GunMagazine>().ammoCapacity;
+                ammoCapacity += gunMagazine.GetComponent<GunMagazine>().ammoCapacity;
                 animatedMagazine.SetActive(true);
-                pistolMagazine.GetComponent<XRGrabInteractableTwoAttach>().controllerGrabbing.allowSelect = false;
-                pistolMagazine.GetComponent<XRGrabInteractableTwoAttach>().controllerGrabbing.allowSelect = true;
-                Destroy(pistolMagazine.gameObject);
+                gunMagazine.GetComponent<XRGrabInteractableTwoAttach>().controllerGrabbing.allowSelect = false;
+                gunMagazine.GetComponent<XRGrabInteractableTwoAttach>().controllerGrabbing.allowSelect = true;
+                Destroy(gunMagazine.gameObject);
                 animator.Play("Reload");
                 isInGun = true;
                 animatedMagazine.GetComponent<XRSimpleInteractable>().selectEntered.AddListener(ReleaseMagazineGrabbed);
@@ -226,6 +226,7 @@ public class RifleFire : MonoBehaviour
 
     public void ReleaseMagazine()
     {
+        animator.Play("Release");
         audioSource.PlayOneShot(gunLoad);
         animatedMagazine.SetActive(false);
         spawnedMagazine = Instantiate(magazine, animatedMagazine.transform.position, animatedMagazine.transform.rotation);
@@ -241,6 +242,7 @@ public class RifleFire : MonoBehaviour
     {
         audioSource.PlayOneShot(gunLoad);
         animatedMagazine.SetActive(false);
+        animator.Play("Release");
         spawnedMagazine = Instantiate(magazine, animatedMagazine.transform.position, animatedMagazine.transform.rotation);
         spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity = ammoCapacity;
         ammoCapacity = 0;
@@ -268,7 +270,7 @@ public class RifleFire : MonoBehaviour
     }
     public IEnumerator Delay()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0);
         isInGun = false;
     }
 }

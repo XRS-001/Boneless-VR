@@ -142,7 +142,7 @@ public class PistolFire : MonoBehaviour
     {
         pistolMagazine = other.gameObject;
         float angle = Quaternion.Angle(pistolMagazine.transform.rotation, transform.rotation);
-        if (pistolMagazine.CompareTag("PistolMagazine"))
+        if (pistolMagazine.CompareTag("Magazine"))
         {
             if (angle < threshold && pistolMagazine.GetComponent<GunMagazine>().magazineName == magazineName && !isInGun && other.gameObject.GetComponent<XRGrabInteractableTwoAttach>().isSelected)
             {

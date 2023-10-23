@@ -153,6 +153,10 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = true;
         initialRotationOffset = Quaternion.Inverse(GetTwoHandRotation()) * interactor.attachTransform.rotation;
+        foreach(Collider collider in colliders)
+        {
+            Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, true);
+        }
     }
     public void OnSecondHandRelease(SelectExitEventArgs args)
     {
@@ -162,6 +166,10 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         trackRotation = false;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
         StartCoroutine(Delay());
+        foreach (Collider collider in colliders)
+        {
+            Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, false);
+        }
         Debug.Log("SECOND HAND RELEASE");
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -180,28 +188,23 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         base.OnSelectExited(args);
         if (secondHandGrabbing)
         {
-            secondHandGrabPoint.enabled = false;
-            secondHandGrabPoint.enabled = true;
             TwoHandInteractable interactable = GetComponent<TwoHandInteractable>();
             XRInteractionManager XRInteractionManager = interactionManager;
             interactor = secondInteractor;
             secondInteractor = interactor;
-            try
+            if (secondInteractor.transform.CompareTag("LeftHand"))
             {
-                if (rightHandGrabbing)
-                {
-                    GetComponent<TwoHandInteractable>().attachTransform = leftAttach;
-                    GetComponent<TwoHandInteractable>().attachTransform = leftAttach;
-                }
-                else
-                {
-                    GetComponent<TwoHandInteractable>().attachTransform = rightAttach;
-                    GetComponent<TwoHandInteractable>().attachTransform = rightAttach;
-                }
-                XRInteractionManager.SelectEnter(interactor, interactable);
-                initialRotationOffset = Quaternion.Inverse(GetTwoHandRotation()) * interactor.transform.GetComponent<ControllerInteractors>().attachTransform.rotation;
+                GetComponent<TwoHandInteractable>().attachTransform = leftAttach;
+                StartCoroutine(DelayColliders());
             }
-            catch { }
+            if (secondInteractor.transform.CompareTag("RightHand"))
+            {
+                GetComponent<TwoHandInteractable>().attachTransform = rightAttach;
+                StartCoroutine(DelayColliders());
+            }
+            XRInteractionManager.SelectExit(interactor, secondHandGrabPoint);
+            XRInteractionManager.SelectEnter(interactor, interactable);
+            initialRotationOffset = Quaternion.Inverse(GetTwoHandRotation()) * interactor.transform.GetComponent<ControllerInteractors>().attachTransform.rotation;
         }
         else
         {
@@ -227,5 +230,26 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         {
             secondInteractor = null;
         }
-    }  
+    }
+    public IEnumerator DelayColliders()
+    {
+        foreach (Collider collider in interactor.GetComponent<ControllerInteractors>().colliders)
+        {
+            collider.gameObject.SetActive(false);
+        }
+        foreach (Collider collider in interactor.GetComponent<ControllerInteractors>().colliders)
+        {
+            collider.gameObject.SetActive(false);
+        }
+        yield return new WaitForSeconds(1f);
+
+        foreach (Collider collider in secondInteractor.GetComponent<ControllerInteractors>().colliders)
+        {
+            collider.gameObject.SetActive(true);
+        }
+        foreach (Collider collider in secondInteractor.GetComponent<ControllerInteractors>().colliders)
+        {
+            collider.gameObject.SetActive(true);
+        }
+    }
 }         

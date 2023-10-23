@@ -242,7 +242,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
-  m_SelectMode: 0
+  m_SelectMode: 1
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -353,9 +353,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 0}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 0
+  collisionResistance: 0
+  knockOutDistance: 0
 --- !u!114 &147889366386006901
 MonoBehaviour:
   m_ObjectHideFlags: 0

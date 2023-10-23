@@ -1716,9 +1716,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 0.4
+  puppet: {fileID: 0}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 0
+  collisionResistance: 0
+  knockOutDistance: 0
 --- !u!114 &649906363
 MonoBehaviour:
   m_ObjectHideFlags: 0

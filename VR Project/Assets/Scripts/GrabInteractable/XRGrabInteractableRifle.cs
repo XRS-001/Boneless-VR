@@ -88,6 +88,10 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         secondInteractor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = true;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
+        foreach (Collider collider in colliders)
+        {
+            Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, true);
+        }
         initialRotationOffset = Quaternion.Inverse(GetTwoHandRotation()) * interactor.attachTransform.rotation;
     }
     public void OnSecondHandRelease(SelectExitEventArgs args)
@@ -95,6 +99,10 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = false;
         rifleFire.recoilSpeed *= 2;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
+        foreach (Collider collider in colliders)
+        {
+            Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, false);
+        }
         Debug.Log("SECOND HAND RELEASE");
         secondInteractor = null;
     }

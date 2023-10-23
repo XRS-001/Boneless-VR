@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,10 +12,9 @@ public class ControllerInteractors : XRDirectInteractor
     public float weight;
     public Rigidbody bodyRb;
     public Transform handTargetHandPresence;
-    public Collider[] interactableColliders;
     public Collider forearmCollider;
     public HandData handRig;
-    public GameObject[] colliders;
+    public Collider[] colliders;
     private Rigidbody rb;
     private Transform attach;
     public AudioClip grabAudio;
@@ -31,10 +31,7 @@ public class ControllerInteractors : XRDirectInteractor
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         isGrabbing = true;
-        interactableColliders = args.interactableObject.transform.GetComponents<Collider>();
-        interactableColliders = args.interactableObject.transform.GetComponentsInParent<Collider>();
-        interactableColliders = args.interactableObject.transform.GetComponentsInChildren<Collider>();
-        foreach (Collider collider in interactableColliders)
+        foreach (Collider collider in args.interactableObject.colliders)
         {
             Physics.IgnoreCollision(collider, forearmCollider, true);
         }
@@ -92,7 +89,7 @@ public class ControllerInteractors : XRDirectInteractor
         if (weight > 1)
         {
             JointDrive drive = handPhysics.GetComponent<ConfigurableJoint>().slerpDrive;
-            drive.positionDamper /= weight / 4;
+            drive.positionDamper = 300;
 
             handPhysics.GetComponent<ConfigurableJoint>().xDrive = drive;
             handPhysics.GetComponent<ConfigurableJoint>().yDrive = drive;
@@ -103,11 +100,10 @@ public class ControllerInteractors : XRDirectInteractor
         StartCoroutine(DelayExit());
         Destroy(configJoint);
         handPhysics.GetComponent<Rigidbody>().mass = 1;
-        foreach (Collider collider in interactableColliders)
+        foreach (Collider collider in args.interactableObject.colliders)
         {
             Physics.IgnoreCollision(collider, forearmCollider, false);
         }
-        interactableColliders = null;
     }
     public void ReleaseInteractable()
     {
@@ -119,7 +115,10 @@ public class ControllerInteractors : XRDirectInteractor
     }
     public IEnumerator DelayEnter()
     {
-        handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
         handPhysics.transform.position = attach.position;
         handPhysics.transform.rotation = attach.rotation;
         yield return new WaitForSeconds(0f);
@@ -128,6 +127,9 @@ public class ControllerInteractors : XRDirectInteractor
     {
         yield return new WaitForSeconds(1f);
 
-        handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = true;
+        }
     }
 }

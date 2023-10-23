@@ -5342,15 +5342,12 @@ MonoBehaviour:
   weight: 0
   bodyRb: {fileID: 1209319423592564103}
   handTargetHandPresence: {fileID: 1209319423027582333}
-  interactableColliders: []
   forearmCollider: {fileID: 1209319423431383883}
   handRig: {fileID: 5117554975057873065}
   colliders:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1209319422638422584}
-  - {fileID: 1209319422650914826}
-  - {fileID: 1209319423315501838}
+  - {fileID: 1209319422638422586}
+  - {fileID: 1209319422650914828}
+  - {fileID: 1209319423315501840}
   grabAudio: {fileID: 8300000, guid: c54b51fbf7af36e47aea6f519aa45af7, type: 3}
   handPresence: {fileID: 3152344399583351703}
   handPhysics: {fileID: 1209319423027582332}
@@ -6277,15 +6274,12 @@ MonoBehaviour:
   weight: 0
   bodyRb: {fileID: 1209319423592564103}
   handTargetHandPresence: {fileID: 1209319423879437091}
-  interactableColliders: []
   forearmCollider: {fileID: 1209319422656676061}
   handRig: {fileID: 7825913289613991582}
   colliders:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1209319423678625402}
-  - {fileID: 1209319422689780502}
-  - {fileID: 1209319423673796743}
+  - {fileID: 1209319423678625404}
+  - {fileID: 1209319422689780504}
+  - {fileID: 1209319423673796745}
   grabAudio: {fileID: 8300000, guid: c54b51fbf7af36e47aea6f519aa45af7, type: 3}
   handPresence: {fileID: 7898130765571686894}
   handPhysics: {fileID: 1209319423879437090}

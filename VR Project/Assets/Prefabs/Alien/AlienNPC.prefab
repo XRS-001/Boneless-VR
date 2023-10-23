@@ -959,9 +959,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259329458642312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,9 +1281,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259329501278836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,9 +1982,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259329654733668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2443,7 +2464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1efacf79ab4214e85aeebfd07064c20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puppetMaster: {fileID: 0}
+  puppetMaster: {fileID: 8254259330607045978}
   deactivated: 0
   masterProps:
     normalMode: 1
@@ -2459,7 +2480,7 @@ MonoBehaviour:
   collisionThreshold: 0
   collisionResistance:
     mode: 0
-    floatValue: 700
+    floatValue: 1200
     curve:
       serializedVersion: 2
       m_Curve:
@@ -2502,7 +2523,7 @@ MonoBehaviour:
     disableColliders: 0
     regainPinSpeed: 1
     collisionResistance: 1
-    knockOutDistance: 0.01
+    knockOutDistance: 2500
     puppetMaterial: {fileID: 13400000, guid: a3fd0ffcf0d0a384ba3568687a96ab8e, type: 2}
     unpinnedMaterial: {fileID: 13400000, guid: d4563de398e2c4412a95f4317ddf4b1a, type: 2}
   groupOverrides:
@@ -2581,7 +2602,7 @@ MonoBehaviour:
       knockOutDistance: 100
       puppetMaterial: {fileID: 0}
       unpinnedMaterial: {fileID: 0}
-  knockOutDistance: 0.001
+  knockOutDistance: 1
   unpinnedMuscleWeightMlp: 1
   maxRigidbodyVelocity: 1
   pinWeightThreshold: 1
@@ -3115,9 +3136,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259329880721855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3889,7 +3917,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &8254259330158048495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4130,9 +4158,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259330158048488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4764,9 +4799,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259330274331679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5157,9 +5199,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259330337601454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5535,9 +5584,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259330404578138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6263,9 +6319,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259330573061685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7199,9 +7262,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259330635330818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7802,9 +7872,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259330778261791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9043,9 +9120,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259331116584532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9420,9 +9504,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259331143425842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9766,9 +9857,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259331176301256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10113,9 +10211,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
+  puppet: {fileID: 8254259329829294974}
+  collisionResistanceGrabbing: 0
+  knockOutDistanceGrabbing: 1
+  collisionResistance: 1200
+  knockOutDistance: 2500
 --- !u!114 &8254259331196086087
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,9 +8,9 @@ TagManager:
   - LeftHand
   - RightHand
   - ClimbingSurface
-  - PistolMagazine
   - Pierceable
   - Key
+  - Magazine
   layers:
   - Default
   - TransparentFX
