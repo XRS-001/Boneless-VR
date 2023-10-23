@@ -22,6 +22,7 @@ public class ContinuousMovementPhysics : MonoBehaviour
     private Vector2 inputMoveAxis;
     private float inputTurnAxis;
     public Transform turnSource;
+    private Vector3 direction;
 
     // Update is called once per frame
     void Update()
@@ -34,28 +35,39 @@ public class ContinuousMovementPhysics : MonoBehaviour
         if(jumpInput && isGrounded)
         {
             jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight);
-            rb.velocity = Vector3.up * jumpVelocity;
+            rb.velocity = direction + (Vector3.up * jumpVelocity);
         }
     }
     private void FixedUpdate()
     {
         isGrounded = CheckIfGrounded();
+
+        Quaternion yaw = Quaternion.Euler(0, 1 * directionSource.eulerAngles.y, 0);
+        direction = yaw * new Vector3(inputMoveAxis.x, 0, inputMoveAxis.y);
+
         if (!onlyMoveWhenGrounded || (onlyMoveWhenGrounded && isGrounded))
         {
-            Quaternion yaw = Quaternion.Euler(0, 1 * directionSource.eulerAngles.y, 0);
-            Vector3 direction = yaw * new Vector3(inputMoveAxis.x, 0, inputMoveAxis.y);
             Vector3 targetMovePosition = rb.position + direction * Time.fixedDeltaTime * speed;
-            rb.MovePosition(targetMovePosition);
+
+            Vector3 axis = Vector3.up;
+            float angle = turnSpeed * Time.fixedDeltaTime * inputTurnAxis;
+
+            Quaternion q = Quaternion.AngleAxis(angle, axis);
+            rb.MoveRotation(rb.rotation * q);
+
+            Vector3 newPosition = q * (targetMovePosition - turnSource.position) + turnSource.position;
+
+            rb.MovePosition(newPosition);
         }
     }
 
     public bool CheckIfGrounded()
     {
         Vector3 start = bodyCollider.transform.TransformPoint(bodyCollider.center);
-        float rayLength = bodyCollider.height / 2 - bodyCollider.radius + 0.05f;
+        float rayLength = bodyCollider.height / 2 - bodyCollider.radius + 0.1f;
 
-        bool hasHit = Physics.SphereCast(start, bodyCollider.radius, Vector3.down, out RaycastHit hitInfo, groundLayer);
-
+        bool hasHit = Physics.SphereCast(start, bodyCollider.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
+         
         return hasHit;
     }
 }

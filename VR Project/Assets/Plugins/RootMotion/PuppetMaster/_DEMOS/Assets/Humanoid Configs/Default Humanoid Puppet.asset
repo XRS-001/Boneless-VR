@@ -36,8 +36,8 @@ MonoBehaviour:
   angularPinning: 0
   updateJointAnchors: 1
   supportTranslationAnimation: 0
-  angularLimits: 0
-  internalCollisions: 0
+  angularLimits: 1
+  internalCollisions: 1
   muscles:
   - name: Hips
     bone: 0
