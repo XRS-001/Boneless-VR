@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 5874547656865255894}
   leftHandPose: {fileID: 5874547657398380877}
 --- !u!114 &3757364587755377154

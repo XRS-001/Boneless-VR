@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 5435194949716538764}
   - component: {fileID: 5435194949716540019}
   - component: {fileID: 5435194949716538763}
+  - component: {fileID: 488011882}
   m_Layer: 6
   m_Name: Sword
   m_TagString: Interactable
@@ -212,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 5435194951023334160}
   leftHandPose: {fileID: 5435194951737572044}
 --- !u!114 &5435194949716538765
@@ -500,6 +502,19 @@ MonoBehaviour:
   dynamicX: 0
   dynamicZ: 0
   handleLength: 0.005
+--- !u!114 &488011882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435194949716540018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0af102cf1a09a4eb8a936e3f812cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactAudio: {fileID: 8300000, guid: a02aa51c9942d21499d26639c8149d7c, type: 3}
 --- !u!1 &5435194949717519355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 5435194951023334160}
   leftHandPose: {fileID: 5435194951737572044}
 --- !u!1 &5435194951737572019

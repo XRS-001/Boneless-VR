@@ -17,10 +17,17 @@ public class ControllerInteractors : XRDirectInteractor
     public GameObject[] colliders;
     private Rigidbody rb;
     private Transform attach;
+    public AudioClip grabAudio;
+    private AudioSource audioSource;
     public GameObject handPresence;
     public GameObject handPhysics;
     private FixedJoint configJoint;
     public bool isGrabbing;
+    protected override void Start()
+    {
+        base.Start();
+        audioSource = GetComponent<AudioSource>();
+    }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         isGrabbing = true;
@@ -40,7 +47,6 @@ public class ControllerInteractors : XRDirectInteractor
             rb = args.interactableObject.transform.GetComponent<Rigidbody>();
             weight = rb.mass;
             handPhysics.GetComponent<Rigidbody>().mass = rb.mass;
-            handPhysics.GetComponent<Rigidbody>().drag = rb.mass * 3;
             if (weight > 5)
             {
                 JointDrive slerp = handPhysics.GetComponent<ConfigurableJoint>().slerpDrive;
@@ -48,12 +54,27 @@ public class ControllerInteractors : XRDirectInteractor
                 slerp.positionDamper *= weight / 4;
                 handPhysics.GetComponent<ConfigurableJoint>().slerpDrive = slerp;
             }
+            if (weight > 1)
+            {
+                JointDrive drive = handPhysics.GetComponent<ConfigurableJoint>().xDrive;
+                drive.positionDamper *= weight / 4;
+
+                handPhysics.GetComponent<ConfigurableJoint>().xDrive = drive;
+                handPhysics.GetComponent<ConfigurableJoint>().yDrive = drive;
+                handPhysics.GetComponent<ConfigurableJoint>().zDrive = drive;
+            }
+
             attach = args.interactableObject.transform.GetComponent<XRGrabInteractable>().attachTransform.transform;
             StartCoroutine(DelayEnter());
             configJoint = handPhysics.AddComponent<FixedJoint>();
             configJoint.connectedBody = rb;
             configJoint.autoConfigureConnectedAnchor = false;
             configJoint.connectedAnchor = rb.transform.InverseTransformPoint(handPhysics.transform.position);
+        }
+        if (args.interactableObject is XRBaseInteractable)
+        {
+            audioSource.pitch = 1.3f;
+            audioSource.PlayOneShot(grabAudio);
         }
     }
 
@@ -64,11 +85,22 @@ public class ControllerInteractors : XRDirectInteractor
         if (weight > 5)
         {
             JointDrive slerp = handPhysics.GetComponent<ConfigurableJoint>().slerpDrive;
-            slerp.positionSpring = 10000;
-            slerp.positionDamper = 300;
+            slerp.positionSpring *= weight / 4;
+            slerp.positionDamper /= weight / 4;
             handPhysics.GetComponent<ConfigurableJoint>().slerpDrive = slerp;
         }
+        if (weight > 1)
+        {
+            JointDrive drive = handPhysics.GetComponent<ConfigurableJoint>().slerpDrive;
+            drive.positionDamper /= weight / 4;
+
+            handPhysics.GetComponent<ConfigurableJoint>().xDrive = drive;
+            handPhysics.GetComponent<ConfigurableJoint>().yDrive = drive;
+            handPhysics.GetComponent<ConfigurableJoint>().zDrive = drive;
+        }
+        isGrabbing = false;
         weight = 0;
+        StartCoroutine(DelayExit());
         Destroy(configJoint);
         handPhysics.GetComponent<Rigidbody>().mass = 1;
         foreach (Collider collider in interactableColliders)
@@ -76,7 +108,6 @@ public class ControllerInteractors : XRDirectInteractor
             Physics.IgnoreCollision(collider, forearmCollider, false);
         }
         interactableColliders = null;
-        StartCoroutine(DelayExit());
     }
     public void ReleaseInteractable()
     {
@@ -91,8 +122,6 @@ public class ControllerInteractors : XRDirectInteractor
         handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
         handPhysics.transform.position = attach.position;
         handPhysics.transform.rotation = attach.rotation;
-        handPresence.transform.position = attach.position;
-        handPresence.transform.rotation = attach.rotation;
         yield return new WaitForSeconds(0f);
     }
     public IEnumerator DelayExit()

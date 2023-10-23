@@ -31,6 +31,13 @@ public class HandPresencePhysics : MonoBehaviour
                 collider.enabled = true;
             }
         }
+        else
+        {
+            foreach (Collider collider in handColliders)
+            {
+                collider.enabled = false;
+            }
+        }
         rb.MovePosition(target.position);
         rb.MoveRotation(target.rotation);
     }

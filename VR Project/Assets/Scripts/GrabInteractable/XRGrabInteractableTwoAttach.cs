@@ -39,6 +39,8 @@ public class XRGrabInteractableTwoAttach : XRGrabInteractable
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        leftHandGrabbing = false;
+        rightHandGrabbing = false;
         isGrabbing = false;
         base.OnSelectExited(args);
     }

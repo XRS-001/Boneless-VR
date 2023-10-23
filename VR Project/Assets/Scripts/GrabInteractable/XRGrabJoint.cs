@@ -55,7 +55,7 @@ public class XRGrabJoint : XRGrabInteractable
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.transform.position = args.interactorObject.transform.GetComponent<ControllerInteractors>().transform.position;
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.transform.rotation = args.interactorObject.transform.GetComponent<ControllerInteractors>().transform.rotation;
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().target
-            = args.interactorObject.transform.GetComponent<ControllerInteractors>().transform;
+            = args.interactorObject.transform.GetComponent<ControllerInteractors>().handPhysics.transform;
         base.OnSelectExited(args);
     }
     public IEnumerator Delay()

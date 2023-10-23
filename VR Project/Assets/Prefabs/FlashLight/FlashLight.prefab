@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 1601529336024699734}
   - component: {fileID: 1601529336024699730}
   - component: {fileID: 1601529336024699731}
+  - component: {fileID: 622665847}
   m_Layer: 6
   m_Name: FlashLight
   m_TagString: Interactable
@@ -380,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 1878202557357383700}
   leftHandPose: {fileID: 1878202557380990223}
 --- !u!136 &1601529336024699730
@@ -492,6 +494,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &622665847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601529336024699733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0af102cf1a09a4eb8a936e3f812cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactAudio: {fileID: 8300000, guid: a02aa51c9942d21499d26639c8149d7c, type: 3}
 --- !u!1 &1878202555995113203
 GameObject:
   m_ObjectHideFlags: 0

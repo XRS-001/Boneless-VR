@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class BodyPresence : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class BodyPresence : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("collided");
-        if (collision.gameObject.CompareTag("Interactable"))
+        if (collision.gameObject.CompareTag("Interactable") && collision.gameObject.GetComponent<XRBaseInteractable>().isSelected)
         {
             body.isKinematic = true;
             isColliding = true;

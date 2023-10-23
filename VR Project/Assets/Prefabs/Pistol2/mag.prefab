@@ -1613,6 +1613,7 @@ GameObject:
   - component: {fileID: 121550593830956587}
   - component: {fileID: 852326764}
   - component: {fileID: 852326765}
+  - component: {fileID: 504642699}
   m_Layer: 6
   m_Name: mag
   m_TagString: PistolMagazine
@@ -1746,6 +1747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 3019893319107423952}
   leftHandPose: {fileID: 3019893318245009137}
 --- !u!114 &852326765
@@ -1879,3 +1881,16 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+--- !u!114 &504642699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578385753949670158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0af102cf1a09a4eb8a936e3f812cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactAudio: {fileID: 8300000, guid: a02aa51c9942d21499d26639c8149d7c, type: 3}

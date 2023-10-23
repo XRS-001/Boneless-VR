@@ -118,7 +118,7 @@ public class GrabHandPose : MonoBehaviour
                     Vector3 point = hit.point;
                     float distance = Vector3.Distance(point, h.fingerBones[i].gameObject.transform.position);
                     Debug.Log(distance);
-                    if (distance > 0.1f)
+                    if (distance > 0f)
                     {
                         float lerpSpeed = timer / poseTransitionDuration / distance;
                         Quaternion boneRotation = Quaternion.Lerp(startingBonesRotation[i], newBonesRotation[i], lerpSpeed);

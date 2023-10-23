@@ -5284,6 +5284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 6069014663059383256}
   leftHandPose: {fileID: 6069014662392704661}
 --- !u!114 &6069014661789074931
@@ -6306,6 +6307,7 @@ GameObject:
   - component: {fileID: 6069014662365902422}
   - component: {fileID: 6069014662365902423}
   - component: {fileID: 6069014662365902420}
+  - component: {fileID: 431275827}
   m_Layer: 6
   m_Name: Pistol 1911
   m_TagString: Interactable
@@ -6591,6 +6593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 6069014663059383256}
   leftHandPose: {fileID: 6069014662392704661}
 --- !u!82 &6069014662365902423
@@ -6710,6 +6713,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &431275827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6069014662365902421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0af102cf1a09a4eb8a936e3f812cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactAudio: {fileID: 8300000, guid: a02aa51c9942d21499d26639c8149d7c, type: 3}
 --- !u!1 &6069014662375827825
 GameObject:
   m_ObjectHideFlags: 0
@@ -8524,6 +8540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 6069014662431985098}
   leftHandPose: {fileID: 6069014662039880731}
 --- !u!114 &6069014663260255055

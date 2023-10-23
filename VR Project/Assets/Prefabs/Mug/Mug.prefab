@@ -3043,6 +3043,7 @@ GameObject:
   - component: {fileID: 2083611693799057393}
   - component: {fileID: 608265043}
   - component: {fileID: 608265049}
+  - component: {fileID: 1717880233}
   m_Layer: 6
   m_Name: Mug
   m_TagString: Interactable
@@ -3161,6 +3162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 1894690822}
   leftHandPose: {fileID: 2054789529}
 --- !u!114 &608265049
@@ -3297,3 +3299,16 @@ MonoBehaviour:
   rightAttachPrimaryPose: {fileID: 1894690822}
   leftAttachAltPose: {fileID: 2120010555}
   rightAttachAltPose: {fileID: 575422486}
+--- !u!114 &1717880233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133870907187630010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0af102cf1a09a4eb8a936e3f812cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactAudio: {fileID: 8300000, guid: a02aa51c9942d21499d26639c8149d7c, type: 3}

@@ -10,6 +10,7 @@ TagManager:
   - ClimbingSurface
   - PistolMagazine
   - Pierceable
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -21,15 +22,15 @@ TagManager:
   - Player
   - LeftHandPhysics
   - RightHandPhysics
-  - BodyPresence
+  - 
   - SecondHandGrab
   - Ground
   - Sliceable
   - Body
-  - LeftForeArm
-  - RightForeArm
-  - LeftForeArmPresence
-  - RightForeArmPresence
+  - LeftForearm
+  - RightForearm
+  - 
+  - 
   - Puppet Controller
   - Ragdoll
   - 

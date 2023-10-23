@@ -40,7 +40,7 @@ public class ClimbingInteractable : XRSimpleInteractable
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         grabHandPose.UnSetPose(args);
-        handPresence.target = controller.transform;
+        handPresence.target = handPhysics.transform;
         isGrabbing = false;
         Destroy(fixedJoint);
     }
@@ -60,7 +60,7 @@ public class ClimbingInteractable : XRSimpleInteractable
     private void OnSelectSecondExit(SelectExitEventArgs args)
     {
         handPresence.GetComponent<Rigidbody>().isKinematic = false;
-        handPresence.target = controller.transform;
+        handPresence.target = handPhysics.transform;
         isGrabbing = false;
         Destroy(fixedJoint);
     }

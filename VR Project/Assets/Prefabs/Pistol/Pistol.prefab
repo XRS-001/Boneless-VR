@@ -5885,6 +5885,7 @@ GameObject:
   - component: {fileID: 3962892650539580525}
   - component: {fileID: 3962892650539580526}
   - component: {fileID: 3962892650539580527}
+  - component: {fileID: 1774629936}
   m_Layer: 6
   m_Name: Pistol
   m_TagString: Interactable
@@ -6043,6 +6044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 3962892650316243289}
   leftHandPose: {fileID: 3962892650657553532}
 --- !u!114 &3962892650539580525
@@ -6296,6 +6298,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1774629936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3962892650539580519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0af102cf1a09a4eb8a936e3f812cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactAudio: {fileID: 8300000, guid: a02aa51c9942d21499d26639c8149d7c, type: 3}
 --- !u!1 &3962892650547152278
 GameObject:
   m_ObjectHideFlags: 0
@@ -8229,6 +8244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 0}
   leftHandPose: {fileID: 0}
 --- !u!114 &3962892651607089574
@@ -9062,6 +9078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
+  dynamic: 0
   rightHandPose: {fileID: 3962892650331572483}
   leftHandPose: {fileID: 3962892652264143475}
 --- !u!114 &3962892651948441455
