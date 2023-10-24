@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class XRGrabJoint : XRGrabInteractable
 {
     public bool isGrabbing;
+    public Collider[] parentColliders;
     private Collider[] handColliders;
     private Collider[] previousHandColliders;
     public Transform rightAttach;
@@ -26,6 +27,10 @@ public class XRGrabJoint : XRGrabInteractable
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        foreach(Collider collider in parentColliders) 
+        {
+            Physics.IgnoreCollision(collider, args.interactorObject.transform.GetComponent<ControllerInteractors>().forearmCollider, true);
+        }
         if (args.interactorObject.transform.CompareTag("RightHand"))
         {
             leftHandGrabbing = false;
@@ -49,6 +54,10 @@ public class XRGrabJoint : XRGrabInteractable
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        foreach (Collider collider in parentColliders)
+        {
+            Physics.IgnoreCollision(collider, args.interactorObject.transform.GetComponent<ControllerInteractors>().forearmCollider, false);
+        }
         previousHandColliders = handColliders;
         isGrabbing = false;
         StartCoroutine(Delay());

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -6,6 +7,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
 {
     private RifleFire rifleFire;
     public bool isGrabbing { get; private set; } = false;
+    private bool secondHandGrabbing;
     public Collider slideCollider;
     private Collider[] handColliders;
     private Collider[] previousHandColliders;
@@ -24,8 +26,78 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     public TwoHandRotationType twoHandRotationType;
     public bool snapToSecondHand = true;
     private Quaternion initialRotationOffset;
+    public Transform leftPresence;
+    public Transform rightPresence;
+    public bool dynamicY;
+    public bool dynamicX;
+    public bool dynamicZ;
+    public float handleLength;
     private void Update()
     {
+        if (!leftHandGrabbing && !secondHandGrabbing)
+        {
+            Vector3 originalPosition = leftAttachSecond.localPosition;
+            Vector3 position = leftPresence.position;
+            leftAttachSecond.position = position;
+            Vector3 localPosition = leftAttachSecond.localPosition;
+            if (!dynamicX)
+            {
+                localPosition.x = originalPosition.x;
+            }
+            else
+            {
+                localPosition.x = Mathf.Clamp(localPosition.x, -handleLength, handleLength);
+            }
+            if (!dynamicY)
+            {
+                localPosition.y = originalPosition.y;
+            }
+            else
+            {
+                localPosition.y = Mathf.Clamp(localPosition.y, -handleLength, handleLength);
+            }
+            if (!dynamicZ)
+            {
+                localPosition.z = originalPosition.z;
+            }
+            else
+            {
+                localPosition.z = Mathf.Clamp(localPosition.z, -handleLength, handleLength);
+            }
+            leftAttachSecond.localPosition = localPosition;
+        }
+        if (!rightHandGrabbing && !secondHandGrabbing)
+        {
+            Vector3 originalPosition = rightAttachSecond.localPosition;
+            Vector3 position = rightPresence.position;
+            rightAttachSecond.position = position;
+            Vector3 localPosition = rightAttachSecond.localPosition;
+            if (!dynamicX)
+            {
+                localPosition.x = originalPosition.x;
+            }
+            else
+            {
+                localPosition.x = Mathf.Clamp(localPosition.x, -handleLength, handleLength);
+            }
+            if (!dynamicY)
+            {
+                localPosition.y = originalPosition.y;
+            }
+            else
+            {
+                localPosition.y = Mathf.Clamp(localPosition.y, -handleLength, handleLength);
+            }
+            if (!dynamicZ)
+            {
+                localPosition.z = originalPosition.z;
+            }
+            else
+            {
+                localPosition.z = Mathf.Clamp(localPosition.z, -handleLength, handleLength);
+            }
+            rightAttachSecond.localPosition = localPosition;
+        }
         if (!rightHandGrabbing || !leftHandGrabbing && interactor)
         {
             try
@@ -42,7 +114,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         secondHandGrabPoint.selectEntered.AddListener(OnSecondHandGrab);
         secondHandGrabPoint.selectExited.AddListener(OnSecondHandRelease);
     }
-
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
         if (secondInteractor && selectingInteractor)
@@ -83,6 +154,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     }
     public void OnSecondHandGrab(SelectEnterEventArgs args)
     {
+        secondHandGrabbing = true;
         rifleFire.recoilSpeed /= 2;
         Debug.Log("SECOND HAND GRAB");
         secondInteractor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
@@ -96,6 +168,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     }
     public void OnSecondHandRelease(SelectExitEventArgs args)
     {
+        secondHandGrabbing = false;
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = false;
         rifleFire.recoilSpeed *= 2;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
