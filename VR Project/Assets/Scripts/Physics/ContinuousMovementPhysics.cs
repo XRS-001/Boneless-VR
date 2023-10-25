@@ -23,6 +23,8 @@ public class ContinuousMovementPhysics : MonoBehaviour
     private float inputTurnAxis;
     public Transform turnSource;
     private Vector3 direction;
+    public CheckCollision leftHandCollision;
+    public CheckCollision rightHandCollision;
 
     // Update is called once per frame
     void Update()
@@ -34,7 +36,14 @@ public class ContinuousMovementPhysics : MonoBehaviour
 
         if(jumpInput && isGrounded)
         {
-            jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight);
+            if(leftHandCollision.colliding || rightHandCollision.colliding)
+            {
+                jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight * 1.5f);
+            }
+            else
+            {
+                jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight);
+            }
             rb.velocity = direction + (Vector3.up * jumpVelocity);
         }
     }
@@ -67,7 +76,14 @@ public class ContinuousMovementPhysics : MonoBehaviour
         float rayLength = bodyCollider.height / 2 - bodyCollider.radius + 0.1f;
 
         bool hasHit = Physics.SphereCast(start, bodyCollider.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
-         
+        if(!hasHit)
+        {
+            hasHit = leftHandCollision.colliding;
+        }
+        if (!hasHit)
+        {
+            hasHit = rightHandCollision.colliding;
+        }
         return hasHit;
     }
 }

@@ -39,7 +39,7 @@ public class ChestLock : MonoBehaviour
                 otherCollider.isTrigger = false;
                 Destroy(lockJoint);
                 hingeRigidbody.isKinematic = false;
-                hingeRigidbody.gameObject.GetComponent<XRGrabInteractableMultiAttach>().enabled = true;
+                hingeRigidbody.gameObject.GetComponent<XRGrabDynamic>().enabled = true;
             }
         }
     }

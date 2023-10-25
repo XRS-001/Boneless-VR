@@ -12,7 +12,7 @@ public class KnifePierce : MonoBehaviour
     public float limit;
     public Collider knifeCollider;
     public Collider bladeTipCollider;
-    private Collider stabbedCollider;
+    public Collider stabbedCollider;
     private ConfigurableJoint joint;
     private Vector3 lastPosition;
     public float velocity;
@@ -24,15 +24,15 @@ public class KnifePierce : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Pierceable") && velocity > requiredSpeedToPierce)
+        if (collision.gameObject.CompareTag("Pierceable") && velocity > requiredSpeedToPierce && !isPiercing)
         {
+            isPiercing = true;
             foreach (ContactPoint contact in collision.contacts)
             {
                 if (contact.thisCollider == bladeTipCollider)
                 {
                     audioSource.pitch = 1f;
                     audioSource.PlayOneShot(pierceSound);
-                    isPiercing = true;
 
                     stabbedCollider = collision.collider;
                     Physics.IgnoreCollision(stabbedCollider, knifeCollider);
@@ -70,11 +70,9 @@ public class KnifePierce : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pierceable") && isPiercing)
         {
-            isPiercing = false;
             audioSource.pitch = 1.5f;
             audioSource.PlayOneShot(pierceSound);
             Destroy(joint);
-            stabbedCollider = collision;
             StartCoroutine(Delay());
         }
     }
@@ -82,8 +80,14 @@ public class KnifePierce : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
 
-        Physics.IgnoreCollision(stabbedCollider, knifeCollider, false);
-        Physics.IgnoreCollision(stabbedCollider, bladeTipCollider, false);
+        try
+        {
+            Physics.IgnoreCollision(stabbedCollider, knifeCollider, false);
+            Physics.IgnoreCollision(stabbedCollider, bladeTipCollider, false);
+        }
+        catch { }
+
+        stabbedCollider = null;
         isPiercing = false;
     }
 }
