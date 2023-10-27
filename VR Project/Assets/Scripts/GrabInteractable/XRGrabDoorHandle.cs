@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class XRGrabDoorHandle : XRGrabJoint
 {
-    public GrabHandPose grabHandPose;
+    public GrabHandPose grabHandPoseDoor;
     public Transform leftAttachPrimary;
     public Transform rightAttachPrimary;
     public Transform leftAttachAlt;
@@ -83,7 +83,7 @@ public class XRGrabDoorHandle : XRGrabJoint
             if (leftAttachTransform != null)
             {
                 attachTransform = leftAttachTransform;
-                grabHandPose.leftHandPose = leftAttachTransform == leftAttachPrimary ? leftAttachPrimaryPose : leftAttachPrimaryPose;
+                grabHandPoseDoor.leftHandPose = leftAttachTransform == leftAttachPrimary ? leftAttachPrimaryPose : leftAttachPrimaryPose;
             }
         }
         else if (interactorTransform.CompareTag("RightHand"))
@@ -91,7 +91,7 @@ public class XRGrabDoorHandle : XRGrabJoint
             if (rightAttachTransform != null)
             {
                 attachTransform = rightAttachTransform;
-                grabHandPose.rightHandPose = rightAttachTransform == rightAttachPrimary ? rightAttachPrimaryPose : rightAttachPrimaryPose;
+                grabHandPoseDoor.rightHandPose = rightAttachTransform == rightAttachPrimary ? rightAttachPrimaryPose : rightAttachPrimaryPose;
             }
         }
         base.OnSelectEntering(args);
@@ -150,12 +150,12 @@ public class XRGrabDoorHandle : XRGrabJoint
                 if (isLeftHand)
                 {
                     leftAttachTransform = primaryTransform;
-                    grabHandPose.leftHandPose = leftAttachPrimaryPose;
+                    grabHandPoseDoor.leftHandPose = leftAttachPrimaryPose;
                 }
                 else
                 {
                     rightAttachTransform = primaryTransform;
-                    grabHandPose.rightHandPose = rightAttachPrimaryPose;
+                    grabHandPoseDoor.rightHandPose = rightAttachPrimaryPose;
                 }
             }
             else
@@ -163,12 +163,12 @@ public class XRGrabDoorHandle : XRGrabJoint
                 if (isLeftHand)
                 {
                     leftAttachTransform = altTransform;
-                    grabHandPose.leftHandPose = leftAttachPrimaryPose;
+                    grabHandPoseDoor.leftHandPose = leftAttachPrimaryPose;
                 }
                 else
                 {
                     rightAttachTransform = altTransform;
-                    grabHandPose.rightHandPose = rightAttachPrimaryPose;
+                    grabHandPoseDoor.rightHandPose = rightAttachPrimaryPose;
                 }
             }
 

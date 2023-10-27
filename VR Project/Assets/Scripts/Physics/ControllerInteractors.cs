@@ -15,6 +15,7 @@ public class ControllerInteractors : XRDirectInteractor
     public Collider forearmCollider;
     public HandData handRig;
     public Collider[] colliders;
+    private List<Collider> interactableColliders;
     private Rigidbody rb;
     private Transform attach;
     public AudioClip grabAudio;
@@ -31,7 +32,8 @@ public class ControllerInteractors : XRDirectInteractor
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         isGrabbing = true;
-        foreach (Collider collider in args.interactableObject.colliders)
+        interactableColliders = args.interactableObject.colliders;
+        foreach (Collider collider in interactableColliders)
         {
             Physics.IgnoreCollision(collider, forearmCollider, true);
         }
@@ -119,12 +121,28 @@ public class ControllerInteractors : XRDirectInteractor
         {
             collider.enabled = false;
         }
+        foreach (Collider collider in interactableColliders)
+        {
+            collider.enabled = false;
+        }
         handPhysics.transform.position = attach.position;
         handPhysics.transform.rotation = attach.rotation;
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(1f);
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = true;
+        }
+        foreach (Collider collider in interactableColliders)
+        {
+            collider.enabled = true;
+        }
     }
     public IEnumerator DelayExit()
     {
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
         yield return new WaitForSeconds(1f);
 
         foreach (Collider collider in colliders)

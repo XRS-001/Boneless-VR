@@ -3759,7 +3759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5494168654350185941}
   m_LocalRotation: {x: 0.5674465, y: -0.09956376, z: 0.20684405, w: 0.79076374}
-  m_LocalPosition: {x: -0.078999996, y: -0.02799997, z: 0.19699995}
+  m_LocalPosition: {x: -0.081, y: 0.001, z: 0.279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9976,13 +9976,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 5494168654782788309}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
-  m_DistanceCalculationMode: 1
+  m_DistanceCalculationMode: 2
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -10089,11 +10090,28 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   isGrabbing: 0
-  parentColliders: []
+  parentColliders:
+  - {fileID: 5494168654110859439}
+  - {fileID: 5494168655175212700}
+  - {fileID: 5494168654874764024}
+  - {fileID: 5494168654789192535}
+  - {fileID: 5494168655624395597}
+  - {fileID: 5494168654722608874}
+  - {fileID: 5494168655638078779}
   rightAttach: {fileID: 5494168654774898371}
   leftAttach: {fileID: 5494168654507524276}
   rightHandGrabbing: 0
   leftHandGrabbing: 0
+  dynamic: 0
+  axis: 0
+  angleLeft: 0
+  angleRight: 0
+  leftHandPresence: {fileID: 0}
+  rightHandPresence: {fileID: 0}
+  altAttachRight: {fileID: 0}
+  altAttachLeft: {fileID: 0}
+  altRightPose: {fileID: 0}
+  altLeftPose: {fileID: 0}
 --- !u!65 &5494168654782788309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11338,7 +11356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5494168655333523557}
   m_LocalRotation: {x: -0.083281234, y: 0.5070024, z: 0.84482425, w: 0.14928101}
-  m_LocalPosition: {x: -0.11300002, y: 0.031000009, z: 0.26799992}
+  m_LocalPosition: {x: -0.11499999, y: 0.05999995, z: 0.35000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12278,7 +12296,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 5494168654110859439}
+  - {fileID: 5494168655175212700}
+  - {fileID: 5494168654874764024}
+  - {fileID: 5494168654789192535}
+  - {fileID: 5494168655624395597}
+  - {fileID: 5494168654722608874}
+  - {fileID: 5494168655638078779}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -12405,8 +12430,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   dynamicY: 0
   dynamicX: 0
-  dynamicZ: 0
-  handleLength: 0
+  dynamicZ: 1
+  handleLength: 0.1
 --- !u!95 &5494168655697345189
 Animator:
   serializedVersion: 5
@@ -13713,7 +13738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4613687754082635261}
   m_Layer: 6
-  m_Name: SecondAttach's
+  m_Name: SecondAttach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13727,7 +13752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6280918685044622284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.011, z: 0.282}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

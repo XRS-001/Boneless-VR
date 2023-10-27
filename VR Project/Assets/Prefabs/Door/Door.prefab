@@ -313,11 +313,22 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   isGrabbing: 0
+  parentColliders: []
   rightAttach: {fileID: 0}
   leftAttach: {fileID: 0}
   rightHandGrabbing: 0
   leftHandGrabbing: 0
-  grabHandPose: {fileID: 3757364587755377153}
+  dynamic: 0
+  axis: 0
+  angleLeft: 0
+  angleRight: 0
+  leftHandPresence: {fileID: 0}
+  rightHandPresence: {fileID: 0}
+  altAttachRight: {fileID: 0}
+  altAttachLeft: {fileID: 0}
+  altRightPose: {fileID: 0}
+  altLeftPose: {fileID: 0}
+  grabHandPoseDoor: {fileID: 0}
   leftAttachPrimary: {fileID: 5874547658096973370}
   rightAttachPrimary: {fileID: 5874547657539786697}
   leftAttachAlt: {fileID: 5874547657818036798}

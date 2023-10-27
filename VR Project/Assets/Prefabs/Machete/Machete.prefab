@@ -1876,6 +1876,7 @@ MonoBehaviour:
   limit: 0.55
   knifeCollider: {fileID: 683217965724189756}
   bladeTipCollider: {fileID: 3836748446213130001}
+  stabbedCollider: {fileID: 0}
   velocity: 0
 --- !u!114 &3836748446213130005
 MonoBehaviour:

@@ -38,13 +38,14 @@ public class ContinuousMovementPhysics : MonoBehaviour
         {
             if(leftHandCollision.colliding || rightHandCollision.colliding)
             {
-                jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight * 1.5f);
+                jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight * 1.7f);
+                rb.velocity = directionSource.forward + (Vector3.up * jumpVelocity);
             }
             else
             {
                 jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight);
+                rb.velocity = direction + (Vector3.up * jumpVelocity);
             }
-            rb.velocity = direction + (Vector3.up * jumpVelocity);
         }
     }
     private void FixedUpdate()

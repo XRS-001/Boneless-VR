@@ -107,8 +107,8 @@ public class GrabHandPose : MonoBehaviour
 
             while (timer < poseTransitionDuration)
             {
-                    Quaternion r = Quaternion.Lerp(startingRotation, newRotation, timer / poseTransitionDuration);
-                    h.root.localRotation = r;
+                Quaternion r = Quaternion.Lerp(startingRotation, newRotation, timer / poseTransitionDuration);
+                h.root.localRotation = r;
 
                 for (int i = 0; i < newBonesRotation.Length; i++)
                 {
@@ -117,12 +117,15 @@ public class GrabHandPose : MonoBehaviour
                     Physics.Raycast(h.fingerBones[i].gameObject.transform.position, direction, out hit, LayerMask.GetMask("Interactable"));
                     Vector3 point = hit.point;
                     float distance = Vector3.Distance(point, h.fingerBones[i].gameObject.transform.position);
-                    Debug.Log(distance);
                     if (distance > 0f)
                     {
                         float lerpSpeed = timer / poseTransitionDuration / distance;
                         Quaternion boneRotation = Quaternion.Lerp(startingBonesRotation[i], newBonesRotation[i], lerpSpeed);
                         h.fingerBones[i].localRotation = boneRotation;
+                    }
+                    if (distance == 0f)
+                    {
+                        newBonesRotation[i] = h.fingerBones[i].gameObject.transform.rotation;
                     }
                 }
 
@@ -155,7 +158,6 @@ public class GrabHandPose : MonoBehaviour
     [MenuItem("Tools/mirror selected right grab pose")]
     public static void MirrorRightPose()
     {
-        Debug.Log("mirror right pose");
         GrabHandPose handPose = Selection.activeGameObject.GetComponent<GrabHandPose>();
         handPose.MirrorPose(handPose.leftHandPose, handPose.rightHandPose);
     }

@@ -148,7 +148,6 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         secondHandGrabbing = true;
         trackPosition = true;
         trackRotation = true;
-        Debug.Log("SECOND HAND GRAB");
         secondInteractor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = true;
@@ -170,21 +169,18 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         {
             Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, false);
         }
-        Debug.Log("SECOND HAND RELEASE");
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         interactor = selectingInteractor;
         secondHandGrabPointCollider.enabled = true;
         secondHandGrabPoint.enabled = true;
-        Debug.Log("FIRST HAND GRAB");
         base.OnSelectEntered(args);
         attachInitialRotation = args.interactorObject.transform.GetComponent<ControllerInteractors>().attachTransform.localRotation;
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         secondHandGrabPointCollider.enabled = false;
-        Debug.Log("FIRST HAND RELEASE");
         base.OnSelectExited(args);
         if (secondHandGrabbing)
         {

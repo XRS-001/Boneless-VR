@@ -10,7 +10,6 @@ public class BodyPresence : MonoBehaviour
     private bool collided;
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collided");
         if (collision.gameObject.CompareTag("Interactable") && collision.gameObject.GetComponent<XRBaseInteractable>().isSelected)
         {
             body.isKinematic = true;

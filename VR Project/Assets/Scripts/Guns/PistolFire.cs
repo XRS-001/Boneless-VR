@@ -92,7 +92,6 @@ public class PistolFire : MonoBehaviour
     }
     public void SlideRetract(SelectEnterEventArgs args)
     {
-        Debug.Log("Slide Grabbed");
         slideRetracted = true;
         hasSlide = false;
         Slide();
@@ -102,7 +101,6 @@ public class PistolFire : MonoBehaviour
     public void SlideRetractTrigger()
     {
         audioSource.PlayOneShot(slideSound);
-        Debug.Log("SlideRetracted");
         slideRetracted = true;
         hasSlide = false;
         Slide();

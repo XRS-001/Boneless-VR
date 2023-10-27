@@ -156,7 +156,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     {
         secondHandGrabbing = true;
         rifleFire.recoilSpeed /= 2;
-        Debug.Log("SECOND HAND GRAB");
         secondInteractor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = true;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
@@ -176,7 +175,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         {
             Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, false);
         }
-        Debug.Log("SECOND HAND RELEASE");
         secondInteractor = null;
     }
     public override bool IsSelectableBy(IXRSelectInteractor interactor)
@@ -216,7 +214,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     {
         interactor = selectingInteractor;
         secondHandGrabPointCollider.enabled = true;
-        Debug.Log("FIRST HAND GRAB");
         attachInitialRotation = args.interactorObject.transform.GetComponent<ControllerInteractors>().attachTransform.localRotation;
         if (args.interactorObject.transform.CompareTag("RightHand"))
         {
@@ -235,7 +232,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         secondHandGrabPoint.enabled = false;
         secondHandGrabPoint.enabled = true;
         secondHandGrabPointCollider.enabled = false;
-        Debug.Log("FIRST HAND RELEASE");
         StartCoroutine(Delay());
         rightHandGrabbing = false;
         leftHandGrabbing = false;

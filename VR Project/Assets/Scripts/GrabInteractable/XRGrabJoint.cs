@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -13,15 +14,141 @@ public class XRGrabJoint : XRGrabInteractable
     public Transform leftAttach;
     public bool rightHandGrabbing;
     public bool leftHandGrabbing;
+    [Header("For Dynamic Attaching:")]
+    public bool dynamic;
+    public enum dynamicAxis { x, y , z}
+    public dynamicAxis axis;
+    public float angleLeft;
+    public float angleRight;
+    public Transform leftHandPresence;
+    public Transform rightHandPresence;
+    private Transform attachRight;
+    private Transform attachLeft;
+    public Transform altAttachRight;
+    public Transform altAttachLeft;
+    public HandData altRightPose;
+    public HandData altLeftPose;
+    private HandData rightPose;
+    private HandData leftPose;
+    private GrabHandPose grabHandPose;
+    private bool isHovering;
+    private ControllerInteractors controllerGrabbing;
+    private void Start()
+    {
+        grabHandPose = GetComponent<GrabHandPose>();
+        rightPose = grabHandPose.rightHandPose;
+        leftPose = grabHandPose.leftHandPose;
+        attachRight = rightAttach;
+        attachLeft = leftAttach;
+    }
+    private void Update()
+    {
+        if(dynamic && !isGrabbing)
+        {
+            switch(axis)
+            {
+                case dynamicAxis.x:
+                    angleLeft = leftHandPresence.rotation.x - attachLeft.transform.rotation.x;
+                    angleRight = rightHandPresence.rotation.x - attachRight.transform.rotation.x;
+                    if(angleLeft > 0.3f) 
+                    {
+                        leftAttach = altAttachLeft;
+                        grabHandPose.leftHandPose = altLeftPose;
+                    }
+                    else
+                    {
+                        leftAttach = attachLeft;
+                        grabHandPose.leftHandPose = leftPose;
+                    }
+                    if (angleRight > 0.3f)
+                    {
+                        rightAttach = altAttachRight;
+                        grabHandPose.rightHandPose = altRightPose;
+                    }
+                    else
+                    {
+                        rightAttach = attachRight;
+                        grabHandPose.rightHandPose = rightPose;
+                    }
+                    break;
+
+                case dynamicAxis.y:
+                    angleLeft = leftHandPresence.rotation.x - attachLeft.transform.rotation.x;
+                    angleRight = rightHandPresence.rotation.x - attachRight.transform.rotation.x;
+                    if (angleLeft > 0.3f)
+                    {
+                        leftAttach = altAttachLeft;
+                        grabHandPose.leftHandPose = altLeftPose;
+                    }
+                    else
+                    {
+                        leftAttach = attachLeft;
+                        grabHandPose.leftHandPose = leftPose;
+                    }
+                    if (angleRight > 0.3f)
+                    {
+                        rightAttach = altAttachRight;
+                        grabHandPose.rightHandPose = altRightPose;
+                    }
+                    else
+                    {
+                        rightAttach = attachRight;
+                        grabHandPose.rightHandPose = rightPose;
+                    }
+                    break;
+
+                case dynamicAxis.z:
+                    angleLeft = leftHandPresence.rotation.x - attachLeft.transform.rotation.x;
+                    angleRight = rightHandPresence.rotation.x - attachRight.transform.rotation.x;
+                    if (angleLeft > 0.3f)
+                    {
+                        leftAttach = altAttachLeft;
+                        grabHandPose.leftHandPose = altLeftPose;
+                    }
+                    else
+                    {
+                        leftAttach = attachLeft;
+                        grabHandPose.leftHandPose = leftPose;
+                    }
+                    if (angleRight > 0.3f)
+                    {
+                        rightAttach = altAttachRight;
+                        grabHandPose.rightHandPose = altRightPose;
+                    }
+                    else
+                    {
+                        rightAttach = attachRight;
+                        grabHandPose.rightHandPose = rightPose;
+                    }
+                    break;
+            }
+            if(isHovering)
+            {
+                if (controllerGrabbing.CompareTag("LeftHand"))
+                {
+                    attachTransform = leftAttach;
+                }
+                else if (controllerGrabbing.CompareTag("RightHand"))
+                {
+                    attachTransform = rightAttach;
+                }
+            }
+        }
+    }
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
-        if (args.interactorObject.transform.CompareTag("LeftHand"))
+        isHovering = true;
+        controllerGrabbing = args.interactorObject.transform.GetComponent<ControllerInteractors>();
+        if (!dynamic)
         {
-            attachTransform = leftAttach;
-        }
-        else if (args.interactorObject.transform.CompareTag("RightHand"))
-        {
-            attachTransform = rightAttach;
+            if (controllerGrabbing.CompareTag("LeftHand"))
+            {
+                attachTransform = leftAttach;
+            }
+            else if (controllerGrabbing.CompareTag("RightHand"))
+            {
+                attachTransform = rightAttach;
+            }
         }
         base.OnHoverEntered(args);
     }
@@ -35,18 +162,21 @@ public class XRGrabJoint : XRGrabInteractable
         {
             leftHandGrabbing = false;
             rightHandGrabbing = true;
+            foreach(Collider collider in leftHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+            {
+                collider.isTrigger = true;
+            }
         }
         else
         {
             rightHandGrabbing = false;
             leftHandGrabbing = true;
+            foreach (Collider collider in rightHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+            {
+                collider.isTrigger = true;
+            }
         }
         isGrabbing = true;
-        handColliders = args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliders;
-        foreach (Collider collider in handColliders)
-        {
-            collider.gameObject.SetActive(false);
-        }
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.transform.position = attachTransform.position;
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.transform.rotation = attachTransform.rotation;
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().target = attachTransform;
@@ -57,6 +187,20 @@ public class XRGrabJoint : XRGrabInteractable
         foreach (Collider collider in parentColliders)
         {
             Physics.IgnoreCollision(collider, args.interactorObject.transform.GetComponent<ControllerInteractors>().forearmCollider, false);
+        }
+        if (args.interactorObject.transform.CompareTag("RightHand"))
+        {
+            foreach (Collider collider in leftHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+            {
+                collider.isTrigger = false;
+            }
+        }
+        else
+        {
+            foreach (Collider collider in rightHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+            {
+                collider.isTrigger = false;
+            }
         }
         previousHandColliders = handColliders;
         isGrabbing = false;
@@ -78,7 +222,7 @@ public class XRGrabJoint : XRGrabInteractable
                 collider.gameObject.SetActive(true);
             }
         }
-        else
+        else if (previousHandColliders != null)
         {
             foreach (Collider collider in previousHandColliders)
             {
