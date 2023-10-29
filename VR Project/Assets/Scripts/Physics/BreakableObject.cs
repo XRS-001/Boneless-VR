@@ -19,7 +19,6 @@ public class BreakableObject : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collided");
         if (velocity > speedNeededToBreak || (collision?.rigidbody?.velocity.magnitude > speedNeededToBreak && collision?.rigidbody?.mass > 1))
         {
             GetComponent<XRGrabInteractable>().enabled = false;

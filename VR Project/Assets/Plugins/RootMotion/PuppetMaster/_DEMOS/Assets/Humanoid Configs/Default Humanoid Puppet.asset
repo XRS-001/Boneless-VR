@@ -23,9 +23,9 @@ MonoBehaviour:
     enableInternalCollisionsOnKill: 1
   mode: 0
   blendTime: 0.1
-  fixTargetTransforms: 1
-  solverIterationCount: 6
-  visualizeTargetPose: 1
+  fixTargetTransforms: 0
+  solverIterationCount: 1
+  visualizeTargetPose: 0
   mappingWeight: 1
   pinWeight: 0.9
   muscleWeight: 1
@@ -34,7 +34,7 @@ MonoBehaviour:
   pinPow: 4
   pinDistanceFalloff: 5
   angularPinning: 0
-  updateJointAnchors: 1
+  updateJointAnchors: 0
   supportTranslationAnimation: 0
   angularLimits: 1
   internalCollisions: 1

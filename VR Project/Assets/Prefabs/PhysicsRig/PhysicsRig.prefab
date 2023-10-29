@@ -699,7 +699,6 @@ GameObject:
   - component: {fileID: 1209319422656676061}
   - component: {fileID: 1209319422656676060}
   - component: {fileID: 1209319422656676059}
-  - component: {fileID: 1209319422656676062}
   m_Layer: 16
   m_Name: RightForearmJoint
   m_TagString: Untagged
@@ -848,20 +847,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319422656676062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319422656676057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319422689780502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +999,6 @@ GameObject:
   - component: {fileID: 1209319422760360278}
   - component: {fileID: 1209319422760360277}
   - component: {fileID: 1209319422760360276}
-  - component: {fileID: 1209319422760360279}
   m_Layer: 14
   m_Name: LeftLegJoint
   m_TagString: Untagged
@@ -1163,20 +1147,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319422760360279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319422760360274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319422778511096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1159,6 @@ GameObject:
   - component: {fileID: 1209319422778511100}
   - component: {fileID: 1209319422778511099}
   - component: {fileID: 1209319422778511098}
-  - component: {fileID: 1209319422778511101}
   m_Layer: 14
   m_Name: RightArmJoint
   m_TagString: Untagged
@@ -1338,20 +1307,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319422778511101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319422778511096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319422805142512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,7 +1382,6 @@ GameObject:
   - component: {fileID: 1209319422893990437}
   - component: {fileID: 1209319422893990436}
   - component: {fileID: 1209319422893990435}
-  - component: {fileID: 1209319422893990438}
   m_Layer: 14
   m_Name: LeftThighJoint
   m_TagString: Untagged
@@ -1576,20 +1530,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319422893990438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319422893990433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319422912066803
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,7 +2903,6 @@ GameObject:
   - component: {fileID: 1209319423413083602}
   - component: {fileID: 1209319423413083601}
   - component: {fileID: 1209319423413083600}
-  - component: {fileID: 1209319423413083603}
   m_Layer: 14
   m_Name: RightLegJoint
   m_TagString: Untagged
@@ -3112,20 +3051,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319423413083603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319423413083598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319423431383879
 GameObject:
   m_ObjectHideFlags: 0
@@ -3138,7 +3063,6 @@ GameObject:
   - component: {fileID: 1209319423431383883}
   - component: {fileID: 1209319423431383882}
   - component: {fileID: 1209319423431383881}
-  - component: {fileID: 1209319423431383884}
   m_Layer: 15
   m_Name: LeftForearmJoint
   m_TagString: Untagged
@@ -3287,20 +3211,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319423431383884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319423431383879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319423434316576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,7 +3223,6 @@ GameObject:
   - component: {fileID: 1209319423434316580}
   - component: {fileID: 1209319423434316579}
   - component: {fileID: 1209319423434316578}
-  - component: {fileID: 1209319423434316581}
   m_Layer: 14
   m_Name: HeadJoint
   m_TagString: Untagged
@@ -3461,20 +3370,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319423434316581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319423434316576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319423454681746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,7 +3382,6 @@ GameObject:
   - component: {fileID: 1209319423454681750}
   - component: {fileID: 1209319423454681749}
   - component: {fileID: 1209319423454681748}
-  - component: {fileID: 1209319423454681751}
   m_Layer: 14
   m_Name: LeftArmJoint
   m_TagString: Untagged
@@ -3636,20 +3530,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319423454681751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319423454681746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319423469063291
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,7 +4005,6 @@ GameObject:
   - component: {fileID: 1209319423692671013}
   - component: {fileID: 1209319423692671012}
   - component: {fileID: 1209319423692671011}
-  - component: {fileID: 1209319423692671014}
   m_Layer: 14
   m_Name: SpineJoint
   m_TagString: Untagged
@@ -4273,20 +4152,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319423692671014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319423692671009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319423696680141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4376,6 +4241,9 @@ MonoBehaviour:
   distanceLeft: 0
   distanceRight: 0
   threshold: 0.1
+  xLimit: 0.9
+  yLimit: Infinity
+  zLimit: 0.5
 --- !u!114 &1209319423696680144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5707,7 +5575,6 @@ GameObject:
   - component: {fileID: 1209319424364638948}
   - component: {fileID: 1209319424364638947}
   - component: {fileID: 1209319424364638946}
-  - component: {fileID: 1209319424364638949}
   m_Layer: 14
   m_Name: RightThighJoint
   m_TagString: Untagged
@@ -5856,20 +5723,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1209319424364638949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209319424364638944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0de9c07fbfe35f439d6968a18d8c3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 1209319423592564103}
-  isColliding: 0
 --- !u!1 &1209319424401492835
 GameObject:
   m_ObjectHideFlags: 0

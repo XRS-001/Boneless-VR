@@ -147,8 +147,6 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     public void OnSecondHandGrab(SelectEnterEventArgs args)
     {
         secondHandGrabbing = true;
-        trackPosition = true;
-        trackRotation = true;
         secondInteractor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = true;
@@ -162,8 +160,6 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     {
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = false;
         secondHandGrabbing = false;
-        trackPosition = false;
-        trackRotation = false;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
         StartCoroutine(Delay());
         foreach (Collider collider in colliders)

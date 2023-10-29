@@ -15,7 +15,8 @@ public class KnifePierce : MonoBehaviour
     public Collider stabbedCollider;
     private ConfigurableJoint joint;
     private Vector3 lastPosition;
-    public float velocity;
+    private float velocity;
+    public float damage;
     private void Update()
     {
         float distance = Vector3.Distance(transform.position, lastPosition);
@@ -31,6 +32,7 @@ public class KnifePierce : MonoBehaviour
             {
                 if (contact.thisCollider == bladeTipCollider)
                 {
+                    collision.transform.root.gameObject.GetComponent<NPC>().DealDamage(damage);
                     audioSource.pitch = 1f;
                     audioSource.PlayOneShot(pierceSound);
 

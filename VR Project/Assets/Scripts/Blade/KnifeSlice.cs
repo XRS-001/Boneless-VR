@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using EzySlice;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class KnifeSlice : MonoBehaviour
 {
     private KnifePierce knifePierce;
     public AudioSource audioSource;
     public AudioClip sliceSound;
+    public float damage;
     private float velocity;
     public float speedNeededToSlice;
     private bool hasHit;
@@ -70,22 +72,29 @@ public class KnifeSlice : MonoBehaviour
     }
     public void Slice(GameObject target)
     {
-        audioSource.PlayOneShot(sliceSound);
-        Vector3 velocity = velocityEstimator.GetVelocityEstimate();
-        Vector3 planeNormal = Vector3.Cross(endSlicePoint.position - startSlicePoint.position, velocity);
-        planeNormal.Normalize();
-
-        SlicedHull hull = target.Slice(endSlicePoint.position, planeNormal);
-
-        if(hull != null)
+        if(target.layer == 20)
         {
-            GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
-            SetupSlicedComponent(upperHull);
+            target.transform.root.gameObject.GetComponent<NPC>().DealDamage(damage * velocity);
+        }
+        else
+        {
+            audioSource.PlayOneShot(sliceSound);
+            Vector3 velocity = velocityEstimator.GetVelocityEstimate();
+            Vector3 planeNormal = Vector3.Cross(endSlicePoint.position - startSlicePoint.position, velocity);
+            planeNormal.Normalize();
 
-            GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
-            SetupSlicedComponent(lowerHull);
+            SlicedHull hull = target.Slice(endSlicePoint.position, planeNormal);
 
-            Destroy(target);
+            if (hull != null)
+            {
+                GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
+                SetupSlicedComponent(upperHull);
+
+                GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
+                SetupSlicedComponent(lowerHull);
+
+                Destroy(target);
+            }
         }
     }
     public void SetupSlicedComponent(GameObject slicedObject)

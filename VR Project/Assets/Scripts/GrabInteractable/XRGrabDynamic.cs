@@ -61,7 +61,7 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             attachTransform = rightAttach;
         }
-        else
+        else if (rightHandGrabbing)
         {
             attachTransform = leftAttach;
         }

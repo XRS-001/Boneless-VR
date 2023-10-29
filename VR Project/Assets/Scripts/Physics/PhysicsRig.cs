@@ -50,12 +50,7 @@ public class PhysicsRig : MonoBehaviour
 
     public float bodyHeightMin = 0.5f;
     public float bodyHeightMax = 2;
-    public float distanceLeft;
-    public float distanceRight;
     public float threshold = 1f;
-    public float xLimit;
-    public float yLimit;
-    public float zLimit;
     private void Start()
     {
         StartCoroutine(StartDelay());
@@ -64,22 +59,12 @@ public class PhysicsRig : MonoBehaviour
     void FixedUpdate()
     {
         bodyCollider.height = Mathf.Clamp(playerHead.localPosition.y, bodyHeightMin, bodyHeightMax);
-        bodyCollider.center = new Vector3(playerHead.localPosition.x, bodyCollider.height / 2, playerHead.localPosition.z);
+        bodyCollider.center = new Vector3(playerHead.localPosition.x, bodyCollider.height / 2, playerHead.localPosition.z - 0.25f);
 
-        Vector3 targetPositionLeft;
-        targetPositionLeft.x = Mathf.Clamp(leftController.localPosition.x, -xLimit, xLimit);
-        targetPositionLeft.y = Mathf.Clamp(leftController.localPosition.y, -yLimit, yLimit);
-        targetPositionLeft.z = Mathf.Clamp(leftController.localPosition.z, -zLimit, zLimit);
-
-        leftJoint.targetPosition = targetPositionLeft;
+        leftJoint.targetPosition = leftController.localPosition;
         leftJoint.targetRotation = leftController.localRotation;
 
-        Vector3 targetPositionRight;
-        targetPositionRight.x = Mathf.Clamp(rightController.localPosition.x, -xLimit, xLimit);
-        targetPositionRight.y = Mathf.Clamp(rightController.localPosition.y, -yLimit, yLimit);
-        targetPositionRight.z = Mathf.Clamp(rightController.localPosition.z, -zLimit, zLimit);
-
-        rightJoint.targetPosition = targetPositionRight;
+        rightJoint.targetPosition = rightController.localPosition;
         rightJoint.targetRotation = rightController.localRotation;
 
         headJoint.targetPosition = headTarget.localPosition;
@@ -112,33 +97,6 @@ public class PhysicsRig : MonoBehaviour
         leftLegJoint.targetPosition = leftLegTarget.localPosition;
         leftLegJoint.targetRotation = leftLegTarget.localRotation;
 
-        distanceLeft = Vector3.Distance(leftPresence.position, leftJoint.transform.position);
-        distanceRight = Vector3.Distance(rightPresence.position, rightJoint.transform.position);
-        if(distanceLeft > threshold)
-        {
-            foreach(Collider collider in leftJointColliders)
-            {
-                collider.isTrigger = true;
-            }
-            StartCoroutine(Delay(leftJointColliders));
-        }
-        if(distanceRight > threshold)
-        {
-            foreach (Collider collider in rightJointColliders)
-            {
-                collider.isTrigger = true;
-            }
-            StartCoroutine(Delay(rightJointColliders));
-        }
-    }
-    public IEnumerator Delay(Collider[] colliders)
-    {
-        yield return new WaitForSeconds(1f);
-
-        foreach (Collider collider in colliders)
-        {
-            collider.isTrigger = false;
-        }
     }
     public IEnumerator StartDelay()
     {

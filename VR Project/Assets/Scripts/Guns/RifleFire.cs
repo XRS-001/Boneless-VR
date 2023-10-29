@@ -160,7 +160,6 @@ public class RifleFire : MonoBehaviour
 
         if (isInGun && magRelease > 0.1f)
         {
-            isInGun = false;
             ReleaseMagazine();
         }
         if(fireButton == 0)
@@ -232,21 +231,26 @@ public class RifleFire : MonoBehaviour
     {
         animator.Play("Release");
         audioSource.PlayOneShot(gunLoad);
-        ammoCapacity = 0;
     }
     public void SpawnMagazine()
     {
-        animatedMagazine.SetActive(false);
-        spawnedMagazine = Instantiate(magazine, animatedMagazine.transform.position, animatedMagazine.transform.rotation);
-        spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity = ammoCapacity;
-        if (spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity > 0 && hasSlide)
+        if(isInGun)
         {
-            spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity--;
-            ammoCapacity++;
+            animatedMagazine.SetActive(false);
+            spawnedMagazine = Instantiate(magazine, animatedMagazine.transform.position, animatedMagazine.transform.rotation);
+            spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity = ammoCapacity;
+            ammoCapacity = 0;
+            if (spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity > 0 && hasSlide)
+            {
+                spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity--;
+                ammoCapacity++;
+            }
         }
+        isInGun = false;
     }
     public void ReleaseMagazineGrabbed(SelectEnterEventArgs args)
     {
+        isInGun = false;
         audioSource.PlayOneShot(gunLoad);
         animatedMagazine.SetActive(false);
         animator.Play("Release");
@@ -272,13 +276,7 @@ public class RifleFire : MonoBehaviour
             magAttach.attachTransform = magAttach.leftAttach;
         }
         interactionManager.SelectEnter(controller, spawnedMagazine.GetComponent<XRGrabInteractableTwoAttach>());
-        StartCoroutine(Delay());
         animatedMagazine.GetComponent<XRSimpleInteractable>().selectEntered.RemoveListener(ReleaseMagazineGrabbed);
-    }
-    public IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(0);
-        isInGun = false;
     }
 }
 
