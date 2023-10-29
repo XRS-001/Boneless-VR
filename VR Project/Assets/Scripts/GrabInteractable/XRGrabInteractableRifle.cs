@@ -19,9 +19,9 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     public Transform rightAttachSecond;
     public Transform leftAttachSecond;
     public XRSimpleInteractable secondHandGrabPoint;
-    private XRBaseInteractor secondInteractor;
+    public XRBaseInteractor secondInteractor;
     private Quaternion attachInitialRotation;
-    private XRBaseInteractor interactor;
+    public XRBaseInteractor interactor;
     public enum TwoHandRotationType { None, First, Second };
     public TwoHandRotationType twoHandRotationType;
     public bool snapToSecondHand = true;
@@ -32,6 +32,8 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     public bool dynamicX;
     public bool dynamicZ;
     public float handleLength;
+    private Transform previousAttachTransform;
+    public bool offHandGrabbing = false;
     private void Update()
     {
         if (!leftHandGrabbing && !secondHandGrabbing)
@@ -167,7 +169,10 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     }
     public void OnSecondHandRelease(SelectExitEventArgs args)
     {
-        secondHandGrabbing = false;
+        if(!offHandGrabbing)
+        {
+            secondHandGrabbing = false;
+        }
         secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = false;
         rifleFire.recoilSpeed *= 2;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
@@ -177,10 +182,17 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         }
         secondInteractor = null;
     }
-    public override bool IsSelectableBy(IXRSelectInteractor interactor)
+    public override bool IsSelectableBy(IXRSelectInteractor selectInteractor)
     {
-        bool isAlreadyGrabbed = selectingInteractor && !interactor.Equals(selectingInteractor);
-        return base.IsSelectableBy(interactor) && !isAlreadyGrabbed;
+        if (!offHandGrabbing)
+        {
+            bool isAlreadyGrabbed = selectingInteractor && !selectInteractor.Equals(selectingInteractor);
+            return base.IsSelectableBy(selectInteractor) && !isAlreadyGrabbed;
+        }
+        else
+        {
+            return base.IsSelectableBy(selectInteractor);
+        }
     }
     public IEnumerator Delay()
     {
@@ -188,7 +200,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
 
         secondInteractor = null;
     }
-    protected override void OnHoverEntered(HoverEnterEventArgs args)
+    protected override void OnSelectEntering(SelectEnterEventArgs args)
     {
         if (args.interactorObject.transform.CompareTag("LeftHand"))
         {
@@ -198,10 +210,27 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         {
             attachTransform = rightAttach;
         }
-        base.OnHoverEntered(args);
-    }
-    protected override void OnSelectEntering(SelectEnterEventArgs args)
-    {
+        if (offHandGrabbing && !secondHandGrabbing)
+        {
+            if (args.interactorObject.transform.CompareTag("RightHand"))
+            {
+                leftAttach.transform.position = previousAttachTransform.position;
+                leftAttach.transform.rotation = previousAttachTransform.rotation;
+            }
+            else
+            {
+                rightAttach.transform.position = previousAttachTransform.position;
+                rightAttach.transform.rotation = previousAttachTransform.rotation;
+            }
+            XRInteractionManager XRInteractionManager = interactionManager;
+            secondHandGrabPoint.enabled = true;
+            secondHandGrabPointCollider.enabled = true;
+            XRInteractionManager.SelectEnter(interactor, secondHandGrabPoint);
+            interactor = secondInteractor;
+            interactor = selectingInteractor;
+            Destroy(previousAttachTransform.gameObject);
+            offHandGrabbing = false;
+        }
         isGrabbing = true;
         handColliders = args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliders;
         foreach (Collider collider in handColliders)
@@ -212,6 +241,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        isGrabbing = true;
         interactor = selectingInteractor;
         secondHandGrabPointCollider.enabled = true;
         attachInitialRotation = args.interactorObject.transform.GetComponent<ControllerInteractors>().attachTransform.localRotation;
@@ -229,17 +259,64 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        secondHandGrabPoint.enabled = false;
-        secondHandGrabPoint.enabled = true;
-        secondHandGrabPointCollider.enabled = false;
-        StartCoroutine(Delay());
-        rightHandGrabbing = false;
-        leftHandGrabbing = false;
-        isGrabbing = false;
-        StartCoroutine(DelaySetActive());
-        args.interactorObject.transform.GetComponent<ControllerInteractors>().attachTransform.localRotation = attachInitialRotation;
         previousHandColliders = handColliders;
+        StartCoroutine(DelaySetActive());
+        secondHandGrabPointCollider.enabled = false;
         base.OnSelectExited(args);
+        if (secondHandGrabbing)
+        {
+            offHandGrabbing = true;
+            XRGrabInteractableRifle interactable = GetComponent<XRGrabInteractableRifle>();
+            XRInteractionManager XRInteractionManager = interactionManager;
+            interactor = secondInteractor;
+            secondInteractor = interactor;
+            if (secondInteractor.transform.CompareTag("LeftHand"))
+            {
+                GameObject tempAttachObject = new GameObject();
+                previousAttachTransform = tempAttachObject.transform;
+                previousAttachTransform.position = leftAttach.position;
+                previousAttachTransform.rotation = leftAttach.rotation;
+                leftAttach.position = leftAttachSecond.position;
+                leftAttach.rotation = leftAttachSecond.rotation;
+                GetComponent<XRGrabInteractableRifle>().attachTransform = leftAttach;
+            }
+            if (secondInteractor.transform.CompareTag("RightHand"))
+            {
+                GameObject tempAttachObject = new GameObject();
+                previousAttachTransform = tempAttachObject.transform;
+                previousAttachTransform.position = rightAttach.position;
+                previousAttachTransform.rotation = rightAttach.rotation;
+                rightAttach.position = rightAttachSecond.position;
+                rightAttach.rotation = rightAttachSecond.rotation;
+                GetComponent<XRGrabInteractableRifle>().attachTransform = rightAttach;
+            }
+            XRInteractionManager.SelectExit(interactor, secondHandGrabPoint);
+
+            HandData leftHandRig = GetComponent<GrabHandPose>().leftHandPose;
+            HandData rightHandRig = GetComponent<GrabHandPose>().rightHandPose;
+
+            GetComponent<GrabHandPose>().leftHandPose = secondHandGrabPoint.GetComponent<GrabHandPose>().leftHandPose;
+            GetComponent<GrabHandPose>().rightHandPose = secondHandGrabPoint.GetComponent<GrabHandPose>().rightHandPose;
+
+            XRInteractionManager.SelectEnter(interactor, interactable);
+
+            GetComponent<GrabHandPose>().leftHandPose = leftHandRig;
+            GetComponent<GrabHandPose>().rightHandPose = rightHandRig;
+            secondHandGrabbing = false;
+            secondHandGrabPointCollider.enabled = false;
+            secondInteractor = null;
+        }
+        else
+        {
+            isGrabbing = false;
+            secondInteractor = null;
+            rightHandGrabbing = false;
+            leftHandGrabbing = false;
+        }
+        if (!rightHandGrabbing && !leftHandGrabbing)
+        {
+            secondHandGrabPoint.enabled = false;
+        }
     }
     IEnumerator DelaySetActive()
     {

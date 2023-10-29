@@ -22,6 +22,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     public bool dynamicX;
     public bool dynamicZ;
     public float handleLength;
+    private Collider[] previousColliders;
     // Start is called before the first frame update
     void Start()
     {
@@ -188,15 +189,15 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
             XRInteractionManager XRInteractionManager = interactionManager;
             interactor = secondInteractor;
             secondInteractor = interactor;
+            previousColliders = secondInteractor.GetComponent<ControllerInteractors>().colliders;
+            StartCoroutine(DelayColliders());
             if (secondInteractor.transform.CompareTag("LeftHand"))
             {
                 GetComponent<TwoHandInteractable>().attachTransform = leftAttach;
-                StartCoroutine(DelayColliders());
             }
             if (secondInteractor.transform.CompareTag("RightHand"))
             {
                 GetComponent<TwoHandInteractable>().attachTransform = rightAttach;
-                StartCoroutine(DelayColliders());
             }
             XRInteractionManager.SelectExit(interactor, secondHandGrabPoint);
             XRInteractionManager.SelectEnter(interactor, interactable);
@@ -229,21 +230,21 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     }
     public IEnumerator DelayColliders()
     {
-        foreach (Collider collider in interactor.GetComponent<ControllerInteractors>().colliders)
+        foreach (Collider collider in previousColliders)
         {
             collider.gameObject.SetActive(false);
         }
-        foreach (Collider collider in interactor.GetComponent<ControllerInteractors>().colliders)
+        foreach (Collider collider in previousColliders)
         {
             collider.gameObject.SetActive(false);
         }
         yield return new WaitForSeconds(1f);
 
-        foreach (Collider collider in secondInteractor.GetComponent<ControllerInteractors>().colliders)
+        foreach (Collider collider in previousColliders)
         {
             collider.gameObject.SetActive(true);
         }
-        foreach (Collider collider in secondInteractor.GetComponent<ControllerInteractors>().colliders)
+        foreach (Collider collider in previousColliders)
         {
             collider.gameObject.SetActive(true);
         }

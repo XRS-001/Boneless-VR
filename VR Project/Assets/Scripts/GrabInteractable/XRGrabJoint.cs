@@ -158,22 +158,25 @@ public class XRGrabJoint : XRGrabInteractable
         {
             Physics.IgnoreCollision(collider, args.interactorObject.transform.GetComponent<ControllerInteractors>().forearmCollider, true);
         }
-        if (args.interactorObject.transform.CompareTag("RightHand"))
+        if(dynamic)
         {
-            leftHandGrabbing = false;
-            rightHandGrabbing = true;
-            foreach(Collider collider in leftHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+            if (args.interactorObject.transform.CompareTag("RightHand"))
             {
-                collider.isTrigger = true;
+                leftHandGrabbing = false;
+                rightHandGrabbing = true;
+                foreach (Collider collider in leftHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+                {
+                    collider.isTrigger = true;
+                }
             }
-        }
-        else
-        {
-            rightHandGrabbing = false;
-            leftHandGrabbing = true;
-            foreach (Collider collider in rightHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+            else
             {
-                collider.isTrigger = true;
+                rightHandGrabbing = false;
+                leftHandGrabbing = true;
+                foreach (Collider collider in rightHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+                {
+                    collider.isTrigger = true;
+                }
             }
         }
         isGrabbing = true;
@@ -188,18 +191,21 @@ public class XRGrabJoint : XRGrabInteractable
         {
             Physics.IgnoreCollision(collider, args.interactorObject.transform.GetComponent<ControllerInteractors>().forearmCollider, false);
         }
-        if (args.interactorObject.transform.CompareTag("RightHand"))
+        if (dynamic)
         {
-            foreach (Collider collider in leftHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+            if (args.interactorObject.transform.CompareTag("RightHand"))
             {
-                collider.isTrigger = false;
+                foreach (Collider collider in leftHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+                {
+                    collider.isTrigger = false;
+                }
             }
-        }
-        else
-        {
-            foreach (Collider collider in rightHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+            else
             {
-                collider.isTrigger = false;
+                foreach (Collider collider in rightHandPresence.GetComponent<HandPresencePhysics>().handColliders)
+                {
+                    collider.isTrigger = false;
+                }
             }
         }
         previousHandColliders = handColliders;
@@ -215,7 +221,7 @@ public class XRGrabJoint : XRGrabInteractable
     {
         yield return new WaitForSeconds(0.5f);
 
-        if (!leftHandGrabbing && !rightHandGrabbing)
+        if (!leftHandGrabbing && !rightHandGrabbing && handColliders != null)
         {
             foreach (Collider collider in handColliders)
             {

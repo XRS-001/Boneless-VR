@@ -46,6 +46,7 @@ public class RifleFire : MonoBehaviour
     private bool canFire = true;
     private bool isFiring = false;
     public bool slideRetracted = true;
+    private bool canClick = true;
     private GameObject spawnedMagazine;
     private void Start()
     {
@@ -93,7 +94,7 @@ public class RifleFire : MonoBehaviour
         {
             ammoCapacity--;
         }
-        if (slideRetracted == false)
+        if (slideRetracted == false && canClick)
         {
             SlideRetractTrigger();
         }
@@ -114,6 +115,7 @@ public class RifleFire : MonoBehaviour
     }
     public void SlideRetractTrigger()
     {
+        canClick = false;
         audioSource.PlayOneShot(slideSound);
         slideRetracted = true;
         hasSlide = false;
@@ -160,6 +162,10 @@ public class RifleFire : MonoBehaviour
         {
             isInGun = false;
             ReleaseMagazine();
+        }
+        if(fireButton == 0)
+        {
+            canClick = true;
         }
     }
 
@@ -226,10 +232,13 @@ public class RifleFire : MonoBehaviour
     {
         animator.Play("Release");
         audioSource.PlayOneShot(gunLoad);
+        ammoCapacity = 0;
+    }
+    public void SpawnMagazine()
+    {
         animatedMagazine.SetActive(false);
         spawnedMagazine = Instantiate(magazine, animatedMagazine.transform.position, animatedMagazine.transform.rotation);
         spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity = ammoCapacity;
-        ammoCapacity = 0;
         if (spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity > 0 && hasSlide)
         {
             spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity--;

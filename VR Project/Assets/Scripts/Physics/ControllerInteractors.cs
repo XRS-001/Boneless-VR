@@ -37,11 +37,12 @@ public class ControllerInteractors : XRDirectInteractor
         {
             Physics.IgnoreCollision(collider, forearmCollider, true);
         }
-        if (args.interactableObject is XRGrabInteractableTwoAttach 
+        if (args.interactableObject is XRGrabInteractableTwoAttach
             || args.interactableObject is XRGrabInteractableMultiAttach
             || args.interactableObject is XRGrabInteractablePistol
             || args.interactableObject is XRGrabInteractableRifle
-            || args.interactableObject is TwoHandInteractable)
+            || args.interactableObject is TwoHandInteractable
+            || args.interactableObject is XRGrabDynamic)
         {
             rb = args.interactableObject.transform.GetComponent<Rigidbody>();
             weight = rb.mass;

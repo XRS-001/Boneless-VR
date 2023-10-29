@@ -53,6 +53,9 @@ public class PhysicsRig : MonoBehaviour
     public float distanceLeft;
     public float distanceRight;
     public float threshold = 1f;
+    public float xLimit;
+    public float yLimit;
+    public float zLimit;
     private void Start()
     {
         StartCoroutine(StartDelay());
@@ -63,10 +66,20 @@ public class PhysicsRig : MonoBehaviour
         bodyCollider.height = Mathf.Clamp(playerHead.localPosition.y, bodyHeightMin, bodyHeightMax);
         bodyCollider.center = new Vector3(playerHead.localPosition.x, bodyCollider.height / 2, playerHead.localPosition.z);
 
-        leftJoint.targetPosition = leftController.localPosition;
+        Vector3 targetPositionLeft;
+        targetPositionLeft.x = Mathf.Clamp(leftController.localPosition.x, -xLimit, xLimit);
+        targetPositionLeft.y = Mathf.Clamp(leftController.localPosition.y, -yLimit, yLimit);
+        targetPositionLeft.z = Mathf.Clamp(leftController.localPosition.z, -zLimit, zLimit);
+
+        leftJoint.targetPosition = targetPositionLeft;
         leftJoint.targetRotation = leftController.localRotation;
 
-        rightJoint.targetPosition = rightController.localPosition;
+        Vector3 targetPositionRight;
+        targetPositionRight.x = Mathf.Clamp(rightController.localPosition.x, -xLimit, xLimit);
+        targetPositionRight.y = Mathf.Clamp(rightController.localPosition.y, -yLimit, yLimit);
+        targetPositionRight.z = Mathf.Clamp(rightController.localPosition.z, -zLimit, zLimit);
+
+        rightJoint.targetPosition = targetPositionRight;
         rightJoint.targetRotation = rightController.localRotation;
 
         headJoint.targetPosition = headTarget.localPosition;

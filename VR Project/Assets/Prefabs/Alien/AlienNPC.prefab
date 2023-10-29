@@ -841,7 +841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259329458642319}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -958,7 +959,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -1163,7 +1163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259329501278827}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1280,7 +1281,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -1864,7 +1864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259329654733659}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1981,7 +1982,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -3018,7 +3018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259329880721842}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3135,7 +3136,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -4040,7 +4040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259330158048495}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4157,7 +4158,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -4681,7 +4681,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259330274331666}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4798,7 +4799,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -5081,7 +5081,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259331045668963}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -5198,7 +5199,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -5466,7 +5466,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259330404578137}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -5583,7 +5584,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -6201,7 +6201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259330573061672}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -6318,7 +6319,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -7144,7 +7144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259330816883121}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -7261,7 +7262,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -7754,7 +7754,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259330778261778}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -7871,7 +7872,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -9002,7 +9002,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259331116584523}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -9119,7 +9120,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -9386,7 +9386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259331143425841}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -9503,7 +9504,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -9739,7 +9739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259331176301263}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -9856,7 +9857,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}
@@ -10093,7 +10093,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 8254259331196084410}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10210,7 +10211,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}

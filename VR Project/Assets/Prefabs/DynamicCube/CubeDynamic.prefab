@@ -1715,7 +1715,6 @@ MonoBehaviour:
   rightHandGrabbing: 0
   leftHandGrabbing: 0
   isGrabbing: 0
-  controllerGrabbing: {fileID: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
   leftPresence: {fileID: 0}

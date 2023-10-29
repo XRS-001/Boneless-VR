@@ -376,7 +376,6 @@ MonoBehaviour:
   - {fileID: 5435194949641889422}
   - {fileID: 5435194949717519349}
   - {fileID: 5435194951663262005}
-  - {fileID: 5435194951666638332}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2252,7 +2251,7 @@ GameObject:
   - component: {fileID: 5435194951666638332}
   - component: {fileID: 5435194951666638307}
   - component: {fileID: 5435194951666638306}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: SecondGrabPoint
   m_TagString: Interactable
   m_Icon: {fileID: 0}

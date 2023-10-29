@@ -5,8 +5,13 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class XRGrabDynamic : XRGrabInteractableTwoAttach
+public class XRGrabDynamic : XRGrabInteractable
 {
+    public Transform rightAttach;
+    public Transform leftAttach;
+    public bool rightHandGrabbing;
+    public bool leftHandGrabbing;
+    public bool isGrabbing;
     public ControllerInteractors leftController;
     public ControllerInteractors rightController;
     public Transform leftPresence;
@@ -23,7 +28,7 @@ public class XRGrabDynamic : XRGrabInteractableTwoAttach
     // Update is called once per frame
     void Update()
     {
-        if(!rightController.isGrabbing)
+        if (!rightController.isGrabbing)
         {
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
@@ -52,9 +57,42 @@ public class XRGrabDynamic : XRGrabInteractableTwoAttach
             leftAttach.localPosition = localPositionLeft;
             leftAttach.rotation = leftPresence.rotation;
         }
+        if(leftHandGrabbing)
+        {
+            attachTransform = rightAttach;
+        }
+        else
+        {
+            attachTransform = leftAttach;
+        }
+    }
+    protected override void OnHoverEntered(HoverEnterEventArgs args)
+    {
+        if (args.interactorObject.transform.CompareTag("LeftHand"))
+        {
+            attachTransform = leftAttach;
+        }
+        else if (args.interactorObject.transform.CompareTag("RightHand"))
+        {
+            attachTransform = rightAttach;
+        }
+        base.OnHoverEntered(args);
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        if (leftHandGrabbing || rightHandGrabbing)
+        {
+            rightHandGrabbing = true;
+            leftHandGrabbing = true;
+        }
+        if (args.interactorObject.transform.CompareTag("RightHand"))
+        {
+            rightHandGrabbing = true;
+        }
+        else
+        {
+            leftHandGrabbing = true;
+        }
         base.OnSelectEntered(args);
         if (puppet)
         {
@@ -73,6 +111,19 @@ public class XRGrabDynamic : XRGrabInteractableTwoAttach
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        if (!leftHandGrabbing || !rightHandGrabbing)
+        {
+            rightHandGrabbing = false;
+            leftHandGrabbing = false;
+        }
+        if (args.interactorObject.transform.CompareTag("RightHand"))
+        {
+            rightHandGrabbing = false;
+        }
+        else
+        {
+            leftHandGrabbing = false;
+        }
         if (puppet && !leftController.isGrabbing && !rightController.isGrabbing)
         {
             puppet.collisionResistance.floatValue = collisionResistance;

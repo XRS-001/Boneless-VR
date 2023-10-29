@@ -9378,7 +9378,7 @@ GameObject:
   - component: {fileID: 5494168654672608197}
   - component: {fileID: 5494168654672608202}
   - component: {fileID: 5494168654672608203}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: SecondGrabPoint
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -9491,7 +9491,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 5494168654672608201}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.06
   m_Height: 0.3
   m_Direction: 2
@@ -12432,6 +12432,7 @@ MonoBehaviour:
   dynamicX: 0
   dynamicZ: 1
   handleLength: 0.1
+  offHandGrabbing: 0
 --- !u!95 &5494168655697345189
 Animator:
   serializedVersion: 5
