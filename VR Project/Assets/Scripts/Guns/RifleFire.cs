@@ -230,12 +230,12 @@ public class RifleFire : MonoBehaviour
     public void ReleaseMagazine()
     {
         animator.Play("Release");
-        audioSource.PlayOneShot(gunLoad);
     }
     public void SpawnMagazine()
     {
         if(isInGun)
         {
+            audioSource.PlayOneShot(gunLoad);
             animatedMagazine.SetActive(false);
             spawnedMagazine = Instantiate(magazine, animatedMagazine.transform.position, animatedMagazine.transform.rotation);
             spawnedMagazine.GetComponent<GunMagazine>().ammoCapacity = ammoCapacity;

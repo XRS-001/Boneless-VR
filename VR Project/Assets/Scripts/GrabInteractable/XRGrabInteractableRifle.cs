@@ -159,7 +159,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         secondHandGrabbing = true;
         rifleFire.recoilSpeed /= 2;
         secondInteractor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
-        secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = true;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
         foreach (Collider collider in colliders)
         {
@@ -173,7 +172,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         {
             secondHandGrabbing = false;
         }
-        secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = false;
         rifleFire.recoilSpeed *= 2;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
         foreach (Collider collider in colliders)

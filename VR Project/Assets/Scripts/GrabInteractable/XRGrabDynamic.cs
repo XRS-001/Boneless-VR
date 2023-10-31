@@ -82,6 +82,10 @@ public class XRGrabDynamic : XRGrabInteractable
     {
         if (leftHandGrabbing || rightHandGrabbing)
         {
+            foreach (Collider collider in args.interactorObject.transform.GetComponent<ControllerInteractors>().colliders)
+            {
+                collider.isTrigger = true;
+            }
             rightHandGrabbing = true;
             leftHandGrabbing = true;
         }
@@ -133,6 +137,10 @@ public class XRGrabDynamic : XRGrabInteractable
         base.OnSelectExited(args);
         if (leftController.isGrabbing || rightController.isGrabbing)
         {
+            foreach (Collider collider in args.interactorObject.transform.GetComponent<ControllerInteractors>().colliders)
+            {
+                collider.isTrigger = false;
+            }
             GetComponent<Rigidbody>().mass *= 2;
             isGrabbing = true;
         }

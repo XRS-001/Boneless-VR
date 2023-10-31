@@ -42,7 +42,8 @@ public class ControllerInteractors : XRDirectInteractor
             || args.interactableObject is XRGrabInteractablePistol
             || args.interactableObject is XRGrabInteractableRifle
             || args.interactableObject is TwoHandInteractable
-            || args.interactableObject is XRGrabDynamic)
+            || args.interactableObject is XRGrabDynamic
+            || args.interactableObject is XRGrabInteractableShotgun)
         {
             rb = args.interactableObject.transform.GetComponent<Rigidbody>();
             weight = rb.mass;

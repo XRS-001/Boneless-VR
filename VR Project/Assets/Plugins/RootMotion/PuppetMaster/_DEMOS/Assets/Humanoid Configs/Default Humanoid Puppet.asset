@@ -27,7 +27,7 @@ MonoBehaviour:
   solverIterationCount: 1
   visualizeTargetPose: 0
   mappingWeight: 1
-  pinWeight: 0.9
+  pinWeight: 1
   muscleWeight: 1
   muscleSpring: 100
   muscleDamper: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
   angularPinning: 0
   updateJointAnchors: 0
   supportTranslationAnimation: 0
-  angularLimits: 1
+  angularLimits: 0
   internalCollisions: 1
   muscles:
   - name: Hips
