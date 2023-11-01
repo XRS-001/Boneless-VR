@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magazineName: M16Magazine
-  ammoCapacity: 12
+  ammoCapacity: 25
   bulletChild: {fileID: 6887603465012287185}
   empty: 0
 --- !u!54 &448697292907048666

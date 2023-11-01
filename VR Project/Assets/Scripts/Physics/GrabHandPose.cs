@@ -56,7 +56,7 @@ public class GrabHandPose : MonoBehaviour
                 SetHandDataValues(handData, leftHandPose);
             }
 
-            StartCoroutine(SetHandDataRoutine(handData, finalHandPosition, finalHandRotation, finalFingerRotations, finalFingerPositions, startingHandPosition, startingHandRotation, startingFingerRotations, true));
+            StartCoroutine(SetHandDataRoutine(handData, finalHandPosition, finalHandRotation, finalFingerRotations, finalFingerPositions, startingHandPosition, startingHandRotation, startingFingerRotations));
         }
     }
     public void UnSetPose(BaseInteractionEventArgs args)
@@ -66,7 +66,7 @@ public class GrabHandPose : MonoBehaviour
             HandData handData = args.interactorObject.transform.GetComponentInChildren<ControllerInteractors>().handRig;
             handData.animator.enabled = true;
 
-            StartCoroutine(SetHandDataRoutine(handData, startingHandPosition, startingHandRotation, startingFingerRotations, finalFingerPositions, finalHandPosition, finalHandRotation, finalFingerRotations, false));
+            SetHandData(handData, startingHandPosition, startingHandRotation, startingFingerRotations);
         }
     }
     public void SetHandDataValues(HandData h1, HandData h2)
@@ -99,9 +99,9 @@ public class GrabHandPose : MonoBehaviour
             h.fingerBones[i].localRotation = newBonesRotation[i];
         }
     }
-    public IEnumerator SetHandDataRoutine(HandData h, Vector3 newPosition, Quaternion newRotation, Quaternion[] newBonesRotation, Vector3[] newBonesPosition, Vector3 startingPosition, Quaternion startingRotation, Quaternion[] startingBonesRotation, bool setPose)
+    public IEnumerator SetHandDataRoutine(HandData h, Vector3 newPosition, Quaternion newRotation, Quaternion[] newBonesRotation, Vector3[] newBonesPosition, Vector3 startingPosition, Quaternion startingRotation, Quaternion[] startingBonesRotation)
     {
-        if(setPose && dynamic)
+        if(dynamic)
         {
             float timer = 0;
 

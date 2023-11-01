@@ -146,7 +146,6 @@ public class ControllerInteractors : XRDirectInteractor
             collider.enabled = false;
         }
         yield return new WaitForSeconds(1f);
-
         foreach (Collider collider in colliders)
         {
             collider.enabled = true;

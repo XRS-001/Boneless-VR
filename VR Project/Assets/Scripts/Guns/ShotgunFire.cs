@@ -16,14 +16,14 @@ public class ShotgunFire : MonoBehaviour
     public XRGrabInteractableShotgun grabInteractable;
     public InputActionProperty fireInputSourceLeft;
     public InputActionProperty fireInputSourceRight;
+    public int maxCapacity;
     public int ammoCapacity;
     public Transform[] bulletFirePositions;
     public Transform casingEjectPosition;
-    public GameObject shell;
     public string shellName;
     public GameObject animatedShell;
     private GameObject gunShell;
-    private bool hasSlide = true;
+    private bool hasSlide = false;
     public GameObject bullet;
     public GameObject casing;
     public Animator animator;
@@ -71,6 +71,9 @@ public class ShotgunFire : MonoBehaviour
             timeSinceLastShot = 0f;
             ammoCapacity--;
             hasSlide = false;
+            JointDrive zDrive = slide.GetComponent<ConfigurableJoint>().zDrive;
+            zDrive.positionSpring = 0;
+            slide.GetComponent<ConfigurableJoint>().zDrive = zDrive;
         }
         else if(ammoCapacity == 0)
         {
@@ -105,7 +108,7 @@ public class ShotgunFire : MonoBehaviour
         if (other.gameObject.CompareTag("Magazine"))
         {
             gunShell = other.gameObject;
-            if (gunShell.GetComponent<ShotgunShell>().shellName == shellName && other.gameObject.GetComponent<XRGrabInteractableTwoAttach>().isSelected && shotgunSlide.wasReached)
+            if (gunShell.GetComponent<ShotgunShell>().shellName == shellName && other.gameObject.GetComponent<XRGrabInteractableTwoAttach>().isSelected && shotgunSlide.wasReached && ammoCapacity < maxCapacity)
             {
                 audioSource.PlayOneShot(gunLoad);
                 ammoCapacity += gunShell.GetComponent<ShotgunShell>().ammoCapacity;
@@ -114,6 +117,7 @@ public class ShotgunFire : MonoBehaviour
                 gunShell.GetComponent<XRGrabInteractableTwoAttach>().controllerGrabbing.allowSelect = true;
                 Destroy(gunShell.gameObject);
                 animator.Play("Reload");
+                hasSlide = true;
             }
         }
     }
@@ -122,9 +126,9 @@ public class ShotgunFire : MonoBehaviour
         audioSource.PlayOneShot(slideSound);
         if (!hasSlide)
         {
-            hasSlide = true;
-            if(ammoCapacity > 0)
+            if (ammoCapacity > 0)
             {
+                hasSlide = true;
                 GameObject spawnedCasing = Instantiate(casing);
                 spawnedCasing.transform.position = casingEjectPosition.position;
                 spawnedCasing.transform.rotation = casingEjectPosition.rotation;
@@ -145,6 +149,15 @@ public class ShotgunFire : MonoBehaviour
             casingRb.AddForce(casingEjectPosition.right * 10000 * Time.deltaTime);
             Destroy(spawnedCasing, 10);
             ammoCapacity--;
+        }
+    }
+    public void Lock()
+    {
+        if(hasSlide)
+        {
+            JointDrive zDrive = slide.GetComponent<ConfigurableJoint>().zDrive;
+            zDrive.positionSpring = float.PositiveInfinity;
+            slide.GetComponent<ConfigurableJoint>().zDrive = zDrive;
         }
     }
 }

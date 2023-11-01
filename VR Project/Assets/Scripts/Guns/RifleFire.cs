@@ -175,11 +175,13 @@ public class RifleFire : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        gunMagazine = other.gameObject;
+        gunMagazine = other.transform.root.gameObject;
         float angle = Quaternion.Angle(gunMagazine.transform.rotation, transform.rotation);
+        Debug.Log(angle);
+        Debug.Log(gunMagazine.name);
         if (gunMagazine.CompareTag("Magazine"))
         {
-            if (angle < threshold && gunMagazine.GetComponent<GunMagazine>().magazineName == magazineName && !isInGun && other.gameObject.GetComponent<XRGrabInteractableTwoAttach>().isSelected)
+            if (angle < threshold && gunMagazine.GetComponent<GunMagazine>().magazineName == magazineName && !isInGun && gunMagazine.GetComponent<XRGrabInteractableTwoAttach>().isGrabbing)
             {
                 if (ammoCapacity > 0)
                 {

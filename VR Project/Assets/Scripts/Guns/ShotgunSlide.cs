@@ -10,6 +10,7 @@ public class ShotgunSlide : MonoBehaviour
     public Transform target;
     public Transform targetEnd;
     public UnityEvent onReached;
+    public UnityEvent onReachedEnd;
     public bool wasReached = false;
     public bool wasReachedEnd = false;
     public float distance;
@@ -31,6 +32,7 @@ public class ShotgunSlide : MonoBehaviour
 
         if (distanceEnd < threshold && !wasReachedEnd)
         {
+            onReachedEnd.Invoke();
             wasReachedEnd = true;
         }
         else if (distanceEnd >= threshold)
