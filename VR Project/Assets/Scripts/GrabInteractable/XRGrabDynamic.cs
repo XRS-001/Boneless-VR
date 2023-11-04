@@ -32,7 +32,7 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
-            Physics.Raycast(rightPresence.position, directionRight, out rightHit, LayerMask.GetMask("Interactable"));
+            Physics.Raycast(rightPresence.position, directionRight, out rightHit, LayerMask.GetMask("Ragdoll"));
             Vector3 positionRight = rightHit.collider.ClosestPoint(rightPresence.position);
             rightAttach.position = positionRight;
             Vector3 localPositionRight = rightAttach.localPosition;
@@ -47,7 +47,7 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             Vector3 directionLeft = transform.position - leftPresence.gameObject.transform.position;
             RaycastHit leftHit;
-            Physics.Raycast(leftPresence.position, directionLeft, out leftHit, LayerMask.GetMask("Interactable"));
+            Physics.Raycast(leftPresence.position, directionLeft, out leftHit, LayerMask.GetMask("Ragdoll"));
             Vector3 positionLeft = leftHit.collider.ClosestPoint(leftPresence.position);
             leftAttach.position = positionLeft;
             Vector3 localPositionLeft = leftAttach.localPosition;
@@ -65,18 +65,6 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             attachTransform = leftAttach;
         }
-    }
-    protected override void OnHoverEntered(HoverEnterEventArgs args)
-    {
-        if (args.interactorObject.transform.CompareTag("LeftHand"))
-        {
-            attachTransform = leftAttach;
-        }
-        else if (args.interactorObject.transform.CompareTag("RightHand"))
-        {
-            attachTransform = rightAttach;
-        }
-        base.OnHoverEntered(args);
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
@@ -107,6 +95,14 @@ public class XRGrabDynamic : XRGrabInteractable
     }
     protected override void OnSelectEntering(SelectEnterEventArgs args)
     {
+        if (args.interactorObject.transform.CompareTag("LeftHand"))
+        {
+            attachTransform = leftAttach;
+        }
+        else if (args.interactorObject.transform.CompareTag("RightHand"))
+        {
+            attachTransform = rightAttach;
+        }
         base.OnSelectEntering(args);
         if (isGrabbing)
         {

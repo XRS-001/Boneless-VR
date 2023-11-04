@@ -40,9 +40,9 @@ public class RifleFire : MonoBehaviour
     private float fireButton;
     private float magRelease;
 
-    public float fireCooldown = 0f;
+
     private float timeSinceLastShot = 0f;
-    private float timeBetweenShots = 1.0f / 10.0f;
+    public float timeBetweenShots = 1.0f;
     private bool canFire = true;
     private bool isFiring = false;
     public bool slideRetracted = true;
@@ -86,7 +86,7 @@ public class RifleFire : MonoBehaviour
             recoilRb.AddForce(bulletFirePosition.up * recoilSpeed);
 
             Destroy(recoilBullet, 1);
-            Destroy(spawnedBullet, 5);
+            Destroy(spawnedBullet, 1);
 
             timeSinceLastShot = 0f;
         }
@@ -177,11 +177,9 @@ public class RifleFire : MonoBehaviour
     {
         gunMagazine = other.transform.root.gameObject;
         float angle = Quaternion.Angle(gunMagazine.transform.rotation, transform.rotation);
-        Debug.Log(angle);
-        Debug.Log(gunMagazine.name);
-        if (gunMagazine.CompareTag("Magazine"))
+        if (gunMagazine.CompareTag("Magazine") && gunMagazine.GetComponent<GunMagazine>())
         {
-            if (angle < threshold && gunMagazine.GetComponent<GunMagazine>().magazineName == magazineName && !isInGun && gunMagazine.GetComponent<XRGrabInteractableTwoAttach>().isGrabbing)
+            if (angle < threshold && !isInGun && gunMagazine.GetComponent<GunMagazine>().magazineName == magazineName && gunMagazine.GetComponent<XRGrabInteractableTwoAttach>().isGrabbing)
             {
                 if (ammoCapacity > 0)
                 {

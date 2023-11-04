@@ -10,7 +10,6 @@ public class HandPresencePhysics : MonoBehaviour
     public Transform target;
     public Collider[] handColliders;
     public ControllerInteractors controller;
-    private Rigidbody rb;
     private bool isAboveGround = false;
 
     // Start is called before the first frame update
@@ -20,7 +19,6 @@ public class HandPresencePhysics : MonoBehaviour
         {
             collider.enabled = false;
         }
-        rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -33,9 +31,8 @@ public class HandPresencePhysics : MonoBehaviour
             }
             isAboveGround = true;
         }
-
-        rb.MovePosition(target.position);
-        rb.MoveRotation(target.rotation);
+        transform.position = target.position;
+        transform.rotation = target.rotation;
     }
 }
 

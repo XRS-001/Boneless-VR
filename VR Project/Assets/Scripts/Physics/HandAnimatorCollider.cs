@@ -23,6 +23,12 @@ public class HandAnimatorCollider : MonoBehaviour
             float gripValue = grip.action.ReadValue<float>();
             handAnimator.SetFloat("Grip", gripValue);
         }
+        else
+        {
+            handAnimator.SetFloat("Trigger", 1);
+
+            handAnimator.SetFloat("Grip", 1);
+        }
     }
 
     // Update is called once per frame

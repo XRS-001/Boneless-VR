@@ -105,9 +105,9 @@ public class ShotgunFire : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Magazine"))
+        gunShell = other.gameObject;
+        if (gunShell.gameObject.CompareTag("Magazine") && gunShell.GetComponent<ShotgunShell>())
         {
-            gunShell = other.gameObject;
             if (gunShell.GetComponent<ShotgunShell>().shellName == shellName && other.gameObject.GetComponent<XRGrabInteractableTwoAttach>().isSelected && shotgunSlide.wasReached && ammoCapacity < maxCapacity)
             {
                 audioSource.PlayOneShot(gunLoad);

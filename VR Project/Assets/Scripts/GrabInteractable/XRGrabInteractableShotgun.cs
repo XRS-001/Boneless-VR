@@ -10,8 +10,6 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
     public Transform leftAttach;
     public Transform rightAttachSecond;
     public Transform leftAttachSecond;
-    private Collider[] handColliders;
-    private Collider[] previousHandColliders;
     public XRGrabJoint secondGrabPoint;
     public bool isGrabbing;
     public bool rightHandGrabbing;
@@ -76,17 +74,6 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
     }
     protected override void OnSelectEntering(SelectEnterEventArgs args)
     {
-        if (!offHandGrabbing)
-        {
-            if (args.interactorObject.transform.CompareTag("LeftHand"))
-            {
-                attachTransform = leftAttach;
-            }
-            else if (args.interactorObject.transform.CompareTag("RightHand"))
-            {
-                attachTransform = rightAttach;
-            }
-        }
         if (offHandGrabbing && !secondHandGrabbing)
         {
             XRInteractionManager XRInteractionManager = interactionManager;
@@ -111,17 +98,10 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
         }
         isGrabbing = true;
         interactor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
-        handColliders = interactor.GetComponent<ControllerInteractors>().colliders;
-        foreach (Collider collider in handColliders)
-        {
-            collider.isTrigger = true;
-        }
         base.OnSelectEntered(args);
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        previousHandColliders = handColliders;
-        StartCoroutine(DelaySetActive());
         base.OnSelectExited(args);
         if (secondHandGrabbing)
         {
@@ -196,24 +176,5 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
             Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, false);
         }
         secondInteractor = null;
-    }
-    IEnumerator DelaySetActive()
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        if (!leftHandGrabbing && !rightHandGrabbing)
-        {
-            foreach (Collider collider in handColliders)
-            {
-                collider.isTrigger = false;
-            }
-        }
-        else
-        {
-            foreach (Collider collider in previousHandColliders)
-            {
-                collider.isTrigger = false;
-            }
-        }
     }
 }

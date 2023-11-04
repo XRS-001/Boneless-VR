@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JointCollision : MonoBehaviour
 {
+    public NPC npc;
     public float velocityThreshold;
     private bool canCollide = false;
     private void Start()
@@ -14,7 +15,7 @@ public class JointCollision : MonoBehaviour
     {
         if(collision.relativeVelocity.magnitude > velocityThreshold && canCollide)
         {
-            transform.root.gameObject.GetComponent<NPC>().DealDamage(collision.relativeVelocity.magnitude / 2);
+            npc.DealDamage(collision.relativeVelocity.magnitude / 2);
         }
     }
     public IEnumerator Delay()

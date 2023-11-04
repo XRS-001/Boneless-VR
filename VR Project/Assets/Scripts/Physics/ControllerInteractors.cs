@@ -22,8 +22,10 @@ public class ControllerInteractors : XRDirectInteractor
     private AudioSource audioSource;
     public GameObject handPresence;
     public GameObject handPhysics;
-    private FixedJoint configJoint;
+    private ConfigurableJoint configJoint;
     public bool isGrabbing;
+    private GameObject objectGrabbing;
+    private GameObject newColliderParent;
     protected override void Start()
     {
         base.Start();
@@ -31,6 +33,7 @@ public class ControllerInteractors : XRDirectInteractor
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        objectGrabbing = args.interactableObject.transform.gameObject;
         isGrabbing = true;
         interactableColliders = args.interactableObject.colliders;
         foreach (Collider collider in interactableColliders)
@@ -58,19 +61,29 @@ public class ControllerInteractors : XRDirectInteractor
             if (weight > 1)
             {
                 JointDrive drive = handPhysics.GetComponent<ConfigurableJoint>().xDrive;
-                drive.positionDamper *= weight / 4;
+                drive.positionDamper *= weight / 2;
+                JointDrive driveHorizontal = handPhysics.GetComponent<ConfigurableJoint>().xDrive;
+                driveHorizontal.positionDamper *= weight / 6;
 
-                handPhysics.GetComponent<ConfigurableJoint>().xDrive = drive;
+                handPhysics.GetComponent<ConfigurableJoint>().xDrive = driveHorizontal;
                 handPhysics.GetComponent<ConfigurableJoint>().yDrive = drive;
-                handPhysics.GetComponent<ConfigurableJoint>().zDrive = drive;
+                handPhysics.GetComponent<ConfigurableJoint>().zDrive = driveHorizontal;
             }
 
             attach = args.interactableObject.transform.GetComponent<XRGrabInteractable>().attachTransform.transform;
             StartCoroutine(DelayEnter());
-            configJoint = handPhysics.AddComponent<FixedJoint>();
+            configJoint = handPhysics.AddComponent<ConfigurableJoint>();
+            configJoint.enableCollision = false;
+
+            configJoint.xMotion = ConfigurableJointMotion.Locked;
+            configJoint.yMotion = ConfigurableJointMotion.Locked;
+            configJoint.zMotion = ConfigurableJointMotion.Locked;
+
+            configJoint.angularXMotion = ConfigurableJointMotion.Locked;
+            configJoint.angularYMotion = ConfigurableJointMotion.Locked;
+            configJoint.angularZMotion = ConfigurableJointMotion.Locked;
+
             configJoint.connectedBody = rb;
-            configJoint.autoConfigureConnectedAnchor = false;
-            configJoint.connectedAnchor = rb.transform.InverseTransformPoint(handPhysics.transform.position);
         }
         if (args.interactableObject is XRBaseInteractable)
         {
@@ -119,36 +132,46 @@ public class ControllerInteractors : XRDirectInteractor
     }
     public IEnumerator DelayEnter()
     {
-        foreach (Collider collider in colliders)
-        {
-            collider.enabled = false;
-        }
-        foreach (Collider collider in interactableColliders)
-        {
-            collider.enabled = false;
-        }
         handPhysics.transform.position = attach.position;
         handPhysics.transform.rotation = attach.rotation;
-        yield return new WaitForSeconds(1f);
+        newColliderParent = Instantiate(colliders[0].transform.parent.transform.parent.gameObject, colliders[0].transform.parent.transform.parent.transform.position, colliders[0].transform.parent.transform.parent.transform.rotation);
+        newColliderParent.transform.parent = objectGrabbing.transform;
         foreach (Collider collider in colliders)
         {
-            collider.enabled = true;
+            collider.enabled = false;
         }
-        foreach (Collider collider in interactableColliders)
+        if(objectGrabbing.layer != 20)
         {
-            collider.enabled = true;
+            foreach (Collider collider in interactableColliders)
+            {
+                collider.enabled = false;
+            }
+        }
+        yield return new WaitForSeconds(0.1f);
+        if (objectGrabbing)
+        {
+            if (objectGrabbing.layer != 20)
+            {
+                foreach (Collider collider in interactableColliders)
+                {
+                    collider.enabled = true;
+                }
+            }
         }
     }
     public IEnumerator DelayExit()
     {
-        foreach (Collider collider in colliders)
+        if (objectGrabbing)
         {
-            collider.enabled = false;
+            Destroy(newColliderParent);
         }
         yield return new WaitForSeconds(1f);
-        foreach (Collider collider in colliders)
+        if(!isGrabbing)
         {
-            collider.enabled = true;
+            foreach (Collider collider in colliders)
+            {
+                collider.enabled = true;
+            }
         }
     }
 }

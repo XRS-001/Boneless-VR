@@ -6,10 +6,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class XRGrabInteractableRifle : XRGrabInteractable
 {
     private RifleFire rifleFire;
+    public Collider slideCollider;
     public bool isGrabbing { get; private set; } = false;
     private bool secondHandGrabbing;
-    private Collider[] handColliders;
-    private Collider[] previousHandColliders;
     public bool rightHandGrabbing = false;
     public bool leftHandGrabbing = false;
     public Transform rightAttach;
@@ -22,13 +21,12 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     public XRBaseInteractor interactor;
     public enum TwoHandRotationType { None, First, Second };
     public TwoHandRotationType twoHandRotationType;
+    public enum dynamicAxisEnum { dynamicX, dynamicY, dynamicZ }
+    public dynamicAxisEnum dynamicAxis;
     public bool snapToSecondHand = true;
     private Quaternion initialRotationOffset;
     public Transform leftPresence;
     public Transform rightPresence;
-    public bool dynamicY;
-    public bool dynamicX;
-    public bool dynamicZ;
     public float handleLength;
     public bool offHandGrabbing = false;
     private void Update()
@@ -39,7 +37,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
             Vector3 position = leftPresence.position;
             leftAttachSecond.position = position;
             Vector3 localPosition = leftAttachSecond.localPosition;
-            if (!dynamicX)
+            if (dynamicAxis != dynamicAxisEnum.dynamicX)
             {
                 localPosition.x = originalPosition.x;
             }
@@ -47,7 +45,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
             {
                 localPosition.x = Mathf.Clamp(localPosition.x, -handleLength, handleLength);
             }
-            if (!dynamicY)
+            if (dynamicAxis != dynamicAxisEnum.dynamicY)
             {
                 localPosition.y = originalPosition.y;
             }
@@ -55,7 +53,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
             {
                 localPosition.y = Mathf.Clamp(localPosition.y, -handleLength, handleLength);
             }
-            if (!dynamicZ)
+            if (dynamicAxis != dynamicAxisEnum.dynamicZ)
             {
                 localPosition.z = originalPosition.z;
             }
@@ -71,7 +69,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
             Vector3 position = rightPresence.position;
             rightAttachSecond.position = position;
             Vector3 localPosition = rightAttachSecond.localPosition;
-            if (!dynamicX)
+            if (dynamicAxis != dynamicAxisEnum.dynamicX)
             {
                 localPosition.x = originalPosition.x;
             }
@@ -79,7 +77,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
             {
                 localPosition.x = Mathf.Clamp(localPosition.x, -handleLength, handleLength);
             }
-            if (!dynamicY)
+            if (dynamicAxis != dynamicAxisEnum.dynamicY)
             {
                 localPosition.y = originalPosition.y;
             }
@@ -87,7 +85,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
             {
                 localPosition.y = Mathf.Clamp(localPosition.y, -handleLength, handleLength);
             }
-            if (!dynamicZ)
+            if (dynamicAxis != dynamicAxisEnum.dynamicZ)
             {
                 localPosition.z = originalPosition.z;
             }
@@ -219,17 +217,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     }
     protected override void OnSelectEntering(SelectEnterEventArgs args)
     {
-        if (!offHandGrabbing)
-        {
-            if (args.interactorObject.transform.CompareTag("LeftHand"))
-            {
-                attachTransform = leftAttach;
-            }
-            else if (args.interactorObject.transform.CompareTag("RightHand"))
-            {
-                attachTransform = rightAttach;
-            }
-        }
         if (offHandGrabbing && !secondHandGrabbing)
         {
             XRInteractionManager XRInteractionManager = interactionManager;
@@ -241,11 +228,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
             offHandGrabbing = false;
         }
         isGrabbing = true;
-        handColliders = args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliders;
-        foreach (Collider collider in handColliders)
-        {
-            collider.isTrigger = true;
-        }
         base.OnSelectEntering(args);
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -268,8 +250,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        previousHandColliders = handColliders;
-        StartCoroutine(DelaySetActive());
         secondHandGrabPointCollider.enabled = false;
         base.OnSelectExited(args);
         if (secondHandGrabbing)
@@ -313,25 +293,6 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         if (!rightHandGrabbing && !leftHandGrabbing)
         {
             secondHandGrabPoint.enabled = false;
-        }
-    }
-    IEnumerator DelaySetActive()
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        if (!leftHandGrabbing && !rightHandGrabbing)
-        {
-            foreach (Collider collider in handColliders)
-            {
-                collider.isTrigger = false;
-            }
-        }
-        else
-        {
-            foreach (Collider collider in previousHandColliders)
-            {
-                collider.isTrigger = false;
-            }
         }
     }
 }

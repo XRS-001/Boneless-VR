@@ -7,9 +7,6 @@ public class XRGrabInteractablePistol : XRGrabInteractable
 {
     private PistolFire pistolFire;
     public bool isGrabbing { get; private set; } = false;
-    public Collider slideCollider;
-    private Collider[] handColliders;
-    private Collider[] previousHandColliders;
     public bool rightHandGrabbing = false;
     public bool leftHandGrabbing = false;
     public Transform rightAttach;
@@ -70,7 +67,7 @@ public class XRGrabInteractablePistol : XRGrabInteractable
 
         secondInteractor = null;
     }
-    protected override void OnHoverEntered(HoverEnterEventArgs args)
+    protected override void OnSelectEntering(SelectEnterEventArgs args)
     {
         if (args.interactorObject.transform.CompareTag("LeftHand"))
         {
@@ -80,20 +77,7 @@ public class XRGrabInteractablePistol : XRGrabInteractable
         {
             attachTransform = rightAttach;
         }
-        base.OnHoverEntered(args);
-    }
-    protected override void OnSelectEntering(SelectEnterEventArgs args)
-    {
         isGrabbing = true;
-        handColliders = args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliders;
-        try
-        {
-            foreach (Collider collider in handColliders)
-            {
-                Physics.IgnoreCollision(collider, slideCollider, true);
-            }
-        }
-        catch { }
         base.OnSelectEntering(args);
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -117,8 +101,6 @@ public class XRGrabInteractablePistol : XRGrabInteractable
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        previousHandColliders = handColliders;
-        StartCoroutine(DelaySetActive());
         secondHandGrabPointCollider.enabled = false;
         base.OnSelectExited(args);
         if (secondHandGrabbing)
@@ -146,25 +128,6 @@ public class XRGrabInteractablePistol : XRGrabInteractable
         if (!rightHandGrabbing && !leftHandGrabbing)
         {
             secondHandGrabPoint.enabled = false;
-        }
-    }
-    IEnumerator DelaySetActive()
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        if (!leftHandGrabbing && !rightHandGrabbing)
-        {
-            foreach (Collider collider in handColliders)
-            {
-                Physics.IgnoreCollision(collider, slideCollider, false);
-            }
-        }
-        else
-        {
-            foreach (Collider collider in previousHandColliders)
-            {
-                Physics.IgnoreCollision(collider, slideCollider, false);
-            }
         }
     }
 }

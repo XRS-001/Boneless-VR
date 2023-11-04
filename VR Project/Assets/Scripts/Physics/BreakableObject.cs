@@ -8,29 +8,30 @@ public class BreakableObject : MonoBehaviour
 {
     public GameObject breakableParent;
     private List<Rigidbody> breakables;
-    public float speedNeededToBreak;
-    public float velocity;
-    private float breakForce;
+    public float forceNeededToBreak;
     public AudioSource audioSource;
-    private void Update()
-    {
-        velocity = GetComponent<Rigidbody>().velocity.magnitude;
-        breakForce = velocity * 75;
-    }
     private void OnCollisionEnter(Collision collision)
     {
-        if (velocity > speedNeededToBreak || (collision?.rigidbody?.velocity.magnitude > speedNeededToBreak && collision?.rigidbody?.mass > 1))
+        if(collision.relativeVelocity.magnitude > 5f)
         {
-            GetComponent<XRGrabInteractable>().enabled = false;
-            breakableParent.SetActive(true);
-            audioSource.Play();
-            breakableParent.transform.parent = null;
-            gameObject.SetActive(false);
-            breakables = breakableParent.GetComponentsInChildren<Rigidbody>().ToList();
-            foreach (Rigidbody rb in breakables)
-            {
-                rb.AddExplosionForce(breakForce, transform.position, 100);
-            }
+            forceNeededToBreak -= collision.relativeVelocity.magnitude;
+        }
+        if(forceNeededToBreak < 0 )
+        {
+            Break(collision.relativeVelocity.magnitude * 2);
+        }
+    }
+    public void Break(float breakForce)
+    {
+        GetComponent<XRGrabInteractable>().enabled = false;
+        breakableParent.SetActive(true);
+        audioSource.Play();
+        breakableParent.transform.parent = null;
+        gameObject.SetActive(false);
+        breakables = breakableParent.GetComponentsInChildren<Rigidbody>().ToList();
+        foreach (Rigidbody rb in breakables)
+        {
+            rb.AddExplosionForce(breakForce, transform.position, 100);
         }
     }
 }

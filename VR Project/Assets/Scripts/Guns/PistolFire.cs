@@ -75,7 +75,7 @@ public class PistolFire : MonoBehaviour
             recoilRb.AddForce(bulletFirePosition.up * recoilSpeed);
 
             Destroy(recoilBullet, 1);
-            Destroy(spawnedBullet, 5);
+            Destroy(spawnedBullet, 1);
 
             timeSinceLastShot = 0f;
         }
@@ -140,7 +140,7 @@ public class PistolFire : MonoBehaviour
     {
         pistolMagazine = other.gameObject;
         float angle = Quaternion.Angle(pistolMagazine.transform.rotation, transform.rotation);
-        if (pistolMagazine.CompareTag("Magazine"))
+        if (pistolMagazine.CompareTag("Magazine") && pistolMagazine.GetComponent<GunMagazine>())
         {
             if (angle < threshold && pistolMagazine.GetComponent<GunMagazine>().magazineName == magazineName && !isInGun && other.gameObject.GetComponent<XRGrabInteractableTwoAttach>().isSelected)
             {

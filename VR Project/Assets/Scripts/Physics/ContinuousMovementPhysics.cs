@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,13 +20,15 @@ public class ContinuousMovementPhysics : MonoBehaviour
     private bool isGrounded;
     public LayerMask groundLayer;
     public Transform directionSource;
-    public CapsuleCollider bodyCollider;
     private Vector2 inputMoveAxis;
     private float inputTurnAxis;
     public Transform turnSource;
     private Vector3 direction;
     public CheckCollision leftHandCollision;
     public CheckCollision rightHandCollision;
+    public CapsuleCollider[] leftFootDetection;
+    public CapsuleCollider[] rightFootDetection;
+    private bool isMoving = false;
 
     // Update is called once per frame
     void Update()
@@ -38,13 +42,18 @@ public class ContinuousMovementPhysics : MonoBehaviour
         {
             if(leftHandCollision.colliding || rightHandCollision.colliding)
             {
-                jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight * 1.7f);
+                jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight * 3);
                 rb.velocity = directionSource.forward + (Vector3.up * jumpVelocity);
+            }
+            else if (isMoving)
+            {
+                jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight);
+                rb.velocity = direction + (Vector3.up * jumpVelocity);
             }
             else
             {
                 jumpVelocity = Mathf.Sqrt(2 * -Physics.gravity.y * jumpHeight);
-                rb.velocity = direction + (Vector3.up * jumpVelocity);
+                rb.velocity = Vector3.up * jumpVelocity;
             }
         }
     }
@@ -68,22 +77,44 @@ public class ContinuousMovementPhysics : MonoBehaviour
             Vector3 newPosition = q * (targetMovePosition - turnSource.position) + turnSource.position;
 
             rb.MovePosition(newPosition);
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
         }
     }
 
     public bool CheckIfGrounded()
     {
-        Vector3 start = bodyCollider.transform.TransformPoint(bodyCollider.center);
-        float rayLength = bodyCollider.height / 2 - bodyCollider.radius + 0.1f;
+        bool hasHit = false;
+        foreach(CapsuleCollider capsuleLeft in leftFootDetection)
+        {
+            Vector3 start = capsuleLeft.transform.TransformPoint(capsuleLeft.center);
+            float rayLength = capsuleLeft.height / 2 - capsuleLeft.radius + 0.1f;
 
-        bool hasHit = Physics.SphereCast(start, bodyCollider.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
-        if(!hasHit)
-        {
-            hasHit = leftHandCollision.colliding;
+            if (Physics.SphereCast(start, capsuleLeft.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer))
+            {
+                hasHit = true;
+            }
         }
-        if (!hasHit)
+        foreach (CapsuleCollider capsuleRight in rightFootDetection)
         {
-            hasHit = rightHandCollision.colliding;
+            Vector3 start = capsuleRight.transform.TransformPoint(capsuleRight.center);
+            float rayLength = capsuleRight.height / 2 - capsuleRight.radius + 0.1f;
+
+            if (Physics.SphereCast(start, capsuleRight.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer))
+            {
+                hasHit = true;
+            }
+        }
+        if (leftHandCollision.colliding)
+        {
+            hasHit = true;
+        }
+        else if (rightHandCollision.colliding)
+        {
+            hasHit = true;
         }
         return hasHit;
     }

@@ -18,9 +18,8 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     private Rigidbody rb;
     public Transform leftPresence;
     public Transform rightPresence;
-    public bool dynamicY;
-    public bool dynamicX;
-    public bool dynamicZ;
+    public enum dynamicAxisEnum {dynamicX, dynamicY, dynamicZ }
+    public dynamicAxisEnum dynamicAxis;
     public float handleLength;
     private Collider[] previousColliders;
     // Start is called before the first frame update
@@ -39,7 +38,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
             Vector3 position = leftPresence.position;
             leftAttach.position = position;
             Vector3 localPosition = leftAttach.localPosition;
-            if (!dynamicX)
+            if (dynamicAxis != dynamicAxisEnum.dynamicX)
             {
                 localPosition.x = originalPosition.x;
             }
@@ -47,7 +46,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
             {
                 localPosition.x = Mathf.Clamp(localPosition.x, -handleLength, handleLength);
             }
-            if (!dynamicY)
+            if (dynamicAxis != dynamicAxisEnum.dynamicY)
             {
                 localPosition.y = originalPosition.y;
             }
@@ -55,7 +54,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
             {
                 localPosition.y = Mathf.Clamp(localPosition.y, -handleLength, handleLength);
             }
-            if (!dynamicZ)
+            if (dynamicAxis != dynamicAxisEnum.dynamicZ)
             {
                 localPosition.z = originalPosition.z;
             }
@@ -71,7 +70,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
             Vector3 position = rightPresence.position;
             rightAttach.position = position;
             Vector3 localPosition = rightAttach.localPosition;
-            if (!dynamicX)
+            if (dynamicAxis != dynamicAxisEnum.dynamicX)
             {
                 localPosition.x = originalPosition.x;
             }
@@ -79,7 +78,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
             {
                 localPosition.x = Mathf.Clamp(localPosition.x, -handleLength, handleLength);
             }
-            if (!dynamicY)
+            if (dynamicAxis != dynamicAxisEnum.dynamicY)
             {
                 localPosition.y = originalPosition.y;
             }
@@ -87,7 +86,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
             {
                 localPosition.y = Mathf.Clamp(localPosition.y, -handleLength, handleLength);
             }
-            if (!dynamicZ)
+            if (dynamicAxis != dynamicAxisEnum.dynamicZ)
             {
                 localPosition.z = originalPosition.z;
             }

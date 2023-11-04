@@ -22,7 +22,7 @@ TagManager:
   - Player
   - LeftHandPhysics
   - RightHandPhysics
-  - 
+  - Projectile
   - SecondHandGrab
   - Ground
   - Sliceable

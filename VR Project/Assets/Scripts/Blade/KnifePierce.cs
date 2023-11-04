@@ -27,12 +27,15 @@ public class KnifePierce : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Pierceable") && velocity > requiredSpeedToPierce && !isPiercing)
         {
-            isPiercing = true;
             foreach (ContactPoint contact in collision.contacts)
             {
                 if (contact.thisCollider == bladeTipCollider)
                 {
-                    collision.transform.root.gameObject.GetComponent<NPC>().DealDamage(damage);
+                    isPiercing = true;
+                    if (collision.transform.GetComponent<JointCollision>())
+                    {
+                        collision.transform.GetComponent<JointCollision>().npc.DealDamage(damage);
+                    }
                     audioSource.pitch = 1f;
                     audioSource.PlayOneShot(pierceSound);
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,20 @@ using UnityEngine;
 public class CheckCollision : MonoBehaviour
 {
     public bool colliding;
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
+    {
+        StartCoroutine(Loop());
+    }
+    private void OnCollisionStay(Collision collision)
     {
         colliding = true;
     }
-    private void OnCollisionExit(Collision collision)
+    IEnumerator Loop()
     {
-        colliding = false;
+        while (true)
+        {
+            yield return new WaitForSeconds(0.1f);
+            colliding = false;
+        }
     }
 }
