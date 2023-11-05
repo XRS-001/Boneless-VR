@@ -10,7 +10,6 @@ public class ClimbingInteractable : XRSimpleInteractable
     private XRSimpleInteractable duplicateInteractable;
     private ControllerInteractors controller;
     private GameObject handPhysics;
-    private HandPresencePhysics handPresence;
     private FixedJoint fixedJoint;
     public bool isGrabbing;
     private void Start()
@@ -27,40 +26,27 @@ public class ClimbingInteractable : XRSimpleInteractable
     {
         grabHandPose.SetupPose(args);
         controller = args.interactorObject.transform.GetComponent<ControllerInteractors>();
-        handPresence = controller.handPresence.GetComponent<HandPresencePhysics>();
         handPhysics = controller.handPhysics;
         isGrabbing = true;
-        handPresence.target = null;
-        handPresence.transform.position = handPhysics.transform.position;
-        handPresence.transform.rotation = handPhysics.transform.rotation;
-        handPresence.target = handPhysics.transform.transform;
         fixedJoint = handPhysics.AddComponent<FixedJoint>();
         fixedJoint.connectedAnchor = transform.position;
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         grabHandPose.UnSetPose(args);
-        handPresence.target = handPhysics.transform;
         isGrabbing = false;
         Destroy(fixedJoint);
     }
     private void OnSelectSecond(SelectEnterEventArgs args)
     {
         controller = args.interactorObject.transform.GetComponent<ControllerInteractors>();
-        handPresence = controller.handPresence.GetComponent<HandPresencePhysics>();
         handPhysics = controller.handPhysics;
         isGrabbing = true;
-        handPresence.target = null;
-        handPresence.transform.position = handPhysics.transform.position;
-        handPresence.transform.rotation = handPhysics.transform.rotation;
-        handPresence.GetComponent<Rigidbody>().isKinematic = true;
         fixedJoint = handPhysics.AddComponent<FixedJoint>();
         fixedJoint.connectedAnchor = transform.position;
     }
     private void OnSelectSecondExit(SelectExitEventArgs args)
     {
-        handPresence.GetComponent<Rigidbody>().isKinematic = false;
-        handPresence.target = handPhysics.transform;
         isGrabbing = false;
         Destroy(fixedJoint);
     }

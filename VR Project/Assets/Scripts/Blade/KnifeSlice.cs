@@ -24,7 +24,7 @@ public class KnifeSlice : MonoBehaviour
     public Material crossSectionMaterial;
     private void Start()
     {
-        knifePierce = GetComponent<KnifePierce>() ?? null;
+        knifePierce = GetComponent<KnifePierce>();
     }
     // Update is called once per frame
     void FixedUpdate()

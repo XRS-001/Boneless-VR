@@ -32,7 +32,7 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
-            Physics.Raycast(rightPresence.position, directionRight, out rightHit, LayerMask.GetMask("Ragdoll"));
+            Physics.Raycast(rightPresence.position, directionRight, out rightHit);
             Vector3 positionRight = rightHit.collider.ClosestPoint(rightPresence.position);
             rightAttach.position = positionRight;
             Vector3 localPositionRight = rightAttach.localPosition;
@@ -47,7 +47,7 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             Vector3 directionLeft = transform.position - leftPresence.gameObject.transform.position;
             RaycastHit leftHit;
-            Physics.Raycast(leftPresence.position, directionLeft, out leftHit, LayerMask.GetMask("Ragdoll"));
+            Physics.Raycast(leftPresence.position, directionLeft, out leftHit);
             Vector3 positionLeft = leftHit.collider.ClosestPoint(leftPresence.position);
             leftAttach.position = positionLeft;
             Vector3 localPositionLeft = leftAttach.localPosition;

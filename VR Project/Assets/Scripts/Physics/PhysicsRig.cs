@@ -52,31 +52,11 @@ public class PhysicsRig : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 jointPositionLeft;
-        jointPositionLeft.x = Mathf.Clamp(leftController.localPosition.x, playerHead.localPosition.x - 0.5f, playerHead.localPosition.x + 0.5f);
-        jointPositionLeft.y = Mathf.Clamp(leftController.localPosition.y, playerHead.localPosition.y - 0.5f, playerHead.localPosition.y + 0.5f);
-        jointPositionLeft.z = Mathf.Clamp(leftController.localPosition.z, playerHead.localPosition.z - 0.5f, playerHead.localPosition.z + 0.5f);
-        leftJoint.targetPosition = jointPositionLeft;
         leftJoint.targetRotation = leftController.localRotation;
+        leftJoint.targetPosition = leftController.localPosition;
 
-        Vector3 targetPositionLeft;
-        targetPositionLeft.x = Mathf.Clamp(leftJoint.transform.localPosition.x, playerHead.localPosition.x - 0.5f, playerHead.localPosition.x + 0.5f);
-        targetPositionLeft.y = Mathf.Clamp(leftJoint.transform.localPosition.y, playerHead.localPosition.y - 0.5f, playerHead.localPosition.y + 0.5f);
-        targetPositionLeft.z = Mathf.Clamp(leftJoint.transform.localPosition.z, playerHead.localPosition.z - 0.5f, playerHead.localPosition.z + 0.5f);
-        leftJoint.transform.localPosition = targetPositionLeft;
-
-        Vector3 jointPositionRight;
-        jointPositionRight.x = Mathf.Clamp(rightController.localPosition.x, playerHead.localPosition.x - 0.5f, playerHead.localPosition.x + 0.5f);
-        jointPositionRight.y = Mathf.Clamp(rightController.localPosition.y, playerHead.localPosition.y - 0.5f, playerHead.localPosition.y + 0.5f);
-        jointPositionRight.z = Mathf.Clamp(rightController.localPosition.z, playerHead.localPosition.z - 0.5f, playerHead.localPosition.z + 0.5f);
-        rightJoint.targetPosition = jointPositionRight;
+        rightJoint.targetPosition = rightController.localPosition;
         rightJoint.targetRotation = rightController.localRotation;
-
-        Vector3 targetPositionRight;
-        targetPositionRight.x = Mathf.Clamp(rightJoint.transform.localPosition.x, playerHead.localPosition.x -0.5f, playerHead.localPosition.x + 0.5f);
-        targetPositionRight.y = Mathf.Clamp(rightJoint.transform.localPosition.y, playerHead.localPosition.y - 0.5f, playerHead.localPosition.y + 0.5f);
-        targetPositionRight.z = Mathf.Clamp(rightJoint.transform.localPosition.z, playerHead.localPosition.z - 0.5f, playerHead.localPosition.z + 0.5f);
-        rightJoint.transform.localPosition = targetPositionRight;
 
         headJoint.targetPosition = headTarget.localPosition;
         headJoint.targetRotation = headTarget.localRotation;

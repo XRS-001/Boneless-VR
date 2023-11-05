@@ -114,7 +114,7 @@ public class GrabHandPose : MonoBehaviour
                 {
                     Vector3 direction = finalFingerPositions[i] - h.fingerBones[i].gameObject.transform.position;
                     RaycastHit hit;
-                    Physics.Raycast(h.fingerBones[i].gameObject.transform.position, direction, out hit, LayerMask.GetMask("Interactable"));
+                    Physics.Raycast(h.fingerBones[i].gameObject.transform.position, direction, out hit);
                     Vector3 point = hit.point;
                     float distance = Vector3.Distance(point, h.fingerBones[i].gameObject.transform.position);
                     if (distance > 0f)

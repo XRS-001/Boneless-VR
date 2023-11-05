@@ -134,8 +134,6 @@ public class ControllerInteractors : XRDirectInteractor
     {
         handPhysics.transform.position = attach.position;
         handPhysics.transform.rotation = attach.rotation;
-        newColliderParent = Instantiate(colliders[0].transform.parent.transform.parent.gameObject, colliders[0].transform.parent.transform.parent.transform.position, colliders[0].transform.parent.transform.parent.transform.rotation);
-        newColliderParent.transform.parent = objectGrabbing.transform;
         foreach (Collider collider in colliders)
         {
             collider.enabled = false;
@@ -148,6 +146,8 @@ public class ControllerInteractors : XRDirectInteractor
             }
         }
         yield return new WaitForSeconds(0.1f);
+        newColliderParent = Instantiate(colliders[0].transform.parent.transform.parent.gameObject, colliders[0].transform.parent.transform.parent.transform.position, colliders[0].transform.parent.transform.parent.transform.rotation);
+        newColliderParent.transform.parent = objectGrabbing.transform;
         if (objectGrabbing)
         {
             if (objectGrabbing.layer != 20)
