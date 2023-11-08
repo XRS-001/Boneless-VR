@@ -2,6 +2,7 @@ using RootMotion.Dynamics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -22,9 +23,16 @@ public class XRGrabDynamic : XRGrabInteractable
     public float collisionResistanceGrabbing;
     public float knockOutDistanceGrabbing;
 
-    public float collisionResistance;
-    public float knockOutDistance;
-
+    private float collisionResistance;
+    private float knockOutDistance;
+    private void Start()
+    {
+        if (puppet)
+        {
+            collisionResistance = puppet.collisionResistance.floatValue;
+            knockOutDistance = puppet.defaults.knockOutDistance;
+        }
+    }
     // Update is called once per frame
     void Update()
     {

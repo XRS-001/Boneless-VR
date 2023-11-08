@@ -7,12 +7,7 @@ public class NoiseOnCollision : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip impactAudio;
     private float volume;
-    private Rigidbody rb;
     private bool canMakeNoise;
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if(canMakeNoise)
@@ -22,14 +17,11 @@ public class NoiseOnCollision : MonoBehaviour
             {
                 audioSource = gameObject.AddComponent<AudioSource>();
             }
-            audioSource.pitch = Random.Range(0.8f, 1.0f);
+            volume = Mathf.Clamp(collision.relativeVelocity.magnitude, 0, 0.3f);
+            audioSource.pitch = Random.Range(0.6f, 0.8f);
             audioSource.PlayOneShot(impactAudio, volume);
             StartCoroutine(Delay());
         }
-    }
-    private void Update()
-    {
-        volume = Mathf.Clamp(rb.velocity.magnitude / 2, 0, 0.5f);
     }
     IEnumerator Delay()
     {

@@ -13,11 +13,22 @@ public class JointCollision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.relativeVelocity.magnitude > velocityThreshold && canCollide && collision.gameObject.layer != 14 && collision.gameObject.layer != 15 && collision.gameObject.layer != 16 && collision.gameObject.layer != 15 && collision.gameObject.layer != 12)
+        if(collision.relativeVelocity.magnitude > velocityThreshold && canCollide)
         {
-            Debug.Log(collision.gameObject.name);
-            npc.DealDamage(collision.relativeVelocity.magnitude / 2);
-            StartCoroutine(Delay());
+            if(collision.gameObject.layer != 14 && collision.gameObject.layer != 15 && collision.gameObject.layer != 16 && collision.gameObject.layer != 20 && collision.gameObject.layer != 8 && collision.gameObject.layer != 9)
+            {
+                npc.DealDamage(collision.relativeVelocity.magnitude / 2);
+                StartCoroutine(Delay());
+            }
+        }
+        if (collision.gameObject.layer == 8 || collision.gameObject.layer == 9)
+        {
+            if(collision.rigidbody.velocity.magnitude > velocityThreshold * 2)
+            {
+                Debug.Log(collision.rigidbody.velocity.magnitude);
+                npc.DealDamage(collision.relativeVelocity.magnitude / 2);
+                StartCoroutine(Delay());
+            }
         }
     }
     public IEnumerator Delay()

@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &908672717731139146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7466392187308245463}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7466392187308245463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908672717731139146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8254259329853411884}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5780488264689596768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5014731807257625950}
+  m_Layer: 20
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5014731807257625950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5780488264689596768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8254259330607045989}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8254259329184630997
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +778,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259329458642319
@@ -966,10 +1028,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259329458642312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,7 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
-  velocityThreshold: 11
+  velocityThreshold: 10
 --- !u!1 &8254259329501278833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1074,6 @@ GameObject:
   - component: {fileID: 8254259329501278826}
   - component: {fileID: 8254259329501278837}
   - component: {fileID: 8254259329501278836}
-  - component: {fileID: 1347317919}
   m_Layer: 20
   m_Name: mixamorig:LeftLeg
   m_TagString: Pierceable
@@ -1048,12 +1107,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259329501278833}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259329501278827
@@ -1303,10 +1362,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259329501278836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,20 +1380,6 @@ MonoBehaviour:
   dynamic: 0
   rightHandPose: {fileID: 8254259330136546394}
   leftHandPose: {fileID: 8254259331225349128}
---- !u!114 &1347317919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254259329501278833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe1ab9ddd8531a499571cf15023776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 192707948}
-  velocityThreshold: 11
 --- !u!1 &8254259329502609923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1774,6 @@ GameObject:
   - component: {fileID: 8254259329654733658}
   - component: {fileID: 8254259329654733669}
   - component: {fileID: 8254259329654733668}
-  - component: {fileID: 1249502514}
   m_Layer: 20
   m_Name: mixamorig:RightHand
   m_TagString: Pierceable
@@ -1747,7 +1789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259329654733670}
   m_LocalRotation: {x: 0.010404037, y: 0.029275488, z: -0.052188147, w: 0.99815387}
-  m_LocalPosition: {x: 0.000000105431106, y: 0.28483483, z: -0.00000008003259}
+  m_LocalPosition: {x: 0.00000010543107, y: 0.284835, z: -0.0000000800316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1764,12 +1806,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259329654733670}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259329654733659
@@ -2019,10 +2061,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259329654733668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2039,20 +2079,6 @@ MonoBehaviour:
   dynamic: 0
   rightHandPose: {fileID: 8254259330136546394}
   leftHandPose: {fileID: 8254259331225349128}
---- !u!114 &1249502514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254259329654733670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe1ab9ddd8531a499571cf15023776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 192707948}
-  velocityThreshold: 11
 --- !u!1 &8254259329678370106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,29 +2535,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1efacf79ab4214e85aeebfd07064c20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puppetMaster: {fileID: 8254259330607045978}
+  puppetMaster: {fileID: 0}
   deactivated: 0
   masterProps:
-    normalMode: 1
+    normalMode: 0
     mappingBlendSpeed: 15
-    activateOnStaticCollisions: 0
+    activateOnStaticCollisions: 1
     activateOnImpulse: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 4096
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 655351
   collisionThreshold: 0
   collisionResistance:
     mode: 0
-    floatValue: 500
+    floatValue: 200000
     curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 56.68847
+        value: 800.5782
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2539,8 +2565,8 @@ MonoBehaviour:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.1236973
-        value: 140.30418
+        time: 4.976678
+        value: 1200.3759
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2568,7 +2594,7 @@ MonoBehaviour:
     disableColliders: 0
     regainPinSpeed: 1
     collisionResistance: 1
-    knockOutDistance: 1000
+    knockOutDistance: 400000
     puppetMaterial: {fileID: 13400000, guid: a3fd0ffcf0d0a384ba3568687a96ab8e, type: 2}
     unpinnedMaterial: {fileID: 13400000, guid: d4563de398e2c4412a95f4317ddf4b1a, type: 2}
   groupOverrides:
@@ -2587,13 +2613,13 @@ MonoBehaviour:
       knockOutDistance: 0.6
       puppetMaterial: {fileID: 0}
       unpinnedMaterial: {fileID: 0}
-  - name: Arm, Hand, Prop
-    groups: 030000000400000008000000
+  - name: Arm, Hand
+    groups: 0300000004000000
     props:
-      unpinParents: 0.5
+      unpinParents: 0.4
       unpinChildren: 1
       unpinGroup: 0
-      minMappingWeight: 0
+      minMappingWeight: 1
       maxMappingWeight: 1
       minPinWeight: 0
       disableColliders: 0
@@ -2605,14 +2631,14 @@ MonoBehaviour:
   - name: Hips, Leg
     groups: 0000000005000000
     props:
-      unpinParents: 0.9
+      unpinParents: 0.8
       unpinChildren: 1
       unpinGroup: 0
       minMappingWeight: 0
       maxMappingWeight: 1
       minPinWeight: 0
       disableColliders: 0
-      regainPinSpeed: 1.5
+      regainPinSpeed: 2
       collisionResistance: 1
       knockOutDistance: 0.6
       puppetMaterial: {fileID: 0}
@@ -2626,10 +2652,10 @@ MonoBehaviour:
       minMappingWeight: 0
       maxMappingWeight: 1
       minPinWeight: 0
-      disableColliders: 0
+      disableColliders: 1
       regainPinSpeed: 2
-      collisionResistance: 1
-      knockOutDistance: 0.6
+      collisionResistance: 0.8
+      knockOutDistance: 1
       puppetMaterial: {fileID: 0}
       unpinnedMaterial: {fileID: 0}
   - name: Prop
@@ -2643,16 +2669,16 @@ MonoBehaviour:
       minPinWeight: 0
       disableColliders: 0
       regainPinSpeed: 4
-      collisionResistance: 1
+      collisionResistance: 2
       knockOutDistance: 100
       puppetMaterial: {fileID: 0}
       unpinnedMaterial: {fileID: 0}
-  knockOutDistance: 1
-  unpinnedMuscleWeightMlp: 1
-  maxRigidbodyVelocity: 1
+  knockOutDistance: 0.7
+  unpinnedMuscleWeightMlp: 0.35
+  maxRigidbodyVelocity: 7
   pinWeightThreshold: 1
   unpinnedMuscleKnockout: 1
-  dropProps: 0
+  dropProps: 1
   canGetUp: 1
   getUpDelay: 1
   blendToAnimationTime: 0.3
@@ -2686,7 +2712,11 @@ MonoBehaviour:
         m_Calls: []
   onLoseBalance:
     switchToBehaviour: 
-    animations: []
+    animations:
+    - animationState: Idle
+      crossfadeTime: 0.4
+      layer: 0
+      resetNormalizedTime: 0
     unityEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -2834,6 +2864,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8254259329829294969}
+  - {fileID: 7466392187308245463}
   m_Father: {fileID: 8254259330444959606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2900,7 +2931,6 @@ GameObject:
   - component: {fileID: 8254259329880721853}
   - component: {fileID: 8254259329880721852}
   - component: {fileID: 8254259329880721855}
-  - component: {fileID: 893545573}
   m_Layer: 20
   m_Name: mixamorig:LeftHand
   m_TagString: Pierceable
@@ -2933,12 +2963,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259329880721849}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259329880721842
@@ -3188,10 +3218,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259329880721855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3208,20 +3236,6 @@ MonoBehaviour:
   dynamic: 0
   rightHandPose: {fileID: 8254259330136546394}
   leftHandPose: {fileID: 8254259331225349128}
---- !u!114 &893545573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254259329880721849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe1ab9ddd8531a499571cf15023776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 192707948}
-  velocityThreshold: 11
 --- !u!1 &8254259329882105735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3971,12 +3985,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259330158048501}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!65 &8254259330158048495
@@ -4225,10 +4239,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330158048488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4258,7 +4270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
-  velocityThreshold: 11
+  velocityThreshold: 6
 --- !u!1 &8254259330194699006
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,12 +4638,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259330274331672}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259330274331666
@@ -4881,10 +4893,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330274331679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4914,7 +4924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
-  velocityThreshold: 11
+  velocityThreshold: 6
 --- !u!1 &8254259330303027860
 GameObject:
   m_ObjectHideFlags: 0
@@ -5021,7 +5031,6 @@ GameObject:
   - component: {fileID: 8254259330337601452}
   - component: {fileID: 8254259330337601455}
   - component: {fileID: 8254259330337601454}
-  - component: {fileID: 1914900292}
   m_Layer: 20
   m_Name: mixamorig:LeftFoot
   m_TagString: Pierceable
@@ -5055,12 +5064,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259330337601448}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!153 &8254259330337601452
@@ -5296,10 +5305,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330337601454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5316,20 +5323,6 @@ MonoBehaviour:
   dynamic: 0
   rightHandPose: {fileID: 8254259330136546394}
   leftHandPose: {fileID: 8254259331225349128}
---- !u!114 &1914900292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254259330337601448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe1ab9ddd8531a499571cf15023776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 192707948}
-  velocityThreshold: 11
 --- !u!1 &8254259330363329652
 GameObject:
   m_ObjectHideFlags: 0
@@ -5441,12 +5434,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259330404578151}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259330404578137
@@ -5696,10 +5689,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330404578138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5729,7 +5720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
-  velocityThreshold: 11
+  velocityThreshold: 6
 --- !u!1 &8254259330410232110
 GameObject:
   m_ObjectHideFlags: 0
@@ -5950,7 +5941,7 @@ MonoBehaviour:
   walkPointRange: 5
   timeBetweenAttacks: 2
   sightRange: 5
-  attackRange: 0.75
+  attackRange: 0.8
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &8254259330476403386
@@ -6224,12 +6215,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259330573061686}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!65 &8254259330573061672
@@ -6478,10 +6469,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330573061685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6511,7 +6500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
-  velocityThreshold: 11
+  velocityThreshold: 6
 --- !u!1 &8254259330580611006
 GameObject:
   m_ObjectHideFlags: 0
@@ -6599,12 +6588,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259330607045988}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8254259330158048490}
+  - {fileID: 5014731807257625950}
   m_Father: {fileID: 8254259330444959606}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6620,7 +6610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c86ba130e5a5458a98e3b482192a6dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  humanoidConfig: {fileID: 11400000, guid: ec93c877e6f836940b0b05babb99d713, type: 2}
+  humanoidConfig: {fileID: 0}
   targetRoot: {fileID: 8254259331026007081}
   state: 0
   stateSettings:
@@ -6633,19 +6623,19 @@ MonoBehaviour:
     enableInternalCollisionsOnKill: 1
   mode: 0
   blendTime: 0.1
-  fixTargetTransforms: 1
-  solverIterationCount: 6
-  visualizeTargetPose: 1
+  fixTargetTransforms: 0
+  solverIterationCount: 1
+  visualizeTargetPose: 0
   mappingWeight: 1
-  pinWeight: 0.9
+  pinWeight: 1
   muscleWeight: 1
-  muscleSpring: 100
+  muscleSpring: 10000
   muscleDamper: 0
-  pinPow: 4
+  pinPow: 2
   pinDistanceFalloff: 5
   angularPinning: 0
-  updateJointAnchors: 1
-  supportTranslationAnimation: 0
+  updateJointAnchors: 0
+  supportTranslationAnimation: 1
   angularLimits: 0
   internalCollisions: 1
   muscles:
@@ -7161,7 +7151,6 @@ GameObject:
   - component: {fileID: 8254259330635330816}
   - component: {fileID: 8254259330635330819}
   - component: {fileID: 8254259330635330818}
-  - component: {fileID: 686522424}
   m_Layer: 20
   m_Name: mixamorig:RightFoot
   m_TagString: Pierceable
@@ -7195,12 +7184,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259330635330828}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!153 &8254259330635330816
@@ -7436,10 +7425,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330635330818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7456,20 +7443,6 @@ MonoBehaviour:
   dynamic: 0
   rightHandPose: {fileID: 8254259330136546394}
   leftHandPose: {fileID: 8254259331225349128}
---- !u!114 &686522424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254259330635330828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe1ab9ddd8531a499571cf15023776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 192707948}
-  velocityThreshold: 11
 --- !u!1 &8254259330640132348
 GameObject:
   m_ObjectHideFlags: 0
@@ -7771,7 +7744,6 @@ GameObject:
   - component: {fileID: 8254259330778261789}
   - component: {fileID: 8254259330778261788}
   - component: {fileID: 8254259330778261791}
-  - component: {fileID: 304150983}
   m_Layer: 20
   m_Name: mixamorig:RightForeArm
   m_TagString: Pierceable
@@ -7806,12 +7778,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259330778261784}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259330778261778
@@ -8061,10 +8033,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330778261791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8081,20 +8051,6 @@ MonoBehaviour:
   dynamic: 0
   rightHandPose: {fileID: 8254259330136546394}
   leftHandPose: {fileID: 8254259331225349128}
---- !u!114 &304150983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254259330778261784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe1ab9ddd8531a499571cf15023776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 192707948}
-  velocityThreshold: 11
 --- !u!1 &8254259330783181809
 GameObject:
   m_ObjectHideFlags: 0
@@ -8820,7 +8776,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259331026007080}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9092,12 +9048,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259331116584529}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259331116584523
@@ -9347,10 +9303,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259331116584532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9380,7 +9334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
-  velocityThreshold: 11
+  velocityThreshold: 6
 --- !u!1 &8254259331139330625
 GameObject:
   m_ObjectHideFlags: 0
@@ -9457,7 +9411,6 @@ GameObject:
   - component: {fileID: 8254259331143425840}
   - component: {fileID: 8254259331143425843}
   - component: {fileID: 8254259331143425842}
-  - component: {fileID: 456069233}
   m_Layer: 20
   m_Name: mixamorig:LeftForeArm
   m_TagString: Pierceable
@@ -9491,12 +9444,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259331143425855}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259331143425841
@@ -9746,10 +9699,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259331143425842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9766,20 +9717,6 @@ MonoBehaviour:
   dynamic: 0
   rightHandPose: {fileID: 8254259330136546394}
   leftHandPose: {fileID: 8254259331225349128}
---- !u!114 &456069233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254259331143425855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe1ab9ddd8531a499571cf15023776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 192707948}
-  velocityThreshold: 11
 --- !u!1 &8254259331154752707
 GameObject:
   m_ObjectHideFlags: 0
@@ -9859,12 +9796,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259331176301269}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259331176301263
@@ -10114,10 +10051,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259331176301256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10147,7 +10082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
-  velocityThreshold: 11
+  velocityThreshold: 6
 --- !u!1 &8254259331192321404
 GameObject:
   m_ObjectHideFlags: 0
@@ -10194,7 +10129,6 @@ GameObject:
   - component: {fileID: 8254259331196086085}
   - component: {fileID: 8254259331196086084}
   - component: {fileID: 8254259331196086087}
-  - component: {fileID: 928771151}
   m_Layer: 20
   m_Name: mixamorig:RightLeg
   m_TagString: Pierceable
@@ -10228,12 +10162,12 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8254259331196086080}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 30
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!136 &8254259331196084410
@@ -10483,10 +10417,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
   puppet: {fileID: 8254259329829294974}
-  collisionResistanceGrabbing: 0
-  knockOutDistanceGrabbing: 0.0001
-  collisionResistance: 500
-  knockOutDistance: 1000
+  collisionResistanceGrabbing: 10000
+  knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259331196086087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10503,20 +10435,6 @@ MonoBehaviour:
   dynamic: 0
   rightHandPose: {fileID: 8254259330136546394}
   leftHandPose: {fileID: 8254259331225349128}
---- !u!114 &928771151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8254259331196086080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe1ab9ddd8531a499571cf15023776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npc: {fileID: 192707948}
-  velocityThreshold: 11
 --- !u!1 &8254259331211405852
 GameObject:
   m_ObjectHideFlags: 0

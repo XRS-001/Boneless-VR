@@ -1,6 +1,7 @@
 using RootMotion.Dynamics;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -57,32 +58,24 @@ public class NPC : MonoBehaviour
         animator.SetBool("Walking", true);
         agent.speed = speed;
         agent.SetDestination(player.position);
+
+        agent.transform.LookAt(player.position);
     }
     private void AttackPlayer()
     {
         animator.SetBool("Attacking", true);
         agent.SetDestination(agent.transform.position);
 
-        agent.transform.LookAt(player);
-
+        agent.transform.LookAt(player.position);
         if(!alreadyAttacked)
         {
-            int punchAnim = Random.Range(1, 5);
+            int punchAnim = Random.Range(1, 3);
             switch (punchAnim)
             {
                 case 1:
                     animator.SetTrigger("Punch");
                     break;
                 case 2:
-                    animator.SetTrigger("LowJabLeft");
-                    break;
-                case 3:
-                    animator.SetTrigger("LowJabRight");
-                    break;
-                case 4:
-                    animator.SetTrigger("RightHook");
-                    break;
-                case 5:
                     animator.SetTrigger("RightJab");
                     break;
             }

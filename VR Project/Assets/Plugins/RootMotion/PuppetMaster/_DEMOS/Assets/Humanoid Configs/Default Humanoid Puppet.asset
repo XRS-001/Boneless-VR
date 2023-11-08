@@ -29,7 +29,7 @@ MonoBehaviour:
   mappingWeight: 1
   pinWeight: 1
   muscleWeight: 1
-  muscleSpring: 100
+  muscleSpring: 10000
   muscleDamper: 0
   pinPow: 2
   pinDistanceFalloff: 5
@@ -37,7 +37,7 @@ MonoBehaviour:
   updateJointAnchors: 0
   supportTranslationAnimation: 1
   angularLimits: 0
-  internalCollisions: 0
+  internalCollisions: 1
   muscles:
   - name: Hips
     bone: 0
