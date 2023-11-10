@@ -75,10 +75,12 @@ public class KnifeSlice : MonoBehaviour
         if(target.layer == 20)
         {
             target.transform.GetComponent<JointCollision>().npc.DealDamage(damage * velocity);
+            audioSource.Stop();
             audioSource.PlayOneShot(sliceSound);
         }
         else
         {
+            audioSource.Stop();
             audioSource.PlayOneShot(sliceSound);
             Vector3 velocity = velocityEstimator.GetVelocityEstimate();
             Vector3 planeNormal = Vector3.Cross(endSlicePoint.position - startSlicePoint.position, velocity);

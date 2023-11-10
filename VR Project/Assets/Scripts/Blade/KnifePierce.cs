@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,11 +38,24 @@ public class KnifePierce : MonoBehaviour
                         collision.transform.GetComponent<JointCollision>().npc.DealDamage(damage);
                     }
                     audioSource.pitch = 1f;
+                    audioSource.Stop();
                     audioSource.PlayOneShot(pierceSound);
 
                     stabbedCollider = collision.collider;
-                    Physics.IgnoreCollision(stabbedCollider, knifeCollider);
-                    Physics.IgnoreCollision(stabbedCollider, bladeTipCollider);
+                    if (!collision.transform.GetComponent<JointCollision>())
+                    {
+                        Physics.IgnoreCollision(stabbedCollider, knifeCollider);
+                        Physics.IgnoreCollision(stabbedCollider, bladeTipCollider);
+                    }
+                    else
+                    {
+                        foreach (Collider collider in collision.transform.GetComponent<JointCollision>().collidersOnNPC)
+                        {
+                            Physics.IgnoreCollision(collider, knifeCollider);
+                            Physics.IgnoreCollision(collider, bladeTipCollider);
+                        }
+                    }
+                    
                     joint = gameObject.AddComponent<ConfigurableJoint>();
                     joint.axis = new Vector3(0, 90, -1);
 
@@ -73,26 +87,37 @@ public class KnifePierce : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Pierceable") && isPiercing)
+        if (collision.gameObject.CompareTag("Pierceable"))
         {
-            audioSource.pitch = 1.5f;
-            audioSource.PlayOneShot(pierceSound);
-            Destroy(joint);
-            StartCoroutine(Delay());
+            if (joint)
+            {
+                if (!collision.transform.GetComponent<JointCollision>())
+                {
+                    Physics.IgnoreCollision(stabbedCollider, knifeCollider, false);
+                    Physics.IgnoreCollision(stabbedCollider, bladeTipCollider, false);
+                }
+                else
+                {
+                    foreach (Collider collider in collision.transform.GetComponent<JointCollision>().collidersOnNPC)
+                    {
+                        Physics.IgnoreCollision(collider, knifeCollider, false);
+                        Physics.IgnoreCollision(collider, bladeTipCollider, false);
+                    }
+                }
+
+                stabbedCollider = null;
+                StartCoroutine(Delay());
+                audioSource.pitch = 1.5f;
+                audioSource.Stop();
+                audioSource.PlayOneShot(pierceSound);
+                Destroy(joint);
+            }
         }
     }
-    public IEnumerator Delay()
+    IEnumerator Delay()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
 
-        try
-        {
-            Physics.IgnoreCollision(stabbedCollider, knifeCollider, false);
-            Physics.IgnoreCollision(stabbedCollider, bladeTipCollider, false);
-        }
-        catch { }
-
-        stabbedCollider = null;
         isPiercing = false;
     }
 }

@@ -50,6 +50,10 @@ public class ControllerInteractors : XRDirectInteractor
         {
             rb = args.interactableObject.transform.GetComponent<Rigidbody>();
             weight = rb.mass;
+            if (args.interactableObject.transform.gameObject.layer == 20)
+            {
+                weight *= 3;
+            }
             handPhysics.GetComponent<Rigidbody>().mass = rb.mass;
             if (weight > 5)
             {

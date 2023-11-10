@@ -19,7 +19,9 @@ public class XRGrabDynamic : XRGrabInteractable
     public Transform rightPresence;
     public float maxAttachDistance;
     [Header("For NPC's Only:")]
-    public BehaviourPuppet puppet;
+
+    public PuppetMaster puppetMaster;
+    public BehaviourPuppet puppetFall;
     public float collisionResistanceGrabbing;
     public float knockOutDistanceGrabbing;
 
@@ -27,10 +29,10 @@ public class XRGrabDynamic : XRGrabInteractable
     private float knockOutDistance;
     private void Start()
     {
-        if (puppet)
+        if (puppetFall)
         {
-            collisionResistance = puppet.collisionResistance.floatValue;
-            knockOutDistance = puppet.defaults.knockOutDistance;
+            collisionResistance = puppetFall.collisionResistance.floatValue;
+            knockOutDistance = puppetFall.defaults.knockOutDistance;
         }
     }
     // Update is called once per frame
@@ -94,11 +96,13 @@ public class XRGrabDynamic : XRGrabInteractable
             leftHandGrabbing = true;
         }
         base.OnSelectEntered(args);
-        if (puppet)
+        if (puppetFall)
         {
-            puppet.collisionResistance.floatValue = collisionResistanceGrabbing;
-            puppet.defaults.knockOutDistance = knockOutDistanceGrabbing;
-            puppet.canGetUp = false;
+            puppetMaster.angularLimits = true;
+            puppetMaster.muscleSpring /= 20;
+            puppetFall.collisionResistance.floatValue = collisionResistanceGrabbing;
+            puppetFall.defaults.knockOutDistance = knockOutDistanceGrabbing;
+            puppetFall.canGetUp = false;
         }
     }
     protected override void OnSelectEntering(SelectEnterEventArgs args)
@@ -132,11 +136,13 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             leftHandGrabbing = false;
         }
-        if (puppet && !leftController.isGrabbing && !rightController.isGrabbing)
+        if (puppetFall && !leftController.isGrabbing && !rightController.isGrabbing)
         {
-            puppet.collisionResistance.floatValue = collisionResistance;
-            puppet.defaults.knockOutDistance = knockOutDistance;
-            puppet.canGetUp = true;
+            puppetMaster.angularLimits = false;
+            puppetMaster.muscleSpring *= 20;
+            puppetFall.collisionResistance.floatValue = collisionResistance;
+            puppetFall.defaults.knockOutDistance = knockOutDistance;
+            puppetFall.canGetUp = true;
         }
         base.OnSelectExited(args);
         if (leftController.isGrabbing || rightController.isGrabbing)

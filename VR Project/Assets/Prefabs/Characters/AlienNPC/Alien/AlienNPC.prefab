@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &908672717731139146
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7466392187308245463}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7466392187308245463
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908672717731139146}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8254259329853411884}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5780488264689596768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +996,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259329458642312
@@ -1060,6 +1030,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
   velocityThreshold: 10
+  damageOnCollision: 1
+  collidersOnNPC: []
 --- !u!1 &8254259329501278833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1333,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259329501278836
@@ -2060,7 +2033,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259329654733668
@@ -2864,7 +2838,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8254259329829294969}
-  - {fileID: 7466392187308245463}
   m_Father: {fileID: 8254259330444959606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3217,7 +3190,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259329880721855
@@ -4238,7 +4212,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330158048488
@@ -4271,6 +4246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
   velocityThreshold: 6
+  damageOnCollision: 1
+  collidersOnNPC: []
 --- !u!1 &8254259330194699006
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,7 +4869,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330274331679
@@ -4925,6 +4903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
   velocityThreshold: 6
+  damageOnCollision: 1
+  collidersOnNPC: []
 --- !u!1 &8254259330303027860
 GameObject:
   m_ObjectHideFlags: 0
@@ -5304,7 +5284,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330337601454
@@ -5688,7 +5669,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330404578138
@@ -5721,6 +5703,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
   velocityThreshold: 6
+  damageOnCollision: 1
+  collidersOnNPC: []
 --- !u!1 &8254259330410232110
 GameObject:
   m_ObjectHideFlags: 0
@@ -6468,7 +6452,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330573061685
@@ -6501,6 +6486,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
   velocityThreshold: 6
+  damageOnCollision: 1
+  collidersOnNPC: []
 --- !u!1 &8254259330580611006
 GameObject:
   m_ObjectHideFlags: 0
@@ -7424,7 +7411,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330635330818
@@ -8032,7 +8020,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259330778261791
@@ -9302,7 +9291,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259331116584532
@@ -9335,6 +9325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
   velocityThreshold: 6
+  damageOnCollision: 1
+  collidersOnNPC: []
 --- !u!1 &8254259331139330625
 GameObject:
   m_ObjectHideFlags: 0
@@ -9698,7 +9690,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259331143425842
@@ -10050,7 +10043,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259331176301256
@@ -10083,6 +10077,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc: {fileID: 192707948}
   velocityThreshold: 6
+  damageOnCollision: 1
+  collidersOnNPC: []
 --- !u!1 &8254259331192321404
 GameObject:
   m_ObjectHideFlags: 0
@@ -10416,7 +10412,8 @@ MonoBehaviour:
   leftPresence: {fileID: 0}
   rightPresence: {fileID: 0}
   maxAttachDistance: 1
-  puppet: {fileID: 8254259329829294974}
+  puppetMaster: {fileID: 0}
+  puppetFall: {fileID: 0}
   collisionResistanceGrabbing: 10000
   knockOutDistanceGrabbing: 0.01
 --- !u!114 &8254259331196086087

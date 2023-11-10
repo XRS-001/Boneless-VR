@@ -91,7 +91,7 @@ public class ContinuousMovementPhysics : MonoBehaviour
         foreach(CapsuleCollider capsuleLeft in leftFootDetection)
         {
             Vector3 start = capsuleLeft.transform.TransformPoint(capsuleLeft.center);
-            float rayLength = capsuleLeft.height / 2 - capsuleLeft.radius + 0.1f;
+            float rayLength = capsuleLeft.height / 2 - capsuleLeft.radius + 0.2f;
 
             if (Physics.SphereCast(start, capsuleLeft.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer))
             {
@@ -101,7 +101,7 @@ public class ContinuousMovementPhysics : MonoBehaviour
         foreach (CapsuleCollider capsuleRight in rightFootDetection)
         {
             Vector3 start = capsuleRight.transform.TransformPoint(capsuleRight.center);
-            float rayLength = capsuleRight.height / 2 - capsuleRight.radius + 0.1f;
+            float rayLength = capsuleRight.height / 2 - capsuleRight.radius + 0.2f;
 
             if (Physics.SphereCast(start, capsuleRight.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer))
             {
