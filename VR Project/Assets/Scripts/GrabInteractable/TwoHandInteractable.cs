@@ -111,13 +111,13 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         {
             if (rightHandGrabbing)
             {
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.position = leftAttach.position;
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.rotation = leftAttach.rotation;
+                secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.position = leftAttach.position;
+                secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = leftAttach.rotation;
             }
             if (leftHandGrabbing)
             {
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.position = rightAttach.position;
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.rotation = rightAttach.rotation;
+                secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.position = rightAttach.position;
+                secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = rightAttach.rotation;
             }
             if (snapToSecondHand)
                 interactor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation();

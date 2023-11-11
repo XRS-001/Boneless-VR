@@ -15,7 +15,7 @@ public class JointCollision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(damageOnCollision)
+        if(damageOnCollision && collision.gameObject.layer != 10)
         {
             if (collision.relativeVelocity.magnitude > velocityThreshold && canCollide)
             {
@@ -33,6 +33,10 @@ public class JointCollision : MonoBehaviour
                     StartCoroutine(Delay());
                 }
             }
+        }
+        if(collision.gameObject.layer == 10)
+        {
+            npc.DealDamage(collision.relativeVelocity.magnitude / 4);
         }
     }
     public IEnumerator Delay()

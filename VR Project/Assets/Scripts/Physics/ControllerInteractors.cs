@@ -54,26 +54,6 @@ public class ControllerInteractors : XRDirectInteractor
             {
                 weight *= 3;
             }
-            handPhysics.GetComponent<Rigidbody>().mass = rb.mass;
-            if (weight > 5)
-            {
-                JointDrive slerp = handPhysics.GetComponent<ConfigurableJoint>().slerpDrive;
-                slerp.positionSpring /= weight / 4;
-                slerp.positionDamper *= weight / 4;
-                handPhysics.GetComponent<ConfigurableJoint>().slerpDrive = slerp;
-            }
-            if (weight > 1)
-            {
-                JointDrive drive = handPhysics.GetComponent<ConfigurableJoint>().xDrive;
-                drive.positionDamper *= weight / 2;
-                JointDrive driveHorizontal = handPhysics.GetComponent<ConfigurableJoint>().xDrive;
-                driveHorizontal.positionDamper *= weight / 6;
-
-                handPhysics.GetComponent<ConfigurableJoint>().xDrive = driveHorizontal;
-                handPhysics.GetComponent<ConfigurableJoint>().yDrive = drive;
-                handPhysics.GetComponent<ConfigurableJoint>().zDrive = driveHorizontal;
-            }
-
             attach = args.interactableObject.transform.GetComponent<XRGrabInteractable>().attachTransform.transform;
             StartCoroutine(DelayEnter());
             configJoint = handPhysics.AddComponent<ConfigurableJoint>();
@@ -100,27 +80,10 @@ public class ControllerInteractors : XRDirectInteractor
     {
         handPresence.transform.position = transform.position;
         handPresence.transform.rotation = transform.rotation;
-        if (weight > 5)
-        {
-            JointDrive slerp = handPhysics.GetComponent<ConfigurableJoint>().slerpDrive;
-            slerp.positionSpring *= weight / 4;
-            slerp.positionDamper /= weight / 4;
-            handPhysics.GetComponent<ConfigurableJoint>().slerpDrive = slerp;
-        }
-        if (weight > 1)
-        {
-            JointDrive drive = handPhysics.GetComponent<ConfigurableJoint>().slerpDrive;
-            drive.positionDamper = 300;
-
-            handPhysics.GetComponent<ConfigurableJoint>().xDrive = drive;
-            handPhysics.GetComponent<ConfigurableJoint>().yDrive = drive;
-            handPhysics.GetComponent<ConfigurableJoint>().zDrive = drive;
-        }
         isGrabbing = false;
         weight = 0;
         StartCoroutine(DelayExit());
         Destroy(configJoint);
-        handPhysics.GetComponent<Rigidbody>().mass = 1;
         foreach (Collider collider in args.interactableObject.colliders)
         {
             Physics.IgnoreCollision(collider, forearmCollider, false);

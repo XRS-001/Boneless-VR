@@ -117,13 +117,13 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         {
             if (rightHandGrabbing)
             {
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.position = leftAttachSecond.position;
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.rotation = leftAttachSecond.rotation;
+                secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.position = leftAttachSecond.position;
+                secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = leftAttachSecond.rotation;
             }
             if (leftHandGrabbing)
             {
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.position = rightAttachSecond.position;
-                secondInteractor.GetComponent<ControllerInteractors>().handPresence.transform.rotation = rightAttachSecond.rotation;
+                secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.position = rightAttachSecond.position;
+                secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = rightAttachSecond.rotation;
             }
             if (snapToSecondHand)
                 selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation();

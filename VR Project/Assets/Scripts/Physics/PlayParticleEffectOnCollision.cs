@@ -11,6 +11,7 @@ public class PlayParticleEffectOnCollision : MonoBehaviour
         if(effect != null && canEffect)
         {
             effect.Play();
+            GetComponent<Rigidbody>().isKinematic = true;
         }
         canEffect = false;
     }

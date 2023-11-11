@@ -31,13 +31,13 @@ public class XRGrabInteractablePistol : XRGrabInteractable
         {
             if (rightHandGrabbing)
             {
-                secondInteractor.handPresence.transform.position = leftAttachSecond.position;
-                secondInteractor.handPresence.transform.rotation = leftAttachSecond.rotation;
+                secondInteractor.handPhysics.transform.position = leftAttachSecond.position;
+                secondInteractor.handPhysics.transform.rotation = leftAttachSecond.rotation;
             }
             if (leftHandGrabbing)
             {
-                secondInteractor.handPresence.transform.position = rightAttachSecond.position;
-                secondInteractor.handPresence.transform.rotation = rightAttachSecond.rotation;
+                secondInteractor.handPhysics.transform.position = rightAttachSecond.position;
+                secondInteractor.handPhysics.transform.rotation = rightAttachSecond.rotation;
             }
         }
         base.ProcessInteractable(updatePhase);

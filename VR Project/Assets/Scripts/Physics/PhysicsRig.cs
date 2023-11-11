@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static RootMotion.Dynamics.RagdollCreator.CreateJointParams;
 
 public class PhysicsRig : MonoBehaviour
 {
     public Rigidbody bodyRb;
-    public Transform leftController;
-    public Transform rightController;
+    public ControllerInteractors leftController;
+    public ControllerInteractors rightController;
     public Transform playerHead;
 
     public ConfigurableJoint rightJoint;
@@ -52,11 +51,27 @@ public class PhysicsRig : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        leftJoint.targetRotation = leftController.localRotation;
-        leftJoint.targetPosition = leftController.localPosition;
+        float weightLeft = Mathf.Clamp(1 / (leftController.weight * 2), float.NegativeInfinity, 1);
+        Vector3 leftTargetPosition = Vector3.Lerp(leftJoint.targetPosition, leftController.transform.localPosition, weightLeft);
+        if (leftController.weight != 0)
+        {
+            leftTargetPosition.y -= 0.00025f * leftController.weight;
+        }
+        leftJoint.targetPosition = leftTargetPosition;
 
-        rightJoint.targetPosition = rightController.localPosition;
-        rightJoint.targetRotation = rightController.localRotation;
+        Quaternion leftTargetRotation = Quaternion.Lerp(leftJoint.targetRotation, leftController.transform.localRotation, weightLeft);
+        leftJoint.targetRotation = leftTargetRotation;
+
+        float weightRight = Mathf.Clamp(1 / (rightController.weight * 2), float.NegativeInfinity, 1);
+        Vector3 rightTargetPosition = Vector3.Lerp(rightJoint.targetPosition, rightController.transform.localPosition, weightRight);
+        if(rightController.weight != 0)
+        {
+            rightTargetPosition.y -= 0.00025f * rightController.weight;
+        }
+        rightJoint.targetPosition = rightTargetPosition;
+
+        Quaternion rightTargetRotation = Quaternion.Lerp(rightJoint.targetRotation, rightController.transform.localRotation, weightRight);
+        rightJoint.targetRotation = rightTargetRotation;
 
         headJoint.targetPosition = headTarget.localPosition;
         headJoint.targetRotation = headTarget.localRotation;
