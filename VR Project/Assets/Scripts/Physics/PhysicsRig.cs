@@ -7,6 +7,8 @@ public class PhysicsRig : MonoBehaviour
     public Rigidbody bodyRb;
     public ControllerInteractors leftController;
     public ControllerInteractors rightController;
+    public Transform leftHand;
+    public Transform rightHand;
     public Transform playerHead;
 
     public ConfigurableJoint rightJoint;
@@ -57,6 +59,9 @@ public class PhysicsRig : MonoBehaviour
         {
             leftTargetPosition.y -= 0.00025f * leftController.weight;
         }
+        leftTargetPosition.x = Mathf.Clamp(leftTargetPosition.x, leftHand.localPosition.x - 0.1f, leftHand.localPosition.x + 0.1f);
+        leftTargetPosition.y = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.y - 0.1f, leftHand.localPosition.y + 0.1f);
+        leftTargetPosition.z = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.z - 0.1f, leftHand.localPosition.z + 0.1f);
         leftJoint.targetPosition = leftTargetPosition;
 
         Quaternion leftTargetRotation = Quaternion.Lerp(leftJoint.targetRotation, leftController.transform.localRotation, weightLeft);
@@ -68,6 +73,9 @@ public class PhysicsRig : MonoBehaviour
         {
             rightTargetPosition.y -= 0.00025f * rightController.weight;
         }
+        rightTargetPosition.x = Mathf.Clamp(rightTargetPosition.x, rightHand.localPosition.x - 0.1f, rightHand.localPosition.x + 0.1f);
+        rightTargetPosition.y = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.y - 0.1f, rightHand.localPosition.y + 0.1f);
+        rightTargetPosition.z = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.z - 0.1f, rightHand.localPosition.z + 0.1f);
         rightJoint.targetPosition = rightTargetPosition;
 
         Quaternion rightTargetRotation = Quaternion.Lerp(rightJoint.targetRotation, rightController.transform.localRotation, weightRight);
