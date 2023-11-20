@@ -46,7 +46,7 @@ Material:
     - _Cutoff: 0.5
     - _Depthpower: 0.5
     - _Emission: 2
-    - _FinalEmission: 20
+    - _FinalEmission: 40
     - _InvFade: 3
     - _Mobile: 0
     - _MotionAmount: 0

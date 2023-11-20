@@ -31,9 +31,8 @@ public class XRGrabInteractableKnife : XRGrabInteractableTwoAttach
     // Update is called once per frame
     void Update()
     {
-        float leftAngle = leftController.rotation.z - transform.rotation.z;
-        Debug.Log(leftAngle);
-        if (leftAngle > 0 || leftAngle > -0.7f)
+        float leftAngle = Mathf.DeltaAngle(leftController.transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x);
+        if (leftAngle < 0)
         {
             leftAlt = true;
         }
@@ -42,9 +41,8 @@ public class XRGrabInteractableKnife : XRGrabInteractableTwoAttach
             leftAlt = false;
         }
 
-        float rightAngle = rightController.rotation.z - transform.rotation.z;
-        Debug.Log(rightAngle);
-        if (rightAngle > 0 || rightAngle < -0.7f)
+        float rightAngle = Mathf.DeltaAngle(rightController.transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x);
+        if (rightAngle < 0)
         {
             rightAlt = true;
         }

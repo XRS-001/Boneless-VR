@@ -12,7 +12,10 @@ public class CheckCollision : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        colliding = true;
+        if(collision.gameObject.layer != 8 && collision.gameObject.layer != 9)
+        {
+            colliding = true;
+        }
     }
     IEnumerator Loop()
     {

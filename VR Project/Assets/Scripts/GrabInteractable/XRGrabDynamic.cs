@@ -40,11 +40,7 @@ public class XRGrabDynamic : XRGrabInteractable
     {
         if (!rightController.isGrabbing)
         {
-            Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
-            RaycastHit rightHit;
-            Physics.Raycast(rightPresence.position, directionRight, out rightHit);
-            Vector3 positionRight = rightHit.collider.ClosestPoint(rightPresence.position);
-            rightAttach.position = positionRight;
+            rightAttach.position = rightPresence.transform.position;
             Vector3 localPositionRight = rightAttach.localPosition;
             localPositionRight.x = Mathf.Clamp(localPositionRight.x, -maxAttachDistance, maxAttachDistance);
             localPositionRight.y = Mathf.Clamp(localPositionRight.y, -maxAttachDistance, maxAttachDistance);

@@ -112,7 +112,7 @@ public class ControllerInteractors : XRDirectInteractor
                 collider.enabled = false;
             }
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         newColliderParent = Instantiate(colliders[0].transform.parent.transform.parent.gameObject, colliders[0].transform.parent.transform.parent.transform.position, colliders[0].transform.parent.transform.parent.transform.rotation);
         newColliderParent.transform.parent = objectGrabbing.transform;
         if (objectGrabbing)
