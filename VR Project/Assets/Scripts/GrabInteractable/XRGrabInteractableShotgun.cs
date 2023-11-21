@@ -168,7 +168,7 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
         }
         shotgunFire.recoilSpeed *= 2;
         JointDrive zDrive = secondGrabPoint.GetComponent<ConfigurableJoint>().zDrive;
-        zDrive.positionDamper = 100;
+        zDrive.positionDamper = 1000;
         secondGrabPoint.GetComponent<ConfigurableJoint>().zDrive = zDrive;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
         foreach (Collider collider in colliders)

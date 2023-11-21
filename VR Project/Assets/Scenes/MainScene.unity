@@ -10182,6 +10182,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColliderGroup
       objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_EnablePreprocessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_XDrive.positionDamper
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 16000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_YDrive.positionDamper
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 16000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_ZDrive.positionDamper
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582334, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 16000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423027582335, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1209319423171881601, guid: 104465c841d389846ba2ebfb7e78df46,
         type: 3}
       propertyPath: m_Name
@@ -10245,6 +10295,56 @@ PrefabInstance:
     - target: {fileID: 1209319423696680142, guid: 104465c841d389846ba2ebfb7e78df46,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_EnablePreprocessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_XDrive.positionDamper
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 16000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_YDrive.positionDamper
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_YDrive.positionSpring
+      value: 16000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_ZDrive.positionDamper
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437092, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 16000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209319423879437093, guid: 104465c841d389846ba2ebfb7e78df46,
+        type: 3}
+      propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1209319424519762853, guid: 104465c841d389846ba2ebfb7e78df46,
@@ -10782,6 +10882,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.0158
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962892651948441450, guid: 6439631074c80a841a6dcbf4afee47a6,
+        type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962892651948441450, guid: 6439631074c80a841a6dcbf4afee47a6,
+        type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962892651948441451, guid: 6439631074c80a841a6dcbf4afee47a6,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3962892651948441455, guid: 6439631074c80a841a6dcbf4afee47a6,
         type: 3}
@@ -11644,6 +11759,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.3861
       objectReference: {fileID: 0}
+    - target: {fileID: 9060345405542824420, guid: d6cfc8bab2709fa438062d473dfcf371,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9060345405542824421, guid: d6cfc8bab2709fa438062d473dfcf371,
         type: 3}
       propertyPath: m_Anchor.y
@@ -11666,8 +11786,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060345405542824421, guid: d6cfc8bab2709fa438062d473dfcf371,
         type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060345405542824421, guid: d6cfc8bab2709fa438062d473dfcf371,
+        type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060345405542824421, guid: d6cfc8bab2709fa438062d473dfcf371,
+        type: 3}
       propertyPath: m_ZDrive.positionSpring
-      value: 300
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 9060345405542824423, guid: d6cfc8bab2709fa438062d473dfcf371,
         type: 3}
@@ -12579,10 +12709,25 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1589683537}
+    - target: {fileID: 5494168654782788314, guid: 9a179a28b044c774983567da2c22b451,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494168654782788315, guid: 9a179a28b044c774983567da2c22b451,
+        type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494168654782788315, guid: 9a179a28b044c774983567da2c22b451,
+        type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5494168654782788315, guid: 9a179a28b044c774983567da2c22b451,
         type: 3}
       propertyPath: m_ZDrive.positionSpring
-      value: 300
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 5494168655333523556, guid: 9a179a28b044c774983567da2c22b451,
         type: 3}
@@ -13038,6 +13183,26 @@ PrefabInstance:
         type: 3}
       propertyPath: onReachedEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622234935865612774, guid: 4e9f96edbde87264d9308625cea56f4c,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622234935865612775, guid: 4e9f96edbde87264d9308625cea56f4c,
+        type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622234935865612775, guid: 4e9f96edbde87264d9308625cea56f4c,
+        type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622234935865612775, guid: 4e9f96edbde87264d9308625cea56f4c,
+        type: 3}
+      propertyPath: m_ZDrive.positionDamper
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5622234935865612777, guid: 4e9f96edbde87264d9308625cea56f4c,
         type: 3}
@@ -13539,6 +13704,26 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1589683537}
+    - target: {fileID: 6069014663260255052, guid: bb4d7c5b5487fe94d97af12459e590b0,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069014663260255053, guid: bb4d7c5b5487fe94d97af12459e590b0,
+        type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069014663260255053, guid: bb4d7c5b5487fe94d97af12459e590b0,
+        type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069014663260255053, guid: bb4d7c5b5487fe94d97af12459e590b0,
+        type: 3}
+      propertyPath: m_ZDrive.positionSpring
+      value: 3000
+      objectReference: {fileID: 0}
     - target: {fileID: 6069014663296101949, guid: bb4d7c5b5487fe94d97af12459e590b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14036,8 +14221,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7836574120784983519, guid: a029be9fb29902648adcac3977360ea5,
         type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836574120784983519, guid: a029be9fb29902648adcac3977360ea5,
+        type: 3}
+      propertyPath: m_XDrive.positionSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836574120784983519, guid: a029be9fb29902648adcac3977360ea5,
+        type: 3}
       propertyPath: m_ZDrive.positionSpring
-      value: 1500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 7836574121327077888, guid: a029be9fb29902648adcac3977360ea5,
         type: 3}

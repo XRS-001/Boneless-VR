@@ -61,9 +61,9 @@ public class PhysicsRig : MonoBehaviour
     {
         float weightLeft = Mathf.Clamp(1 / (leftController.weight * 2), float.NegativeInfinity, 1);
         Vector3 leftTargetPosition = Vector3.Lerp(leftJoint.targetPosition, leftController.transform.localPosition, weightLeft);
-        leftTargetPosition.x = Mathf.Clamp(leftTargetPosition.x, leftHand.localPosition.x - 0.02f, leftHand.localPosition.x);
-        leftTargetPosition.y = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.y - 0.02f, leftHand.localPosition.y);
-        leftTargetPosition.z = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.z - 0.02f, leftHand.localPosition.z);
+        leftTargetPosition.x = Mathf.Clamp(leftTargetPosition.x, leftHand.localPosition.x, leftHand.localPosition.x);
+        leftTargetPosition.y = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.y, leftHand.localPosition.y);
+        leftTargetPosition.z = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.z, leftHand.localPosition.z);
         if (leftController.weight != 0)
         {
             Vector3 targetVelocity = leftJoint.targetVelocity;
@@ -91,9 +91,9 @@ public class PhysicsRig : MonoBehaviour
 
         float weightRight = Mathf.Clamp(1 / (rightController.weight * 2), float.NegativeInfinity, 1);
         Vector3 rightTargetPosition = Vector3.Lerp(rightJoint.targetPosition, rightController.transform.localPosition, weightRight);
-        rightTargetPosition.x = Mathf.Clamp(rightTargetPosition.x, rightHand.localPosition.x - 0.02f, rightHand.localPosition.x);
-        rightTargetPosition.y = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.y - 0.02f, rightHand.localPosition.y);
-        rightTargetPosition.z = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.z - 0.02f, rightHand.localPosition.z);
+        rightTargetPosition.x = Mathf.Clamp(rightTargetPosition.x, rightHand.localPosition.x, rightHand.localPosition.x);
+        rightTargetPosition.y = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.y, rightHand.localPosition.y);
+        rightTargetPosition.z = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.z, rightHand.localPosition.z);
         if (rightController.weight != 0)
         {
             Vector3 targetVelocity = rightJoint.targetVelocity;

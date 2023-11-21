@@ -216,7 +216,7 @@ public class RifleFire : MonoBehaviour
                 spawnedCasing.transform.rotation = casingEjectPosition.rotation;
 
                 Rigidbody casingRb = spawnedCasing.GetComponent<Rigidbody>();
-                casingRb.AddForce(casingEjectPosition.right * 10000 * Time.deltaTime);
+                casingRb.AddForce(casingEjectPosition.right * 1000 * Time.deltaTime);
                 Destroy(spawnedCasing, 10);
                 ammoCapacity--;
             }
