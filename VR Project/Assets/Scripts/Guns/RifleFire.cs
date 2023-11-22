@@ -26,6 +26,7 @@ public class RifleFire : MonoBehaviour
     public int ammoCapacity;
     private bool isInGun;
     public Transform bulletFirePosition;
+    public Transform recoilAngle;
     public Transform casingEjectPosition;
     public GameObject magazine;
     public string magazineName;
@@ -80,10 +81,10 @@ public class RifleFire : MonoBehaviour
             Physics.IgnoreCollision(spawnedBullet.GetComponent<Collider>(), recoilBullet.GetComponent<Collider>());
 
             Rigidbody bulletRb = spawnedBullet.GetComponent<Rigidbody>();
-            bulletRb.AddForce(-bulletFirePosition.up * bulletSpeed * Time.deltaTime);
+            bulletRb.AddForce(bulletFirePosition.forward * bulletSpeed * Time.deltaTime);
 
             Rigidbody recoilRb = recoilBullet.GetComponent<Rigidbody>();
-            recoilRb.AddForce(bulletFirePosition.up * recoilSpeed);
+            recoilRb.AddForce(recoilAngle.forward * recoilSpeed);
 
             Destroy(recoilBullet, 1);
             Destroy(spawnedBullet, 1);

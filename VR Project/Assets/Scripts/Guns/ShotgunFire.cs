@@ -19,6 +19,7 @@ public class ShotgunFire : MonoBehaviour
     public int maxCapacity;
     public int ammoCapacity;
     public Transform[] bulletFirePositions;
+    public Transform recoilAngle;
     public Transform casingEjectPosition;
     public string shellName;
     public GameObject animatedShell;
@@ -64,7 +65,7 @@ public class ShotgunFire : MonoBehaviour
             fireParticles.Play();
 
             Rigidbody recoilRb = recoilBullet.GetComponent<Rigidbody>();
-            recoilRb.AddForce(bulletFirePositions[0].up * recoilSpeed);
+            recoilRb.AddForce(recoilAngle.forward * recoilSpeed);
 
             Destroy(recoilBullet, 1);
 
