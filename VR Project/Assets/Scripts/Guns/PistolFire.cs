@@ -45,6 +45,7 @@ public class PistolFire : MonoBehaviour
     private float timeSinceLastShot = 0f;
     private bool triggerReleased = true;
     public bool slideRetracted = true;
+    private bool gunFired = false;
     private void Start()
     {
         slideRetracted = true;
@@ -54,6 +55,7 @@ public class PistolFire : MonoBehaviour
     {
         if(ammoCapacity > 0 && slideRetracted)
         {
+            gunFired = true;
             audioSource.PlayOneShot(bulletFire);
             fireParticles.Play();
 
@@ -75,16 +77,31 @@ public class PistolFire : MonoBehaviour
             Rigidbody recoilRb = recoilBullet.GetComponent<Rigidbody>();
             recoilRb.AddForce(recoilAngle.forward * recoilSpeed);
 
-            Destroy(recoilBullet, 1);
-            Destroy(spawnedBullet, 1);
+            GameObject spawnedCasing = Instantiate(casing);
+            spawnedCasing.transform.position = casingEjectPosition.position;
+            spawnedCasing.transform.rotation = casingEjectPosition.rotation;
 
+            Rigidbody casingRb = spawnedCasing.GetComponent<Rigidbody>();
+            casingRb.AddForce(casingEjectPosition.right * 1000 * Time.deltaTime);
+            Destroy(spawnedCasing, 10);
+
+            StartCoroutine(FireSlideForce());
+            ammoCapacity--;
+            Destroy(recoilBullet, 1);
             timeSinceLastShot = 0f;
         }
         if(slideRetracted == false)
         {
             SlideRetractTrigger();
         }
-        if(ammoCapacity == 1)
+    }
+    public IEnumerator FireSlideForce()
+    {
+        slide.GetComponent<ConfigurableJoint>().targetPosition *= -1;
+        yield return new WaitForSeconds(0.05f);
+        slide.GetComponent<ConfigurableJoint>().targetPosition *= -1;
+        gunFired = false;
+        if(ammoCapacity == 0)
         {
             slideRetracted = false;
             slide.GetComponent<ConfigurableJoint>().targetPosition *= -1;
@@ -170,7 +187,7 @@ public class PistolFire : MonoBehaviour
         {
             hasSlide = true;
         }
-        else if(ammoCapacity > 0 && hasSlide)
+        else if(ammoCapacity > 0 && hasSlide && !gunFired)
         {
             GameObject spawnedCasing = Instantiate(casing);
             spawnedCasing.transform.position = casingEjectPosition.position;

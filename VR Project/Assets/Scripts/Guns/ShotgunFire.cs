@@ -58,8 +58,7 @@ public class ShotgunFire : MonoBehaviour
                 Physics.IgnoreCollision(spawnedBullet.GetComponent<Collider>(), recoilBullet.GetComponent<Collider>());
 
                 Rigidbody bulletRb = spawnedBullet.GetComponent<Rigidbody>();
-                bulletRb.AddForce(-bulletFirePosition.up * bulletSpeed * Time.deltaTime);
-                Destroy(spawnedBullet, 5);
+                bulletRb.AddForce(bulletFirePosition.forward * bulletSpeed * Time.deltaTime);
             }
             audioSource.PlayOneShot(bulletFire);
             fireParticles.Play();
@@ -81,6 +80,7 @@ public class ShotgunFire : MonoBehaviour
             audioSource.PlayOneShot(slideSound);
         }
     }
+
     private void Update()
     {
         timeSinceLastShot += Time.deltaTime;

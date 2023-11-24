@@ -41,7 +41,6 @@ public class RifleFire : MonoBehaviour
     private float fireButton;
     private float magRelease;
 
-
     private float timeSinceLastShot = 0f;
     public float timeBetweenShots = 1.0f;
     private bool canFire = true;
@@ -49,6 +48,7 @@ public class RifleFire : MonoBehaviour
     public bool slideRetracted = true;
     private bool canClick = true;
     private GameObject spawnedMagazine;
+    private bool gunFired;
     private void Start()
     {
         slideGrab = slide.GetComponent<XRGrabJoint>();
@@ -57,6 +57,7 @@ public class RifleFire : MonoBehaviour
     {
         if (ammoCapacity > 0 && slideRetracted)
         {
+            gunFired = true;
             audioSource.PlayOneShot(bulletFire);
             fireParticles.Play();
 
@@ -87,7 +88,8 @@ public class RifleFire : MonoBehaviour
             recoilRb.AddForce(recoilAngle.forward * recoilSpeed);
 
             Destroy(recoilBullet, 1);
-            Destroy(spawnedBullet, 1);
+
+            StartCoroutine(FireSlideForce());
 
             timeSinceLastShot = 0f;
         }
@@ -99,6 +101,13 @@ public class RifleFire : MonoBehaviour
         {
             SlideRetractTrigger();
         }
+    }
+    public IEnumerator FireSlideForce()
+    {
+        slide.GetComponent<ConfigurableJoint>().targetPosition *= -1;
+        yield return new WaitForSeconds(0.05f);
+        slide.GetComponent<ConfigurableJoint>().targetPosition *= -1;
+        gunFired = false;
         if (ammoCapacity == 0 && slideRetracted)
         {
             slideRetracted = false;

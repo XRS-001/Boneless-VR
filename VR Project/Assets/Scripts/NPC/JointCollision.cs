@@ -36,7 +36,7 @@ public class JointCollision : MonoBehaviour
         }
         if(collision.gameObject.layer == 10)
         {
-            npc.DealDamage(collision.relativeVelocity.magnitude / 4);
+            npc.DealDamage(20);
         }
     }
     public IEnumerator Delay()

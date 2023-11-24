@@ -95,7 +95,7 @@ public class XRGrabDynamic : XRGrabInteractable
         if (puppetFall)
         {
             puppetMaster.angularLimits = true;
-            puppetMaster.muscleSpring /= 5;
+            puppetMaster.muscleSpring /= 2;
             puppetFall.collisionResistance.floatValue = collisionResistanceGrabbing;
             puppetFall.defaults.knockOutDistance = knockOutDistanceGrabbing;
             puppetFall.canGetUp = false;
@@ -135,7 +135,7 @@ public class XRGrabDynamic : XRGrabInteractable
         if (puppetFall && !leftController.isGrabbing && !rightController.isGrabbing)
         {
             puppetMaster.angularLimits = false;
-            puppetMaster.muscleSpring *= 5;
+            puppetMaster.muscleSpring *= 2;
             puppetFall.collisionResistance.floatValue = collisionResistance;
             puppetFall.defaults.knockOutDistance = knockOutDistance;
             puppetFall.canGetUp = true;

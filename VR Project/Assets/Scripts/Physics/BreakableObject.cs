@@ -18,10 +18,10 @@ public class BreakableObject : MonoBehaviour
         }
         if(forceNeededToBreak < 0 )
         {
-            Break(collision.relativeVelocity.magnitude * 2);
+            Break(collision.relativeVelocity.magnitude * 2, collision.relativeVelocity);
         }
     }
-    public void Break(float breakForce)
+    public void Break(float breakForce, Vector3 velocity)
     {
         GetComponent<XRGrabInteractable>().enabled = false;
         breakableParent.SetActive(true);
@@ -32,6 +32,7 @@ public class BreakableObject : MonoBehaviour
         foreach (Rigidbody rb in breakables)
         {
             rb.AddExplosionForce(breakForce, transform.position, 100);
+            rb.AddForce(velocity * 10);
         }
     }
 }

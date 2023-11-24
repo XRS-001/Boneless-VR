@@ -15,6 +15,7 @@ public class PlaySoundOnCollision : MonoBehaviour
             {
                 audioSource.PlayOneShot(hitSound);
             }
+            Destroy(gameObject);
         }
         canMakeNoise = false;
     }
