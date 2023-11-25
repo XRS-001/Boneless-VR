@@ -86,6 +86,14 @@ public class PhysicsRig : MonoBehaviour
         }
         leftJoint.targetPosition = leftTargetPosition;
 
+        if(leftController.isGrabbing)
+        {
+            Vector3 leftPosition = leftJoint.GetComponent<Rigidbody>().position;
+            leftPosition.x = Mathf.Clamp(leftPosition.x, leftHand.position.x, leftHand.position.x);
+            leftPosition.z = Mathf.Clamp(leftPosition.y, leftHand.position.z, leftHand.position.z);
+            leftJoint.GetComponent<Rigidbody>().position = leftPosition;
+        }
+
         Quaternion leftTargetRotation = Quaternion.Lerp(leftJoint.targetRotation, leftController.transform.localRotation, weightLeft);
         leftJoint.targetRotation = leftTargetRotation;
 
@@ -115,6 +123,14 @@ public class PhysicsRig : MonoBehaviour
             rightJoint.yDrive = newDrive;
         }
         rightJoint.targetPosition = rightTargetPosition;
+
+        if (rightController.isGrabbing)
+        {
+            Vector3 rightPosition = rightJoint.GetComponent<Rigidbody>().position;
+            rightPosition.x = Mathf.Clamp(rightPosition.x, rightHand.position.x, rightHand.position.x);
+            rightPosition.z = Mathf.Clamp(rightPosition.y, rightHand.position.z, rightHand.position.z);
+            rightJoint.GetComponent<Rigidbody>().position = rightPosition;
+        }
 
         Quaternion rightTargetRotation = Quaternion.Lerp(rightJoint.targetRotation, rightController.transform.localRotation, weightRight);
         rightJoint.targetRotation = rightTargetRotation;

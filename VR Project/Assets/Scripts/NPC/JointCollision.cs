@@ -17,11 +17,11 @@ public class JointCollision : MonoBehaviour
     {
         if(damageOnCollision && collision.gameObject.layer != 10)
         {
-            if (collision.relativeVelocity.magnitude > velocityThreshold && canCollide)
+            if (collision.relativeVelocity.magnitude > velocityThreshold / 4 && canCollide)
             {
                 if (collision.gameObject.layer != 14 && collision.gameObject.layer != 15 && collision.gameObject.layer != 16 && collision.gameObject.layer != 20 && collision.gameObject.layer != 8 && collision.gameObject.layer != 9)
                 {
-                    npc.DealDamage(collision.relativeVelocity.magnitude / 4);
+                    npc.DealDamage(collision.relativeVelocity.magnitude * 2, 0.5f);
                     StartCoroutine(Delay());
                 }
             }
@@ -29,14 +29,18 @@ public class JointCollision : MonoBehaviour
             {
                 if (collision.rigidbody.velocity.magnitude > velocityThreshold * 2)
                 {
-                    npc.DealDamage(collision.relativeVelocity.magnitude);
+                    npc.DealDamage(collision.relativeVelocity.magnitude, 0.5f);
                     StartCoroutine(Delay());
                 }
             }
         }
         if(collision.gameObject.layer == 10)
         {
-            npc.DealDamage(20);
+            npc.DealDamage(20, 0);
+            if (npc.health == 0)
+            {
+                collision.rigidbody.AddForce(collision.relativeVelocity * 10, ForceMode.Impulse);
+            }
         }
     }
     public IEnumerator Delay()

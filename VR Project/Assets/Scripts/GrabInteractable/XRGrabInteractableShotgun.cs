@@ -27,6 +27,7 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
         shotgunFire = GetComponent<ShotgunFire>();
         secondGrabPoint.selectEntered.AddListener(OnSecondHandGrab);
         secondGrabPoint.selectExited.AddListener(OnSecondHandRelease);
+        secondGrabPoint.enabled = false;
     }
     public Quaternion GetTwoHandRotation()
     {
@@ -74,8 +75,17 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
     }
     protected override void OnSelectEntering(SelectEnterEventArgs args)
     {
+        if (!offHandGrabbing)
+        {
+            secondGrabPoint.enabled = true;
+        }
+        else
+        {
+            secondGrabPoint.enabled = false;
+        }
         if (offHandGrabbing && !secondHandGrabbing)
         {
+            secondGrabPoint.enabled = true;
             XRInteractionManager XRInteractionManager = interactionManager;
             XRInteractionManager.SelectEnter(interactor, secondGrabPoint);
             interactor = secondInteractor;
@@ -87,7 +97,6 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        secondGrabPoint.enabled = true;
         if (args.interactorObject.transform.CompareTag("RightHand"))
         {
             rightHandGrabbing = true;
@@ -139,10 +148,6 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
             secondInteractor = null;
             rightHandGrabbing = false;
             leftHandGrabbing = false;
-        }
-        if (!rightHandGrabbing && !leftHandGrabbing)
-        {
-            secondGrabPoint.enabled = false;
         }
     }
     public void OnSecondHandGrab(SelectEnterEventArgs args)

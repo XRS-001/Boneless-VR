@@ -101,18 +101,18 @@ public class NPC : MonoBehaviour
             puppet.state = PuppetMaster.State.Dead;
         }
     }
-    public void DealDamage(float damage)
+    public void DealDamage(float damage, float delayTime)
     {
         if(canDamage)
         {
             health -= damage;
-            StartCoroutine(Delay());
+            StartCoroutine(Delay(delayTime));
         }
     }
-    IEnumerator Delay()
+    IEnumerator Delay(float delayTime)
     {
         canDamage = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delayTime);
         canDamage = true;
     }
 }

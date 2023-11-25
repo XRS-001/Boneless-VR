@@ -32,7 +32,7 @@ public class BreakableObject : MonoBehaviour
         foreach (Rigidbody rb in breakables)
         {
             rb.AddExplosionForce(breakForce, transform.position, 100);
-            rb.AddForce(velocity * 10);
+            rb.AddForce(velocity * 25);
         }
     }
 }

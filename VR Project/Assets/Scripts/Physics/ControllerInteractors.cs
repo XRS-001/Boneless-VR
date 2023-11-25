@@ -24,7 +24,7 @@ public class ControllerInteractors : XRDirectInteractor
     public GameObject handPhysics;
     private ConfigurableJoint configJoint;
     public bool isGrabbing;
-    private GameObject objectGrabbing;
+    public GameObject objectGrabbing { get; private set; }
     private GameObject newColliderParent;
     protected override void Start()
     {
@@ -105,7 +105,7 @@ public class ControllerInteractors : XRDirectInteractor
         {
             collider.enabled = false;
         }
-        if(objectGrabbing.layer != 20)
+        if (objectGrabbing.layer != 20)
         {
             foreach (Collider collider in interactableColliders)
             {
@@ -132,10 +132,10 @@ public class ControllerInteractors : XRDirectInteractor
         {
             Destroy(newColliderParent);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if(!isGrabbing)
         {
-            foreach (Collider collider in colliders)
+            foreach(Collider collider in colliders)
             {
                 collider.enabled = true;
             }

@@ -148,16 +148,15 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         secondHandGrabbing = true;
         secondInteractor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(false);
-        secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = true;
         initialRotationOffset = Quaternion.Inverse(GetTwoHandRotation()) * interactor.attachTransform.rotation;
         foreach(Collider collider in colliders)
         {
             Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, true);
         }
+        StartCoroutine(DelayKinematic(args.interactorObject.transform.GetComponent<ControllerInteractors>().bodyRb));
     }
     public void OnSecondHandRelease(SelectExitEventArgs args)
     {
-        secondInteractor.GetComponent<ControllerInteractors>().bodyRb.isKinematic = false;
         secondHandGrabbing = false;
         secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
         StartCoroutine(Delay());
@@ -165,6 +164,7 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         {
             Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, false);
         }
+        StartCoroutine(DelayKinematic(args.interactorObject.transform.GetComponent<ControllerInteractors>().bodyRb));
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
@@ -243,5 +243,12 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
         {
             collider.gameObject.SetActive(true);
         }
+    }
+    public IEnumerator DelayKinematic(Rigidbody rb)
+    {
+        rb.isKinematic = true;
+        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
+        rb.isKinematic = false;
     }
 }         

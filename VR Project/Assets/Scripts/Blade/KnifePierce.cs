@@ -58,7 +58,7 @@ public class KnifePierce : MonoBehaviour
                     isPiercing = true;
                     if (collision.transform.GetComponent<JointCollision>())
                     {
-                        collision.transform.GetComponent<JointCollision>().npc.DealDamage(damage);
+                        collision.transform.GetComponent<JointCollision>().npc.DealDamage(damage, 0.5f);
                     }
                     audioSource.pitch = 1f;
                     audioSource.Stop();

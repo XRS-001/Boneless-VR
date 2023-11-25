@@ -183,7 +183,6 @@ public class XRGrabJoint : XRGrabInteractable
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.transform.position = attachTransform.position;
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.transform.rotation = attachTransform.rotation;
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().target = attachTransform;
-        args.interactorObject.transform.GetComponent<ControllerInteractors>().bodyRb.isKinematic = true;
         base.OnSelectEntered(args);
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -216,7 +215,6 @@ public class XRGrabJoint : XRGrabInteractable
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.transform.rotation = args.interactorObject.transform.GetComponent<ControllerInteractors>().transform.rotation;
         args.interactorObject.transform.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().target
             = args.interactorObject.transform.GetComponent<ControllerInteractors>().handPhysics.transform;
-        args.interactorObject.transform.GetComponent<ControllerInteractors>().bodyRb.isKinematic = false;
         base.OnSelectExited(args);
     }
     public IEnumerator Delay()

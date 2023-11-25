@@ -1848,6 +1848,12 @@ PrefabInstance:
       objectReference: {fileID: 1589683537}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f983a136dbe9d954892ee8df338a165c, type: 3}
+--- !u!54 &356802511 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8254259330158048491, guid: be4aba356e67aa94c8fa81695ebe9350,
+    type: 3}
+  m_PrefabInstance: {fileID: 8254259330862294202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &358880565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5095444319641089284, guid: df983215c8a8bed40848f97e48f80579,
@@ -2468,7 +2474,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 027e570f40fcd204fa3044cb1ae64412, type: 2}
+  - {fileID: 2100000, guid: a098396bd37ba9349a331964a55be6cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3649,6 +3655,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 669627636}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &672853257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9060345405542824423, guid: d6cfc8bab2709fa438062d473dfcf371,
+    type: 3}
+  m_PrefabInstance: {fileID: 3976787455894731631}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd45b95356396d4bbd38147d644d245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &673514813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3940,6 +3958,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 714736382}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &716793264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6069014663260255050, guid: bb4d7c5b5487fe94d97af12459e590b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6069014661602160181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd45b95356396d4bbd38147d644d245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &717790256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7051,6 +7081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 147889366386006901, guid: 820d73b4d9ef8454390e5ee9d1987334,
         type: 3}
+      propertyPath: breakEffect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 147889366386006901, guid: 820d73b4d9ef8454390e5ee9d1987334,
+        type: 3}
       propertyPath: forceNeededToBreak
       value: 40
       objectReference: {fileID: 0}
@@ -7791,6 +7826,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1209319423344738496}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1631516437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5494168654782788313, guid: 9a179a28b044c774983567da2c22b451,
+    type: 3}
+  m_PrefabInstance: {fileID: 5494168654235143037}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd45b95356396d4bbd38147d644d245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1653138224 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5874547657398380877, guid: 8363438dd4c7de343b006da790b88cd4,
@@ -8096,6 +8143,18 @@ Transform:
   m_Father: {fileID: 500039505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 82.126, y: -171.393, z: -172.609}
+--- !u!114 &1715334712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7836574120784983074, guid: a029be9fb29902648adcac3977360ea5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7836574121845398236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd45b95356396d4bbd38147d644d245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1716027134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8559,6 +8618,18 @@ Transform:
   m_Father: {fileID: 287238568}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 55.132, y: -0.088, z: -0.316}
+--- !u!114 &1832958900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3962892651948441455, guid: 6439631074c80a841a6dcbf4afee47a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3962892651378197328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd45b95356396d4bbd38147d644d245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1840108291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11390,6 +11461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3962892650539580525, guid: 6439631074c80a841a6dcbf4afee47a6,
         type: 3}
+      propertyPath: slideGrab
+      value: 
+      objectReference: {fileID: 1832958900}
+    - target: {fileID: 3962892650539580525, guid: 6439631074c80a841a6dcbf4afee47a6,
+        type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1589683537}
@@ -12374,6 +12450,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 97b8db60668c8b745b622527083641c5, type: 2}
     - target: {fileID: 9060345404226138524, guid: d6cfc8bab2709fa438062d473dfcf371,
         type: 3}
+      propertyPath: slideGrab
+      value: 
+      objectReference: {fileID: 672853257}
+    - target: {fileID: 9060345404226138524, guid: d6cfc8bab2709fa438062d473dfcf371,
+        type: 3}
       propertyPath: dynamicAxis
       value: 2
       objectReference: {fileID: 0}
@@ -12387,6 +12468,11 @@ PrefabInstance:
       propertyPath: rightPresence
       value: 
       objectReference: {fileID: 9030721718876733740}
+    - target: {fileID: 9060345404226138524, guid: d6cfc8bab2709fa438062d473dfcf371,
+        type: 3}
+      propertyPath: snapToSecondHand
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9060345404226138524, guid: d6cfc8bab2709fa438062d473dfcf371,
         type: 3}
       propertyPath: twoHandRotationType
@@ -13597,6 +13683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435194949716538763, guid: 90acea84a987c6446953c21314a3bac7,
         type: 3}
+      propertyPath: snapToSecondHand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435194949716538763, guid: 90acea84a987c6446953c21314a3bac7,
+        type: 3}
       propertyPath: rightAttachSecond
       value: 
       objectReference: {fileID: 0}
@@ -14136,6 +14227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5494168655697345186, guid: 9a179a28b044c774983567da2c22b451,
         type: 3}
+      propertyPath: slideGrab
+      value: 
+      objectReference: {fileID: 1631516437}
+    - target: {fileID: 5494168655697345186, guid: 9a179a28b044c774983567da2c22b451,
+        type: 3}
       propertyPath: dynamicAxis
       value: 2
       objectReference: {fileID: 0}
@@ -14149,6 +14245,11 @@ PrefabInstance:
       propertyPath: rightPresence
       value: 
       objectReference: {fileID: 9030721718876733740}
+    - target: {fileID: 5494168655697345186, guid: 9a179a28b044c774983567da2c22b451,
+        type: 3}
+      propertyPath: snapToSecondHand
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5494168655697345186, guid: 9a179a28b044c774983567da2c22b451,
         type: 3}
       propertyPath: twoHandRotationType
@@ -14606,9 +14707,19 @@ PrefabInstance:
       objectReference: {fileID: 1940468273}
     - target: {fileID: 5622234935610368497, guid: 4e9f96edbde87264d9308625cea56f4c,
         type: 3}
+      propertyPath: snapToSecondHand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622234935610368497, guid: 4e9f96edbde87264d9308625cea56f4c,
+        type: 3}
       propertyPath: rightAttachSecond
       value: 
       objectReference: {fileID: 1812011404}
+    - target: {fileID: 5622234935610368497, guid: 4e9f96edbde87264d9308625cea56f4c,
+        type: 3}
+      propertyPath: twoHandRotationType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5622234935610368497, guid: 4e9f96edbde87264d9308625cea56f4c,
         type: 3}
       propertyPath: m_InteractionManager
@@ -15452,6 +15563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6069014662365902417, guid: bb4d7c5b5487fe94d97af12459e590b0,
         type: 3}
+      propertyPath: slideGrab
+      value: 
+      objectReference: {fileID: 716793264}
+    - target: {fileID: 6069014662365902417, guid: bb4d7c5b5487fe94d97af12459e590b0,
+        type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1589683537}
@@ -16148,6 +16264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3863525210413625999, guid: 35afe4cba40618844abda17e7297037e,
         type: 3}
+      propertyPath: breakEffect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863525210413625999, guid: 35afe4cba40618844abda17e7297037e,
+        type: 3}
       propertyPath: forceNeededToBreak
       value: 30
       objectReference: {fileID: 0}
@@ -16332,6 +16453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7836574120784983074, guid: a029be9fb29902648adcac3977360ea5,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836574120784983074, guid: a029be9fb29902648adcac3977360ea5,
+        type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1589683537}
@@ -16452,6 +16578,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7836574121520893668, guid: a029be9fb29902648adcac3977360ea5,
         type: 3}
+      propertyPath: slideGrab
+      value: 
+      objectReference: {fileID: 1715334712}
+    - target: {fileID: 7836574121520893668, guid: a029be9fb29902648adcac3977360ea5,
+        type: 3}
       propertyPath: dynamicAxis
       value: 2
       objectReference: {fileID: 0}
@@ -16470,6 +16601,11 @@ PrefabInstance:
       propertyPath: slideCollider
       value: 
       objectReference: {fileID: 1106603773}
+    - target: {fileID: 7836574121520893668, guid: a029be9fb29902648adcac3977360ea5,
+        type: 3}
+      propertyPath: snapToSecondHand
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7836574121520893668, guid: a029be9fb29902648adcac3977360ea5,
         type: 3}
       propertyPath: twoHandRotationType
@@ -16744,6 +16880,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 192707948, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: parentRb
+      value: 
+      objectReference: {fileID: 356802511}
     - target: {fileID: 8254259329458642313, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence

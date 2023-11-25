@@ -74,7 +74,7 @@ public class KnifeSlice : MonoBehaviour
     {
         if(target.layer == 20)
         {
-            target.transform.GetComponent<JointCollision>().npc.DealDamage(damage * velocity);
+            target.transform.GetComponent<JointCollision>().npc.DealDamage(damage * velocity, 0.5f);
             audioSource.Stop();
             audioSource.PlayOneShot(sliceSound);
         }

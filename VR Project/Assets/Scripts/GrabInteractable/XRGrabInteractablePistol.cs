@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class XRGrabInteractablePistol : XRGrabInteractable
 {
+    public XRGrabJoint slideGrab;
     private PistolFire pistolFire;
     public bool isGrabbing { get; private set; } = false;
     public bool rightHandGrabbing = false;
@@ -21,6 +22,7 @@ public class XRGrabInteractablePistol : XRGrabInteractable
     // Start is called before the first frame update
     void Start()
     {
+        slideGrab.enabled = false;
         pistolFire = GetComponent<PistolFire>();
         secondHandGrabPoint?.selectEntered.AddListener(OnSecondHandGrab);
         secondHandGrabPoint?.selectExited.AddListener(OnSecondHandRelease);
@@ -82,6 +84,7 @@ public class XRGrabInteractablePistol : XRGrabInteractable
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        slideGrab.enabled = true;
         interactor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         secondHandGrabPoint.enabled = true;
         rightAttachSecond.gameObject.SetActive(true);
@@ -122,6 +125,7 @@ public class XRGrabInteractablePistol : XRGrabInteractable
         }
         else
         {
+            slideGrab.enabled = false;
             rightHandGrabbing = false;
             leftHandGrabbing = false;
         }
