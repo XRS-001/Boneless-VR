@@ -108,12 +108,17 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
         isGrabbing = true;
         interactor = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         base.OnSelectEntered(args);
+        if (offHandGrabbing && secondHandGrabbing)
+        {
+            GameObject.Find("XR Origin").GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         base.OnSelectExited(args);
         if (secondHandGrabbing)
         {
+            GameObject.Find("XR Origin").GetComponent<Rigidbody>().isKinematic = true;
             offHandGrabbing = true;
             XRGrabInteractableShotgun interactable = GetComponent<XRGrabInteractableShotgun>();
             XRInteractionManager XRInteractionManager = interactionManager;

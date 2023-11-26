@@ -23,6 +23,7 @@ public class ControllerInteractors : XRDirectInteractor
     public GameObject handPresence;
     public GameObject handPhysics;
     private ConfigurableJoint configJoint;
+    public bool isClimbing = false;
     public bool isGrabbing;
     public GameObject objectGrabbing { get; private set; }
     private GameObject newColliderParent;
@@ -132,7 +133,7 @@ public class ControllerInteractors : XRDirectInteractor
         {
             Destroy(newColliderParent);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         if(!isGrabbing)
         {
             foreach(Collider collider in colliders)

@@ -39,8 +39,9 @@ public class JointCollision : MonoBehaviour
             npc.DealDamage(20, 0);
             if (npc.health == 0)
             {
-                collision.rigidbody.AddForce(collision.relativeVelocity * 10, ForceMode.Impulse);
+                collision.rigidbody.AddForce(collision.relativeVelocity * 25, ForceMode.Impulse);
             }
+            canCollide = true;
         }
     }
     public IEnumerator Delay()

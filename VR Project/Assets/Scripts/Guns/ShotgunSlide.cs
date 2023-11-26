@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class ShotgunSlide : MonoBehaviour
 {
-    private float threshold = 0.02f;
+    private float threshold = 0.05f;
     public Transform target;
     public Transform targetEnd;
     public UnityEvent onReached;

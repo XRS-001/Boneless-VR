@@ -30,9 +30,12 @@ public class ClimbingInteractable : XRSimpleInteractable
         isGrabbing = true;
         fixedJoint = handPhysics.AddComponent<FixedJoint>();
         fixedJoint.connectedAnchor = transform.position;
+        controller.isClimbing = true;
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        controller = args.interactorObject.transform.GetComponent<ControllerInteractors>();
+        controller.isClimbing = false;
         grabHandPose.UnSetPose(args);
         isGrabbing = false;
         Destroy(fixedJoint);
@@ -44,9 +47,12 @@ public class ClimbingInteractable : XRSimpleInteractable
         isGrabbing = true;
         fixedJoint = handPhysics.AddComponent<FixedJoint>();
         fixedJoint.connectedAnchor = transform.position;
+        controller.isClimbing = true;
     }
     private void OnSelectSecondExit(SelectExitEventArgs args)
     {
+        controller = args.interactorObject.transform.GetComponent<ControllerInteractors>();
+        controller.isClimbing = false;
         isGrabbing = false;
         Destroy(fixedJoint);
     }

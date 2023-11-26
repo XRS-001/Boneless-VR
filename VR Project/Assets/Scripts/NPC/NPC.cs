@@ -92,7 +92,7 @@ public class NPC : MonoBehaviour
     {
         playerInSightRange = Physics.CheckCapsule(agent.transform.position, new Vector3(agent.transform.position.x, agent.height, agent.transform.position.z), sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckCapsule(agent.transform.position, new Vector3(agent.transform.position.x, agent.height, agent.transform.position.z), attackRange, whatIsPlayer);
-        if(!playerInSightRange && !playerInAttackRange) Patroling();
+        if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
         health = Mathf.Clamp(health, 0, 100);

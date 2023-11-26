@@ -45,8 +45,8 @@ public class ShotgunFire : MonoBehaviour
         if (ammoCapacity > 0 && canFire && shotgunSlide.wasReachedEnd && hasSlide)
         {
             GameObject recoilBullet = Instantiate(bullet);
-            recoilBullet.transform.position = bulletFirePositions[0].position;
-            recoilBullet.transform.rotation = bulletFirePositions[0].rotation;
+            recoilBullet.transform.position = recoilAngle.position;
+            recoilBullet.transform.rotation = recoilAngle.rotation;
             recoilBullet.GetComponent<PlayParticleEffectOnCollision>().effect = null;
             recoilBullet.GetComponent<AudioSource>().enabled = false;
             foreach (Transform bulletFirePosition in bulletFirePositions)
@@ -135,26 +135,14 @@ public class ShotgunFire : MonoBehaviour
                 spawnedCasing.transform.rotation = casingEjectPosition.rotation;
 
                 Rigidbody casingRb = spawnedCasing.GetComponent<Rigidbody>();
-                casingRb.AddForce(casingEjectPosition.right * 10000 * Time.deltaTime);
+                casingRb.AddForce(casingEjectPosition.right * 1000 * Time.deltaTime);
                 Destroy(spawnedCasing, 10);
             }
-        }
-        else if (ammoCapacity > 0 && hasSlide)
-        {
-            hasSlide = true;
-            GameObject spawnedCasing = Instantiate(casing);
-            spawnedCasing.transform.position = casingEjectPosition.position;
-            spawnedCasing.transform.rotation = casingEjectPosition.rotation;
-
-            Rigidbody casingRb = spawnedCasing.GetComponent<Rigidbody>();
-            casingRb.AddForce(casingEjectPosition.right * 10000 * Time.deltaTime);
-            Destroy(spawnedCasing, 10);
-            ammoCapacity--;
         }
     }
     public void Lock()
     {
-        if(hasSlide)
+        if(hasSlide && ammoCapacity > 0)
         {
             JointDrive zDrive = slide.GetComponent<ConfigurableJoint>().zDrive;
             zDrive.positionSpring = float.PositiveInfinity;

@@ -64,8 +64,8 @@ public class PistolFire : MonoBehaviour
             spawnedBullet.transform.rotation = bulletFirePosition.rotation;
 
             GameObject recoilBullet = Instantiate(bullet);
-            recoilBullet.transform.position = bulletFirePosition.position;
-            recoilBullet.transform.rotation = bulletFirePosition.rotation;
+            recoilBullet.transform.position = recoilAngle.position;
+            recoilBullet.transform.rotation = recoilAngle.rotation;
             recoilBullet.GetComponent<PlayParticleEffectOnCollision>().effect = null;
             recoilBullet.GetComponent<AudioSource>().enabled = false;
 

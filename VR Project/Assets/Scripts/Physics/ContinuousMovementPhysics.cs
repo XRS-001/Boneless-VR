@@ -8,7 +8,15 @@ using UnityEngine.InputSystem;
 
 public class ContinuousMovementPhysics : MonoBehaviour
 {
-    public float speed = 1;
+    public Rigidbody leftHand;
+    private Vector3 previousLeftPosition;
+    public Rigidbody rightHand;
+    private Vector3 previousRightPosition;
+    public ControllerInteractors leftController;
+    public ControllerInteractors rightController;
+    public float minSpeed = 1f;
+    public float maxSpeed = 2.5f;
+    private float speed = 0;
     public float turnSpeed = 60;
     private float jumpVelocity = 7;
     public float jumpHeight = 30f;
@@ -29,16 +37,38 @@ public class ContinuousMovementPhysics : MonoBehaviour
     public CapsuleCollider[] leftFootDetection;
     public CapsuleCollider[] rightFootDetection;
     private bool isMoving = false;
-
+    private void Start()
+    {
+        previousLeftPosition = leftHand.position;
+        previousRightPosition = rightHand.position;
+    }
     // Update is called once per frame
     void Update()
     {
+        Vector3 leftVelocity = Quaternion.Inverse(rb.rotation) * (leftHand.position - previousLeftPosition);
+        float leftVelocityMagnitude = leftVelocity.magnitude / Time.deltaTime;
+        previousLeftPosition = leftHand.position;
+        if(leftVelocityMagnitude < 2)
+        {
+            leftVelocityMagnitude = 0;
+        }
+
+        Vector3 rightVelocity = Quaternion.Inverse(rb.rotation) * (rightHand.position - previousRightPosition);
+        float rightVelocityMagnitude = rightVelocity.magnitude / Time.deltaTime;
+        if (rightVelocityMagnitude < 2)
+        {
+            rightVelocityMagnitude = 0;
+        }
+        previousRightPosition = rightHand.position;
+
+        speed = Mathf.Lerp(minSpeed, maxSpeed, (leftVelocityMagnitude + rightVelocityMagnitude) / 10);
+
         inputMoveAxis = moveInputSource.action.ReadValue<Vector2>();
         inputTurnAxis = turnInputSource.action.ReadValue<Vector2>().x;
 
         bool jumpInput = jumpInputSource.action.WasPressedThisFrame();
 
-        if(jumpInput && isGrounded)
+        if(jumpInput && isGrounded && !leftController.isClimbing && !rightController.isClimbing)
         {
             if(leftHandCollision.colliding || rightHandCollision.colliding)
             {

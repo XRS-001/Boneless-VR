@@ -9,7 +9,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     private RifleFire rifleFire;
     public Collider slideCollider;
     public bool isGrabbing { get; private set; } = false;
-    private bool secondHandGrabbing;
+    public bool secondHandGrabbing { get; private set; }
     public bool rightHandGrabbing = false;
     public bool leftHandGrabbing = false;
     public Transform rightAttach;
