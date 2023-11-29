@@ -18,6 +18,7 @@ public class ChestLock : MonoBehaviour
     public Transform target;
     private float angleDifference;
     private Collider otherCollider;
+    private XRGrabKey key;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -31,6 +32,11 @@ public class ChestLock : MonoBehaviour
             angleDifference = Quaternion.Angle(target.rotation, lockJoint.connectedBody.rotation);
             if(angleDifference < 1)
             {
+                if(key.joint != null)
+                {
+                    key.DestroyJoint();
+                }
+                key.isInLock = false;
                 audioSource.Play();
                 isInLock = false;
                 lockAnimator.Play("Unlock");
@@ -47,6 +53,9 @@ public class ChestLock : MonoBehaviour
     {
         if (other.CompareTag("Key") && keyName == other.GetComponent<Key>().keyName && canEnterLock)
         {
+            key = other.GetComponent<XRGrabKey>();
+            key.CreateJoint();
+            key.isInLock = true;
             audioSource.Play();
             canEnterLock = false;
             otherCollider = other;

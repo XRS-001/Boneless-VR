@@ -77,6 +77,15 @@ public class XRGrabDoorHandle : XRGrabJoint
 
     protected override void OnSelectEntering(SelectEnterEventArgs args)
     {
+        foreach(Collider collider in colliders)
+        {
+            foreach(Collider handCollider in args.interactorObject.transform.GetComponent<ControllerInteractors>().colliders)
+            {
+                Physics.IgnoreCollision(collider, handCollider, true);
+            }
+        }
+        Rigidbody VRRig = GameObject.Find("XR Origin").GetComponent<Rigidbody>();
+        VRRig.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         Transform interactorTransform = args.interactorObject.transform;
         if (interactorTransform.CompareTag("LeftHand"))
         {
@@ -99,6 +108,15 @@ public class XRGrabDoorHandle : XRGrabJoint
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        foreach (Collider collider in colliders)
+        {
+            foreach (Collider handCollider in selectingInteractor.GetComponent<ControllerInteractors>().colliders)
+            {
+                Physics.IgnoreCollision(collider, handCollider, false);
+            }
+        }
+        Rigidbody VRRig = GameObject.Find("XR Origin").GetComponent<Rigidbody>();
+        VRRig.constraints = RigidbodyConstraints.FreezeRotation;
         Transform interactorTransform = args.interactorObject.transform;
         if (interactorTransform.CompareTag("LeftHand"))
         {
