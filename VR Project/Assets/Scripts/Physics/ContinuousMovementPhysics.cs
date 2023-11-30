@@ -37,6 +37,7 @@ public class ContinuousMovementPhysics : MonoBehaviour
     public CapsuleCollider[] leftFootDetection;
     public CapsuleCollider[] rightFootDetection;
     private bool isMoving = false;
+    private Vector3 offset;
     private void Start()
     {
         previousLeftPosition = leftHand.position;
@@ -108,13 +109,48 @@ public class ContinuousMovementPhysics : MonoBehaviour
 
             rb.MovePosition(newPosition);
             isMoving = true;
+            if (leftController.isGrabbing || rightController.isGrabbing)
+            {
+                if (leftController.objectGrabbing.GetComponent<XRGrabDoorHandle>())
+                {
+                    offset = -leftController.objectGrabbing.transform.right * 0.165f;
+
+                    Vector3 direction = rb.position - (leftController.objectGrabbing.transform.position + offset);
+
+                    if (direction.magnitude > 1.1f)
+                    {
+                        direction = direction.normalized * 1.1f;
+                        rb.position = leftController.objectGrabbing.transform.position + offset + direction;
+                    }
+                    isMoving = true;
+                }
+                else if (rightController.objectGrabbing.GetComponent<XRGrabDoorHandle>())
+                {
+                    Vector3 direction = rb.position - rightController.objectGrabbing.transform.position;
+
+                    if (direction.magnitude > 1.1f)
+                    {
+                        direction = direction.normalized * 1.1f;
+                        rb.position = rightController.objectGrabbing.transform.position + direction;
+                    }
+                    isMoving = true;
+                }
+            }
         }
         else
         {
             isMoving = false;
         }
     }
+    void OnDrawGizmos()
+    {
+        if (leftController.isGrabbing)
+        {
+            Gizmos.color = Color.red;
 
+            Gizmos.DrawWireSphere(leftController.objectGrabbing.transform.position + offset, 1.15f);
+        }
+    }
     public bool CheckIfGrounded()
     {
         bool hasHit = false;

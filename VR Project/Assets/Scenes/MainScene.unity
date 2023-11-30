@@ -7757,6 +7757,7 @@ MonoBehaviour:
   leftHandGrabbing: 0
   isGrabbing: 0
   controllerGrabbing: {fileID: 0}
+  isInLock: 0
 --- !u!1 &1554746595
 GameObject:
   m_ObjectHideFlags: 0
@@ -15367,6 +15368,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3757364587755377154, guid: 8363438dd4c7de343b006da790b88cd4,
+        type: 3}
+      propertyPath: limit
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3757364587755377154, guid: 8363438dd4c7de343b006da790b88cd4,
         type: 3}
       propertyPath: altLeftPose
