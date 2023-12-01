@@ -15368,6 +15368,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3757364587755377152, guid: 8363438dd4c7de343b006da790b88cd4,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3757364587755377154, guid: 8363438dd4c7de343b006da790b88cd4,
         type: 3}
       propertyPath: limit
@@ -15413,6 +15418,11 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1589683537}
+    - target: {fileID: 5874547656664059792, guid: 8363438dd4c7de343b006da790b88cd4,
+        type: 3}
+      propertyPath: m_Spring.damper
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5874547657539786697, guid: 8363438dd4c7de343b006da790b88cd4,
         type: 3}
       propertyPath: m_LocalPosition.x

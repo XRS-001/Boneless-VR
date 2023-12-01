@@ -113,14 +113,14 @@ public class ContinuousMovementPhysics : MonoBehaviour
             {
                 if (leftController.objectGrabbing.GetComponent<XRGrabDoorHandle>())
                 {
-                    offset = -leftController.objectGrabbing.transform.right * 0.165f;
+                    offset = Quaternion.Euler(0f, 0f, -leftController.objectGrabbing.transform.eulerAngles.z) * -leftController.objectGrabbing.transform.right * 0.2f;
 
-                    Vector3 direction = rb.position - (leftController.objectGrabbing.transform.position + offset);
+                    Vector3 direction = rb.position - (leftController.objectGrabbing.transform.position + offset - new Vector3(turnSource.localPosition.x, 0, turnSource.localPosition.z));
 
-                    if (direction.magnitude > 1.1f)
+                    if (direction.magnitude > 1.125f)
                     {
-                        direction = direction.normalized * 1.1f;
-                        rb.position = leftController.objectGrabbing.transform.position + offset + direction;
+                        direction = direction.normalized * 1.125f;
+                        rb.position = leftController.objectGrabbing.transform.position + offset - new Vector3(turnSource.localPosition.x, 0, turnSource.localPosition.z) + direction;
                     }
                     isMoving = true;
                 }
@@ -128,9 +128,9 @@ public class ContinuousMovementPhysics : MonoBehaviour
                 {
                     Vector3 direction = rb.position - rightController.objectGrabbing.transform.position;
 
-                    if (direction.magnitude > 1.1f)
+                    if (direction.magnitude > 1.15f)
                     {
-                        direction = direction.normalized * 1.1f;
+                        direction = direction.normalized * 1.15f;
                         rb.position = rightController.objectGrabbing.transform.position + direction;
                     }
                     isMoving = true;
@@ -148,7 +148,7 @@ public class ContinuousMovementPhysics : MonoBehaviour
         {
             Gizmos.color = Color.red;
 
-            Gizmos.DrawWireSphere(leftController.objectGrabbing.transform.position + offset, 1.15f);
+            Gizmos.DrawWireSphere(leftController.objectGrabbing.transform.position + offset - new Vector3(turnSource.localPosition.x, 0, turnSource.localPosition.z), 1.125f);
         }
     }
     public bool CheckIfGrounded()

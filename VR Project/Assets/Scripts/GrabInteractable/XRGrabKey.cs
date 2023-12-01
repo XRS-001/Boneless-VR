@@ -28,6 +28,8 @@ public class XRGrabKey : XRGrabInteractableTwoAttach
     {
         if (isGrabbing)
         {
+            Rigidbody VRRig = GameObject.Find("XR Origin").GetComponent<Rigidbody>();
+            VRRig.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
             joint = gameObject.AddComponent<FixedJoint>();
             joint.connectedBody = selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.GetComponent<Rigidbody>();
         }

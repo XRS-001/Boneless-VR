@@ -82,6 +82,7 @@ public class XRGrabDoorHandle : XRGrabJoint
             handCollider.enabled = false;
         }
         Rigidbody VRRig = GameObject.Find("XR Origin").GetComponent<Rigidbody>();
+        VRRig.isKinematic = true;
         VRRig.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         Transform interactorTransform = args.interactorObject.transform;
         if (interactorTransform.CompareTag("LeftHand"))
@@ -106,6 +107,7 @@ public class XRGrabDoorHandle : XRGrabJoint
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         Rigidbody VRRig = GameObject.Find("XR Origin").GetComponent<Rigidbody>();
+        VRRig.isKinematic = false;
         VRRig.constraints = RigidbodyConstraints.FreezeRotation;
         Transform interactorTransform = args.interactorObject.transform;
         if (interactorTransform.CompareTag("LeftHand"))
