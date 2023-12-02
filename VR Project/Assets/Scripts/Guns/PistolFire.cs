@@ -46,8 +46,10 @@ public class PistolFire : MonoBehaviour
     private bool triggerReleased = true;
     public bool slideRetracted = true;
     private bool gunFired = false;
+    private float pitch;
     private void Start()
     {
+        pitch = audioSource.pitch;
         slideRetracted = true;
         slideGrab = slide.GetComponent<XRGrabJoint>();
     }
@@ -56,6 +58,7 @@ public class PistolFire : MonoBehaviour
         if(ammoCapacity > 0 && slideRetracted)
         {
             gunFired = true;
+            audioSource.pitch = pitch;
             audioSource.PlayOneShot(bulletFire);
             fireParticles.Play();
 
@@ -200,7 +203,11 @@ public class PistolFire : MonoBehaviour
         }
         if(slideGrab.isGrabbing)
         {
-            audioSource.PlayOneShot(slideSound);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.volume = 0.5f;
+                audioSource.PlayOneShot(slideSound);
+            }
         }
     }
 

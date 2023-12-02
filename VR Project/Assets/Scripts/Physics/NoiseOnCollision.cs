@@ -18,10 +18,13 @@ public class NoiseOnCollision : MonoBehaviour
                 audioSource = gameObject.AddComponent<AudioSource>();
                 audioSource.spatialBlend = 1;
             }
-            volume = Mathf.Clamp(collision.relativeVelocity.magnitude, 0, 0.1f);
-            audioSource.pitch = Random.Range(0.8f, 1f);
-            audioSource.PlayOneShot(impactAudio, volume);
-            StartCoroutine(Delay());
+            if(!audioSource.isPlaying)
+            {
+                volume = Mathf.Clamp(collision.relativeVelocity.magnitude, 0, 0.1f);
+                audioSource.pitch = Random.Range(0.8f, 1f);
+                audioSource.PlayOneShot(impactAudio, volume);
+                StartCoroutine(Delay());
+            }
         }
     }
     IEnumerator Delay()

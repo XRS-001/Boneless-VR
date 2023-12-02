@@ -38,7 +38,10 @@ public class XRGrabDoorHandle : XRGrabJoint
         if (distance < threshold && locked && hasClicked == false)
         {
             locked = false;
-            audioSource.PlayOneShot(handleClick);
+            if(!audioSource.isPlaying) 
+            {
+                audioSource.PlayOneShot(handleClick);
+            }
             hasClicked = true;
         }
         if (distance >= threshold && doorDistance < threshold)
@@ -82,7 +85,6 @@ public class XRGrabDoorHandle : XRGrabJoint
             handCollider.enabled = false;
         }
         Rigidbody VRRig = GameObject.Find("XR Origin").GetComponent<Rigidbody>();
-        VRRig.isKinematic = true;
         VRRig.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         Transform interactorTransform = args.interactorObject.transform;
         if (interactorTransform.CompareTag("LeftHand"))
@@ -107,7 +109,6 @@ public class XRGrabDoorHandle : XRGrabJoint
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         Rigidbody VRRig = GameObject.Find("XR Origin").GetComponent<Rigidbody>();
-        VRRig.isKinematic = false;
         VRRig.constraints = RigidbodyConstraints.FreezeRotation;
         Transform interactorTransform = args.interactorObject.transform;
         if (interactorTransform.CompareTag("LeftHand"))

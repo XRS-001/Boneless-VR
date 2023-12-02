@@ -36,8 +36,10 @@ public class ShotgunFire : MonoBehaviour
     public float fireCooldown = 0f;
     private float timeSinceLastShot = 0f;
     private bool canFire = true;
+    private float pitch;
     private void Start()
     {
+        pitch = audioSource.pitch;
         shotgunSlide = slide.GetComponent<ShotgunSlide>();
     }
     public void FireBullet()
@@ -60,7 +62,8 @@ public class ShotgunFire : MonoBehaviour
                 Rigidbody bulletRb = spawnedBullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(bulletFirePosition.forward * bulletSpeed * Time.deltaTime);
             }
-            audioSource.PlayOneShot(bulletFire);
+            audioSource.pitch = pitch;
+            audioSource.PlayOneShot(bulletFire, 2);
             fireParticles.Play();
 
             Rigidbody recoilRb = recoilBullet.GetComponent<Rigidbody>();
@@ -124,7 +127,11 @@ public class ShotgunFire : MonoBehaviour
     }
     public void Slide()
     {
-        audioSource.PlayOneShot(slideSound);
+        if (!audioSource.isPlaying)
+        {
+            audioSource.volume = 0.5f;
+            audioSource.PlayOneShot(slideSound);
+        }
         if (!hasSlide)
         {
             if (ammoCapacity > 0)

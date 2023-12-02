@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
@@ -49,8 +48,10 @@ public class RifleFire : MonoBehaviour
     private bool canClick = true;
     private GameObject spawnedMagazine;
     private bool gunFired;
+    private float pitch;
     private void Start()
     {
+        pitch = audioSource.pitch;
         slideGrab = slide.GetComponent<XRGrabJoint>();
     }
     public void FireBullet()
@@ -58,6 +59,7 @@ public class RifleFire : MonoBehaviour
         if (ammoCapacity > 0 && slideRetracted)
         {
             gunFired = true;
+            audioSource.pitch = pitch;
             audioSource.PlayOneShot(bulletFire);
             fireParticles.Play();
 
@@ -147,6 +149,10 @@ public class RifleFire : MonoBehaviour
             fireButton = fireInputSourceLeft.action.ReadValue<float>();
             magRelease = magReleaseInputSourceLeft.action.ReadValue<float>();
         }
+        else
+        {
+            fireButton = 0;
+        }
 
         if (fireButton > 0.1f && canFire && (hasSlide || slideRetracted == false))
         {
@@ -233,7 +239,11 @@ public class RifleFire : MonoBehaviour
         }
         if (slideGrab.isGrabbing)
         {
-            audioSource.PlayOneShot(slideSound);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.volume = 0.5f;
+                audioSource.PlayOneShot(slideSound);
+            }
         }
     }
 
