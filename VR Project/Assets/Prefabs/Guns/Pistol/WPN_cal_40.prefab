@@ -327,6 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effect: {fileID: 5289038161723102569}
   bloodEffect: {fileID: 2247823383319677641}
+  decal: {fileID: 6118188761981123855}
   trail: {fileID: 2488809947968558257}
 --- !u!1 &2488809947968558257
 GameObject:
@@ -480,6 +481,7 @@ GameObject:
   - component: {fileID: 7348980939488143130}
   - component: {fileID: 2247823383319677641}
   - component: {fileID: 2929959322077771480}
+  - component: {fileID: 6118188761981123855}
   m_Layer: 0
   m_Name: BloodEffect
   m_TagString: Untagged
@@ -692,7 +694,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.18553454, b: 0.18553454, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4083,7 +4085,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -4146,7 +4148,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4258,7 +4260,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -5281,6 +5283,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6118188761981123855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3110870403546962257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25dbeb1952eabf64b8e4106f5c0fdbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decal: {fileID: 7957728727511543959, guid: fb09ce74640bf5546b1c28f99f466368, type: 3}
 --- !u!1 &5449625199644920303
 GameObject:
   m_ObjectHideFlags: 0

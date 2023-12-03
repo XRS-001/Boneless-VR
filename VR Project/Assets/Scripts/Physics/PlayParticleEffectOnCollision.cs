@@ -6,6 +6,7 @@ public class PlayParticleEffectOnCollision : MonoBehaviour
 {
     public ParticleSystem effect;
     public ParticleSystem bloodEffect;
+    public BloodDecal decal;
     public GameObject trail;
     private bool canEffect = true;
     private void Update()
@@ -27,6 +28,7 @@ public class PlayParticleEffectOnCollision : MonoBehaviour
         {
             bloodEffect.transform.parent = null;
             bloodEffect.Play();
+            decal.Decal(transform.position);
         }
         canEffect = false;
     }
