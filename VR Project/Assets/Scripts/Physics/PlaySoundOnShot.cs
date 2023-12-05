@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaySoundOnCollision : MonoBehaviour
+public class PlaySoundOnShot : MonoBehaviour
 {
     private bool canMakeNoise = true;
     public AudioSource audioSource;

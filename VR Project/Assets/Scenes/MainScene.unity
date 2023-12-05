@@ -23469,10 +23469,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 91220950, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 192707948, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
       propertyPath: parentRb
       value: 
       objectReference: {fileID: 356802511}
+    - target: {fileID: 205316291, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 234553901, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 561941166, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 726816119, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 769297826, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 940936173, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300692995, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417855055, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455403236, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466269302, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780332951, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950299930, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996716422, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121809839, guid: be4aba356e67aa94c8fa81695ebe9350, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8254259329458642313, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence

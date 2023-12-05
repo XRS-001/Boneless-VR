@@ -70,7 +70,7 @@ public class RifleFire : MonoBehaviour
             GameObject recoilBullet = Instantiate(bullet);
             recoilBullet.transform.position = recoilAngle.position;
             recoilBullet.transform.rotation = recoilAngle.rotation;
-            recoilBullet.GetComponent<PlayParticleEffectOnCollision>().effect = null;
+            recoilBullet.GetComponent<PlayEffectOnShot>().effect = null;
             recoilBullet.GetComponent<AudioSource>().enabled = false;
 
             GameObject spawnedCasing = Instantiate(casing);

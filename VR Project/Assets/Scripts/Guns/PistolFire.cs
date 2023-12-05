@@ -69,7 +69,7 @@ public class PistolFire : MonoBehaviour
             GameObject recoilBullet = Instantiate(bullet);
             recoilBullet.transform.position = recoilAngle.position;
             recoilBullet.transform.rotation = recoilAngle.rotation;
-            recoilBullet.GetComponent<PlayParticleEffectOnCollision>().effect = null;
+            recoilBullet.GetComponent<PlayEffectOnShot>().effect = null;
             recoilBullet.GetComponent<AudioSource>().enabled = false;
 
             Physics.IgnoreCollision(spawnedBullet.GetComponent<Collider>(), recoilBullet.GetComponent<Collider>());

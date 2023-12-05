@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayParticleEffectOnCollision : MonoBehaviour
+public class PlayEffectOnShot : MonoBehaviour
 {
+    public GameObject bulletWound;
+    public GameObject bulletHole;
     public ParticleSystem effect;
     public ParticleSystem bloodEffect;
     public BloodDecal decal;
@@ -23,12 +25,21 @@ public class PlayParticleEffectOnCollision : MonoBehaviour
             effect.transform.parent = null;
             effect.Play();
             GetComponent<Rigidbody>().isKinematic = true;
+            GameObject spawnedBulletHole = Instantiate(bulletHole);
+            spawnedBulletHole.transform.position = collision.contacts[0].point;
+            spawnedBulletHole.transform.rotation = Quaternion.LookRotation(collision.contacts[0].normal);
+            spawnedBulletHole.transform.parent = collision.gameObject.transform;
+
         }
         if(collision.gameObject.layer == 20 && canEffect && effect != null)
         {
             bloodEffect.transform.parent = null;
             bloodEffect.Play();
             decal.Decal(transform.position);
+            GameObject spawnedBulletHole = Instantiate(bulletWound);
+            spawnedBulletHole.transform.position = collision.contacts[0].point;
+            spawnedBulletHole.transform.rotation = Quaternion.LookRotation(collision.contacts[0].normal);
+            spawnedBulletHole.transform.parent = collision.gameObject.transform;
         }
         canEffect = false;
     }

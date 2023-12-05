@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JointCollision : MonoBehaviour
 {
+    public float bulletDamage;
     public NPC npc;
     public float velocityThreshold;
     private bool canCollide = false;
@@ -36,7 +37,7 @@ public class JointCollision : MonoBehaviour
         }
         if(collision.gameObject.layer == 10)
         {
-            npc.DealDamage(20, 0);
+            npc.DealDamage(bulletDamage, 0);
             if (npc.health == 0)
             {
                 collision.rigidbody.AddForce(collision.relativeVelocity * 25, ForceMode.Impulse);

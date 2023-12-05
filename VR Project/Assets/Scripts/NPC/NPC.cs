@@ -96,10 +96,6 @@ public class NPC : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
         health = Mathf.Clamp(health, 0, 100);
-        if(health <= 0)
-        {
-            puppet.state = PuppetMaster.State.Dead;
-        }
     }
     public void DealDamage(float damage, float delayTime)
     {
@@ -107,6 +103,10 @@ public class NPC : MonoBehaviour
         {
             health -= damage;
             StartCoroutine(Delay(delayTime));
+            if (health <= 0)
+            {
+                puppet.state = PuppetMaster.State.Dead;
+            }
         }
     }
     IEnumerator Delay(float delayTime)

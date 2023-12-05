@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: -3451887466769598457}
   - component: {fileID: -2123642231906076924}
   m_Layer: 10
-  m_Name: WPN_cal_40
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,6 +325,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f94b69849067384890d61284f2f15da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletWound: {fileID: 5210969507558465983, guid: 4fafe31e1530e8a499798c577b07f6ae,
+    type: 3}
+  bulletHole: {fileID: 330840812680023252, guid: 69b2a3692273d3449821fe217dd6fbce,
+    type: 3}
   effect: {fileID: 5289038161723102569}
   bloodEffect: {fileID: 2247823383319677641}
   decal: {fileID: 6118188761981123855}

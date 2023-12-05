@@ -49,7 +49,7 @@ public class ShotgunFire : MonoBehaviour
             GameObject recoilBullet = Instantiate(bullet);
             recoilBullet.transform.position = recoilAngle.position;
             recoilBullet.transform.rotation = recoilAngle.rotation;
-            recoilBullet.GetComponent<PlayParticleEffectOnCollision>().effect = null;
+            recoilBullet.GetComponent<PlayEffectOnShot>().effect = null;
             recoilBullet.GetComponent<AudioSource>().enabled = false;
             foreach (Transform bulletFirePosition in bulletFirePositions)
             {
