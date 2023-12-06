@@ -26,8 +26,8 @@ public class PlayEffectOnShot : MonoBehaviour
             effect.Play();
             GetComponent<Rigidbody>().isKinematic = true;
             GameObject spawnedBulletHole = Instantiate(bulletHole);
-            spawnedBulletHole.transform.position = collision.contacts[0].point;
-            spawnedBulletHole.transform.rotation = Quaternion.LookRotation(collision.contacts[0].normal);
+            spawnedBulletHole.transform.position = collision.GetContact(0).point;
+            spawnedBulletHole.transform.rotation = Quaternion.LookRotation(collision.GetContact(0).normal);
             spawnedBulletHole.transform.parent = collision.gameObject.transform;
 
         }
@@ -37,8 +37,8 @@ public class PlayEffectOnShot : MonoBehaviour
             bloodEffect.Play();
             decal.Decal(transform.position);
             GameObject spawnedBulletHole = Instantiate(bulletWound);
-            spawnedBulletHole.transform.position = collision.contacts[0].point;
-            spawnedBulletHole.transform.rotation = Quaternion.LookRotation(collision.contacts[0].normal);
+            spawnedBulletHole.transform.position = collision.GetContact(0).point;
+            spawnedBulletHole.transform.rotation = Quaternion.LookRotation(collision.GetContact(0).normal);
             spawnedBulletHole.transform.parent = collision.gameObject.transform;
         }
         canEffect = false;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3356786762789775096}
   - component: {fileID: 318694954380036301}
   m_Layer: 0
-  m_Name: BloodDecal
+  m_Name: BloodDecalFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7957728727511543959}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.052254975, y: 0, z: -2.5692}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Material: {fileID: 2100000, guid: c4f6b9637d2d0eb4584b0e639b5ca943, type: 2}
   m_DrawDistance: 1000
   m_FadeScale: 0.9
-  m_StartAngleFade: 171.79582
-  m_EndAngleFade: 177.0465
+  m_StartAngleFade: 0
+  m_EndAngleFade: 180
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
-  m_DecalLayerMask: 2
-  m_ScaleMode: 1
+  m_DecalLayerMask: 1
+  m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0.125, y: 0.125, z: 1}
+  m_Size: {x: 0.1875, y: 0.1875, z: 0.05}
   m_FadeFactor: 0.5

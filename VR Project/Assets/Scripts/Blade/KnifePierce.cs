@@ -23,29 +23,6 @@ public class KnifePierce : MonoBehaviour
         float distance = Vector3.Distance(transform.position, lastPosition);
         velocity = distance / Time.deltaTime;
         lastPosition = transform.position;
-        if(!isPiercing && joint)
-        {
-            if (!stabbedCollider.transform.GetComponent<JointCollision>())
-            {
-                Physics.IgnoreCollision(stabbedCollider, knifeCollider, false);
-                Physics.IgnoreCollision(stabbedCollider, bladeTipCollider, false);
-            }
-            else
-            {
-                foreach (Collider collider in stabbedCollider.transform.GetComponent<JointCollision>().collidersOnNPC)
-                {
-                    Physics.IgnoreCollision(collider, knifeCollider, false);
-                    Physics.IgnoreCollision(collider, bladeTipCollider, false);
-                }
-            }
-
-            stabbedCollider = null;
-            StartCoroutine(Delay());
-            audioSource.pitch = 1.5f;
-            audioSource.Stop();
-            audioSource.PlayOneShot(pierceSound);
-            Destroy(joint);
-        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -141,7 +118,7 @@ public class KnifePierce : MonoBehaviour
     {
         knifeCollider.enabled = false;
         bladeTipCollider.enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.25f);
         knifeCollider.enabled = true;
         bladeTipCollider.enabled = true;
         isPiercing = false;
