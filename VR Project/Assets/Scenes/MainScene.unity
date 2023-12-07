@@ -3080,7 +3080,7 @@ MonoBehaviour:
   audioSource: {fileID: 358880568}
   sliceSound: {fileID: 8300000, guid: 047caed4034a5c4459d8b6b4ec06bb90, type: 3}
   damage: 3
-  speedNeededToSlice: 1
+  speedNeededToSlice: 2
   startSlicePoint: {fileID: 1080720875}
   endSlicePoint: {fileID: 1661802924}
   startSlicePointAlt: {fileID: 0}
@@ -17324,7 +17324,7 @@ PrefabInstance:
     - target: {fileID: 3836748446213129449, guid: a85c62fa01f0d65408bbf773cdfdf5cd,
         type: 3}
       propertyPath: damage
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3836748446213129449, guid: a85c62fa01f0d65408bbf773cdfdf5cd,
         type: 3}
@@ -17430,7 +17430,7 @@ PrefabInstance:
     - target: {fileID: 3836748446213130005, guid: a85c62fa01f0d65408bbf773cdfdf5cd,
         type: 3}
       propertyPath: speedNeededToSlice
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3836748446213130005, guid: a85c62fa01f0d65408bbf773cdfdf5cd,
         type: 3}
@@ -20830,7 +20830,7 @@ PrefabInstance:
     - target: {fileID: 5435194949716538764, guid: 90acea84a987c6446953c21314a3bac7,
         type: 3}
       propertyPath: speedNeededToSlice
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5435194949716538764, guid: 90acea84a987c6446953c21314a3bac7,
         type: 3}
@@ -20840,7 +20840,7 @@ PrefabInstance:
     - target: {fileID: 5435194949716538765, guid: 90acea84a987c6446953c21314a3bac7,
         type: 3}
       propertyPath: damage
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5435194949716538765, guid: 90acea84a987c6446953c21314a3bac7,
         type: 3}

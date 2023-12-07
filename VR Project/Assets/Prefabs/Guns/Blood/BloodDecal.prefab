@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &318694954380036301
 MonoBehaviour:
@@ -54,5 +54,5 @@ MonoBehaviour:
   m_DecalLayerMask: 2
   m_ScaleMode: 1
   m_Offset: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0.125, y: 0.125, z: 1}
+  m_Size: {x: 0.125, y: 0.125, z: 0}
   m_FadeFactor: 0.5

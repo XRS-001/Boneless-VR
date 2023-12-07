@@ -19,7 +19,7 @@ public class JointCollision : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<KnifePierce>()) 
         {
-            StartCoroutine(CheckPierce(collision.gameObject.GetComponent<KnifePierce>(), collision.GetContact(0).point, Quaternion.LookRotation(collision.GetContact(0).normal)));
+            StartCoroutine(CheckPierce(collision.gameObject.GetComponent<KnifePierce>(), collision.collider.ClosestPoint(transform.position), Quaternion.LookRotation(collision.GetContact(0).normal)));
         }
         else if(damageOnCollision && collision.gameObject.layer != 10 && collision.gameObject.layer != 6)
         {
@@ -55,8 +55,7 @@ public class JointCollision : MonoBehaviour
             {
                 if (collision.rigidbody.velocity.magnitude > collision.gameObject.GetComponent<KnifeSlice>().speedNeededToSlice)
                 {
-                    Debug.Log("Collided");
-                    GameObject spawnedDecal = Instantiate(bloodDecal, collision.GetContact(0).point, Quaternion.LookRotation(collision.GetContact(0).normal));
+                    GameObject spawnedDecal = Instantiate(bloodDecal, collision.collider.ClosestPoint(transform.position), Quaternion.LookRotation(collision.GetContact(0).normal));
                     spawnedDecal.transform.parent = transform;
                     npc.DealDamage(collision.relativeVelocity.magnitude, 0.5f);
                     StartCoroutine(Delay());
@@ -64,8 +63,7 @@ public class JointCollision : MonoBehaviour
             }
             else if (collision.rigidbody.velocity.magnitude > velocityThreshold)
             {
-                Debug.Log("Collided");
-                GameObject spawnedDecal = Instantiate(bloodDecal, collision.GetContact(0).point, Quaternion.LookRotation(collision.GetContact(0).normal));
+                GameObject spawnedDecal = Instantiate(bloodDecal, collision.collider.ClosestPoint(transform.position), Quaternion.LookRotation(collision.GetContact(0).normal));
                 spawnedDecal.transform.parent = transform;
                 npc.DealDamage(collision.relativeVelocity.magnitude, 0.5f);
                 StartCoroutine(Delay());
