@@ -94,6 +94,7 @@ public class XRGrabDynamic : XRGrabInteractable
         base.OnSelectEntered(args);
         if (puppetFall)
         {
+            puppetMaster.muscles[7].props.mappingWeight *= 2;
             puppetMaster.angularLimits = true;
             puppetMaster.muscleSpring /= 2;
             puppetFall.collisionResistance.floatValue = collisionResistanceGrabbing;
@@ -134,6 +135,7 @@ public class XRGrabDynamic : XRGrabInteractable
         }
         if (puppetFall && !leftController.isGrabbing && !rightController.isGrabbing)
         {
+            puppetMaster.muscles[7].props.mappingWeight /= 2;
             puppetMaster.angularLimits = false;
             puppetMaster.muscleSpring *= 2;
             puppetFall.collisionResistance.floatValue = collisionResistance;

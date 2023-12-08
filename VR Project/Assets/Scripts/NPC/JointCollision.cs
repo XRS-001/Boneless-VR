@@ -19,7 +19,7 @@ public class JointCollision : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<KnifePierce>()) 
         {
-            StartCoroutine(CheckPierce(collision.gameObject.GetComponent<KnifePierce>(), collision.collider.ClosestPoint(transform.position), Quaternion.LookRotation(collision.GetContact(0).normal)));
+            StartCoroutine(CheckPierce(collision.gameObject.GetComponent<KnifePierce>(), collision.GetContact(0).point, Quaternion.LookRotation(collision.GetContact(0).normal)));
         }
         else if(damageOnCollision && collision.gameObject.layer != 10 && collision.gameObject.layer != 6)
         {
@@ -55,24 +55,29 @@ public class JointCollision : MonoBehaviour
             {
                 if (collision.rigidbody.velocity.magnitude > collision.gameObject.GetComponent<KnifeSlice>().speedNeededToSlice)
                 {
-                    GameObject spawnedDecal = Instantiate(bloodDecal, collision.collider.ClosestPoint(transform.position), Quaternion.LookRotation(collision.GetContact(0).normal));
-                    spawnedDecal.transform.parent = transform;
-                    npc.DealDamage(collision.relativeVelocity.magnitude, 0.5f);
-                    StartCoroutine(Delay());
+                    StartCoroutine(CheckNotPierce(collision.gameObject.GetComponent<KnifePierce>(), collision.GetContact(0).point, Quaternion.LookRotation(collision.GetContact(0).normal)));
                 }
             }
             else if (collision.rigidbody.velocity.magnitude > velocityThreshold)
             {
-                GameObject spawnedDecal = Instantiate(bloodDecal, collision.collider.ClosestPoint(transform.position), Quaternion.LookRotation(collision.GetContact(0).normal));
+                GameObject spawnedDecal = Instantiate(bloodDecal, collision.GetContact(0).point, Quaternion.LookRotation(collision.GetContact(0).normal));
                 spawnedDecal.transform.parent = transform;
-                npc.DealDamage(collision.relativeVelocity.magnitude, 0.5f);
-                StartCoroutine(Delay());
             }
+        }
+
+    }
+    public IEnumerator CheckNotPierce(KnifePierce knifePierce, Vector3 position, Quaternion rotation)
+    {
+        yield return new WaitForSeconds(0.001f);
+        if (!knifePierce.isPiercing)
+        {
+            GameObject spawnedDecal = Instantiate(bloodDecal, position, rotation);
+            spawnedDecal.transform.parent = transform;
         }
     }
     public IEnumerator CheckPierce(KnifePierce knifePierce, Vector3 position, Quaternion rotation)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.001f);
         if (knifePierce.isPiercing)
         {
             GameObject spawnedDecal = Instantiate(bloodDecal, position, rotation);

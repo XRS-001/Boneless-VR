@@ -66,13 +66,16 @@ public class PhysicsRig : MonoBehaviour
         leftTargetPosition.z = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.z, leftHand.localPosition.z);
         if (leftController.weight != 0)
         {
-            Vector3 targetVelocity = leftJoint.targetVelocity;
-            targetVelocity.y = -0.25f * leftController.weight;
-            leftJoint.targetVelocity = targetVelocity;
+            if (!leftController.objectGrabbing.CompareTag("Pierceable"))
+            {
+                Vector3 targetVelocity = leftJoint.targetVelocity;
+                targetVelocity.y = -0.25f * leftController.weight;
+                //leftJoint.targetVelocity = targetVelocity;
 
-            JointDrive newDrive = leftJoint.yDrive;
-            newDrive.positionSpring = YspringStartLeft / (leftController.weight / 10);
-            leftJoint.yDrive = newDrive;
+                JointDrive newDrive = leftJoint.yDrive;
+                newDrive.positionSpring = YspringStartLeft / (leftController.weight / 10);
+                leftJoint.yDrive = newDrive;
+            }
         }
         else
         {
@@ -104,13 +107,16 @@ public class PhysicsRig : MonoBehaviour
         rightTargetPosition.z = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.z, rightHand.localPosition.z);
         if (rightController.weight != 0)
         {
-            Vector3 targetVelocity = rightJoint.targetVelocity;
-            targetVelocity.y = -0.25f * rightController.weight;
-            rightJoint.targetVelocity = targetVelocity;
+            if (rightController.objectGrabbing.CompareTag("Pierceable"))
+            {
+                Vector3 targetVelocity = rightJoint.targetVelocity;
+                targetVelocity.y = -0.25f * rightController.weight;
+                rightJoint.targetVelocity = targetVelocity;
 
-            JointDrive newDrive = rightJoint.yDrive;
-            newDrive.positionSpring = YspringStartRight / (rightController.weight / 10);
-            rightJoint.yDrive = newDrive;
+                JointDrive newDrive = rightJoint.yDrive;
+                newDrive.positionSpring = YspringStartRight / (rightController.weight / 10);
+                rightJoint.yDrive = newDrive;
+            }
         }
         else
         {

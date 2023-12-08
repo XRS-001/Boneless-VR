@@ -20,7 +20,9 @@ public class PistolFire : MonoBehaviour
     public XRGrabInteractablePistol grabInteractable;
     private float threshold = 140f;
     public InputActionProperty fireInputSourceLeft;
+    public Transform leftTriggerFinger;
     public InputActionProperty fireInputSourceRight;
+    public Transform rightTriggerFinger;
     public InputActionProperty magReleaseInputSourceRight;
     public InputActionProperty magReleaseInputSourceLeft;
     public int ammoCapacity;
@@ -47,6 +49,7 @@ public class PistolFire : MonoBehaviour
     public bool slideRetracted = true;
     private bool gunFired = false;
     private float pitch;
+    private bool triggerHeld = false;
     private void Start()
     {
         pitch = audioSource.pitch;
@@ -140,6 +143,16 @@ public class PistolFire : MonoBehaviour
         else if(grabInteractable.leftHandGrabbing)
         {
             fireButton = fireInputSourceLeft.action.ReadValue<float>();
+            if (fireButton > 0 && !triggerHeld)
+            {
+                StartCoroutine(LerpRotation(50, leftTriggerFinger));
+                triggerHeld = true;
+            }
+            if (fireButton <= 0 && triggerHeld)
+            {
+                StartCoroutine(LerpRotation(-50, leftTriggerFinger));
+                triggerHeld = false;
+            }
             magRelease = magReleaseInputSourceLeft.action.ReadValue<float>();
         }
         if (fireButton > 0.1f && triggerReleased && timeSinceLastShot >= fireCooldown && (hasSlide || slideRetracted == false))
@@ -156,6 +169,11 @@ public class PistolFire : MonoBehaviour
             animator.Play("Release");
             StartCoroutine(Delay());
         }
+    }
+    public IEnumerator LerpRotation(float angle, Transform rotateObject)
+    {
+        rotateObject.localRotation = Quaternion.Euler(new Vector3(rotateObject.localRotation.eulerAngles.x + angle, rotateObject.localRotation.eulerAngles.y, rotateObject.localRotation.eulerAngles.z));
+        yield return null;
     }
     private void OnTriggerEnter(Collider other)
     {

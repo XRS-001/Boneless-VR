@@ -133,7 +133,7 @@ public class ControllerInteractors : XRDirectInteractor
         {
             Destroy(newColliderParent);
         }
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         if(!isGrabbing)
         {
             foreach(Collider collider in colliders)
