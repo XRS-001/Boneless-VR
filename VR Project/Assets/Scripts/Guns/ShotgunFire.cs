@@ -15,7 +15,11 @@ public class ShotgunFire : MonoBehaviour
     public AudioClip slideSound;
     public XRGrabInteractableShotgun grabInteractable;
     public InputActionProperty fireInputSourceLeft;
+    public Transform leftTriggerFinger;
+    public Transform leftInitialRotation;
     public InputActionProperty fireInputSourceRight;
+    public Transform rightTriggerFinger;
+    public Transform rightInitialRotation;
     public int maxCapacity;
     public int ammoCapacity;
     public Transform[] bulletFirePositions;
@@ -91,10 +95,12 @@ public class ShotgunFire : MonoBehaviour
         if (grabInteractable.rightHandGrabbing)
         {
             fireButton = fireInputSourceRight.action.ReadValue<float>();
+            rightTriggerFinger.localRotation = Quaternion.Euler(new Vector3(rightInitialRotation.localRotation.eulerAngles.x + (50 * fireButton), rightTriggerFinger.localRotation.eulerAngles.y, rightTriggerFinger.localRotation.eulerAngles.z));
         }
         else if (grabInteractable.leftHandGrabbing)
         {
             fireButton = fireInputSourceLeft.action.ReadValue<float>();
+            leftTriggerFinger.localRotation = Quaternion.Euler(new Vector3(leftInitialRotation.localRotation.eulerAngles.x + (50 * fireButton), leftTriggerFinger.localRotation.eulerAngles.y, leftTriggerFinger.localRotation.eulerAngles.z));
         }
         if (fireButton > 0.1f && triggerReleased && timeSinceLastShot >= fireCooldown)
         {

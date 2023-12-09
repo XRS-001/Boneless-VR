@@ -70,7 +70,7 @@ public class PhysicsRig : MonoBehaviour
             {
                 Vector3 targetVelocity = leftJoint.targetVelocity;
                 targetVelocity.y = -0.25f * leftController.weight;
-                //leftJoint.targetVelocity = targetVelocity;
+                leftJoint.targetVelocity = targetVelocity;
 
                 JointDrive newDrive = leftJoint.yDrive;
                 newDrive.positionSpring = YspringStartLeft / (leftController.weight / 10);
@@ -107,7 +107,7 @@ public class PhysicsRig : MonoBehaviour
         rightTargetPosition.z = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.z, rightHand.localPosition.z);
         if (rightController.weight != 0)
         {
-            if (rightController.objectGrabbing.CompareTag("Pierceable"))
+            if (!rightController.objectGrabbing.CompareTag("Pierceable"))
             {
                 Vector3 targetVelocity = rightJoint.targetVelocity;
                 targetVelocity.y = -0.25f * rightController.weight;

@@ -21,8 +21,10 @@ public class PistolFire : MonoBehaviour
     private float threshold = 140f;
     public InputActionProperty fireInputSourceLeft;
     public Transform leftTriggerFinger;
+    public Transform leftInitialRotation;
     public InputActionProperty fireInputSourceRight;
     public Transform rightTriggerFinger;
+    public Transform rightInitialRotation;
     public InputActionProperty magReleaseInputSourceRight;
     public InputActionProperty magReleaseInputSourceLeft;
     public int ammoCapacity;
@@ -138,21 +140,13 @@ public class PistolFire : MonoBehaviour
         if (grabInteractable.rightHandGrabbing)
         {
             fireButton = fireInputSourceRight.action.ReadValue<float>();
+            rightTriggerFinger.localRotation = Quaternion.Euler(new Vector3(rightInitialRotation.localRotation.eulerAngles.x + (50 * fireButton), rightTriggerFinger.localRotation.eulerAngles.y, rightTriggerFinger.localRotation.eulerAngles.z));
             magRelease = magReleaseInputSourceRight.action.ReadValue<float>();
         }
         else if(grabInteractable.leftHandGrabbing)
         {
             fireButton = fireInputSourceLeft.action.ReadValue<float>();
-            if (fireButton > 0 && !triggerHeld)
-            {
-                StartCoroutine(LerpRotation(50, leftTriggerFinger));
-                triggerHeld = true;
-            }
-            if (fireButton <= 0 && triggerHeld)
-            {
-                StartCoroutine(LerpRotation(-50, leftTriggerFinger));
-                triggerHeld = false;
-            }
+            leftTriggerFinger.localRotation = Quaternion.Euler(new Vector3(leftInitialRotation.localRotation.eulerAngles.x + (50 * fireButton), leftTriggerFinger.localRotation.eulerAngles.y, leftTriggerFinger.localRotation.eulerAngles.z));
             magRelease = magReleaseInputSourceLeft.action.ReadValue<float>();
         }
         if (fireButton > 0.1f && triggerReleased && timeSinceLastShot >= fireCooldown && (hasSlide || slideRetracted == false))
@@ -169,11 +163,6 @@ public class PistolFire : MonoBehaviour
             animator.Play("Release");
             StartCoroutine(Delay());
         }
-    }
-    public IEnumerator LerpRotation(float angle, Transform rotateObject)
-    {
-        rotateObject.localRotation = Quaternion.Euler(new Vector3(rotateObject.localRotation.eulerAngles.x + angle, rotateObject.localRotation.eulerAngles.y, rotateObject.localRotation.eulerAngles.z));
-        yield return null;
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -17,11 +17,7 @@ public class JointCollision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<KnifePierce>()) 
-        {
-            StartCoroutine(CheckPierce(collision.gameObject.GetComponent<KnifePierce>(), collision.GetContact(0).point, Quaternion.LookRotation(collision.GetContact(0).normal)));
-        }
-        else if(damageOnCollision && collision.gameObject.layer != 10 && collision.gameObject.layer != 6)
+        if(damageOnCollision && collision.gameObject.layer != 10 && collision.gameObject.layer != 6)
         {
             if (collision.relativeVelocity.magnitude > velocityThreshold / 4 && canCollide)
             {
@@ -75,14 +71,10 @@ public class JointCollision : MonoBehaviour
             spawnedDecal.transform.parent = transform;
         }
     }
-    public IEnumerator CheckPierce(KnifePierce knifePierce, Vector3 position, Quaternion rotation)
+    public void BloodWound(KnifePierce knifePierce, Vector3 position, Quaternion rotation)
     {
-        yield return new WaitForSeconds(0.001f);
-        if (knifePierce.isPiercing)
-        {
-            GameObject spawnedDecal = Instantiate(bloodDecal, position, rotation);
-            spawnedDecal.transform.parent = transform;
-        }
+        GameObject spawnedDecal = Instantiate(bloodDecal, position, rotation);
+        spawnedDecal.transform.parent = transform;
     }
     public IEnumerator Delay()
     {
