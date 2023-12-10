@@ -88,7 +88,6 @@ public class KnifePierce : MonoBehaviour
 
             if (distanceHit < 0.015)
             {
-                Destroy(hitObject);
                 if (!stabbedCollider.transform.GetComponent<JointCollision>())
                 {
                     Physics.IgnoreCollision(stabbedCollider, knifeCollider, false);
@@ -116,5 +115,6 @@ public class KnifePierce : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         knifeCollider.enabled = true;
         isPiercing = false;
+        Destroy(hitObject);
     }
 }

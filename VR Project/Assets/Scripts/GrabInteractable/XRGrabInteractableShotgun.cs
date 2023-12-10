@@ -51,9 +51,9 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
         if (secondInteractor && selectingInteractor)
         {
             if (snapToSecondHand)
-                selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation();
+                selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.GetComponent<Rigidbody>().MoveRotation(GetTwoHandRotation());
             else
-                selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation() * initialRotationOffset;
+                selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.GetComponent<Rigidbody>().MoveRotation(GetTwoHandRotation() * initialRotationOffset);
         }
         base.ProcessInteractable(updatePhase);
     }
@@ -180,11 +180,18 @@ public class XRGrabInteractableShotgun : XRGrabInteractable
         JointDrive zDrive = secondGrabPoint.GetComponent<ConfigurableJoint>().zDrive;
         zDrive.positionDamper = 10000;
         secondGrabPoint.GetComponent<ConfigurableJoint>().zDrive = zDrive;
-        secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
+        StartCoroutine(Delay());
         foreach (Collider collider in colliders)
         {
             Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, false);
         }
+    }
+    public IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(0.05f);
+        GameObject handColliderParent = secondInteractor.gameObject.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent;
         secondInteractor = null;
+        yield return new WaitForSeconds(0.5f);
+        handColliderParent.SetActive(true);
     }
 }

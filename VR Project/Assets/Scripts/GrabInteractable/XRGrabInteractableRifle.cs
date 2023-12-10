@@ -30,7 +30,7 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     public Transform rightPresence;
     public float handleLength;
     public bool offHandGrabbing = false;
-    private void Update()
+    private void FixedUpdate()
     {
         if (!leftHandGrabbing && !secondHandGrabbing)
         {
@@ -128,9 +128,9 @@ public class XRGrabInteractableRifle : XRGrabInteractable
                 secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = rightAttachSecond.rotation;
             }
             if (snapToSecondHand)
-                selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation();
+                selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.GetComponent<Rigidbody>().MoveRotation(GetTwoHandRotation());
             else
-                selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation() * initialRotationOffset;
+                selectingInteractor.GetComponent<ControllerInteractors>().handPhysics.GetComponent<Rigidbody>().MoveRotation(GetTwoHandRotation() * initialRotationOffset);
         }
         base.ProcessInteractable(updatePhase);
     }
@@ -176,12 +176,11 @@ public class XRGrabInteractableRifle : XRGrabInteractable
         {
             rifleFire.recoilSpeed *= 2;
         }
-        secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
         foreach (Collider collider in colliders)
         {
             Physics.IgnoreCollision(collider, secondInteractor.GetComponent<ControllerInteractors>().forearmCollider, false);
         }
-        secondInteractor = null;
+        StartCoroutine(Delay());
     }
     public override bool IsSelectableBy(IXRSelectInteractor selectInteractor)
     {
@@ -197,9 +196,11 @@ public class XRGrabInteractableRifle : XRGrabInteractable
     }
     public IEnumerator Delay()
     {
-        yield return new WaitForSeconds(0.1f);
-
+        yield return new WaitForSeconds(0.05f);
+        GameObject handColliderParent = secondInteractor.gameObject.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent;
         secondInteractor = null;
+        yield return new WaitForSeconds(0.5f);
+        handColliderParent.SetActive(true);
     }
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {

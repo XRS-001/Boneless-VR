@@ -120,9 +120,9 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
                 secondInteractor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = rightAttach.rotation;
             }
             if (snapToSecondHand)
-                interactor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation();
+                interactor.GetComponent<ControllerInteractors>().handPhysics.GetComponent<Rigidbody>().MoveRotation(GetTwoHandRotation());
             else
-                interactor.GetComponent<ControllerInteractors>().handPhysics.transform.rotation = GetTwoHandRotation() * initialRotationOffset;
+                interactor.GetComponent<ControllerInteractors>().handPhysics.GetComponent<Rigidbody>().MoveRotation(GetTwoHandRotation() * initialRotationOffset);
         }
         base.ProcessInteractable(updatePhase);
     }
@@ -158,7 +158,6 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     public void OnSecondHandRelease(SelectExitEventArgs args)
     {
         secondHandGrabbing = false;
-        secondInteractor.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent.SetActive(true);
         StartCoroutine(Delay());
         foreach (Collider collider in colliders)
         {
@@ -217,11 +216,13 @@ public class TwoHandInteractable : XRGrabInteractableTwoAttach
     public IEnumerator Delay()
     {
         yield return new WaitForSeconds(0.05f);
-
+        GameObject handColliderParent = secondInteractor.gameObject.GetComponent<ControllerInteractors>().handPresence.GetComponent<HandPresencePhysics>().handColliderParent;
         if (!rightHandGrabbing || !leftHandGrabbing)
         {
             secondInteractor = null;
         }
+        yield return new WaitForSeconds(0.5f);
+        handColliderParent.SetActive(true);
     }
     public IEnumerator DelayColliders()
     {
