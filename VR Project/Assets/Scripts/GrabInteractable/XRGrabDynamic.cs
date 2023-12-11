@@ -17,7 +17,6 @@ public class XRGrabDynamic : XRGrabInteractable
     public ControllerInteractors rightController;
     public Transform leftPresence;
     public Transform rightPresence;
-    public float maxAttachDistance;
     [Header("For NPC's Only:")]
 
     public PuppetMaster puppetMaster;
@@ -40,28 +39,32 @@ public class XRGrabDynamic : XRGrabInteractable
     {
         if (!rightController.isGrabbing)
         {
-            rightAttach.position = rightPresence.transform.position;
-            Vector3 localPositionRight = rightAttach.localPosition;
-            localPositionRight.x = Mathf.Clamp(localPositionRight.x, -maxAttachDistance, maxAttachDistance);
-            localPositionRight.y = Mathf.Clamp(localPositionRight.y, -maxAttachDistance, maxAttachDistance);
-            localPositionRight.z = Mathf.Clamp(localPositionRight.z, -maxAttachDistance, maxAttachDistance);
-            rightAttach.localPosition = localPositionRight;
-            rightAttach.rotation = rightPresence.rotation;
+            Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
+            RaycastHit rightHit;
+            GetComponent<Collider>().Raycast(new Ray(rightPresence.position, directionRight), out rightHit, float.PositiveInfinity);
+            if (rightHit.collider)
+            {
+                Vector3 positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightPresence.right / 25);
+                rightAttach.position = positionRight;
+                Vector3 localPositionRight = rightAttach.localPosition;
+                rightAttach.localPosition = localPositionRight;
+                rightAttach.rotation = rightPresence.rotation;
+            }
         }
 
         if (!leftController.isGrabbing)
         {
             Vector3 directionLeft = transform.position - leftPresence.gameObject.transform.position;
             RaycastHit leftHit;
-            Physics.Raycast(leftPresence.position, directionLeft, out leftHit);
-            Vector3 positionLeft = leftHit.collider.ClosestPoint(leftPresence.position);
-            leftAttach.position = positionLeft;
-            Vector3 localPositionLeft = leftAttach.localPosition;
-            localPositionLeft.x = Mathf.Clamp(localPositionLeft.x, -maxAttachDistance, maxAttachDistance);
-            localPositionLeft.y = Mathf.Clamp(localPositionLeft.y, -maxAttachDistance, maxAttachDistance);
-            localPositionLeft.z = Mathf.Clamp(localPositionLeft.z, -maxAttachDistance, maxAttachDistance);
-            leftAttach.localPosition = localPositionLeft;
-            leftAttach.rotation = leftPresence.rotation;
+            GetComponent<Collider>().Raycast(new Ray(leftPresence.position, directionLeft), out leftHit, float.PositiveInfinity);
+            if (leftHit.collider)
+            {
+                Vector3 positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (leftPresence.right / 25);
+                leftAttach.position = positionLeft;
+                Vector3 localPositionLeft = leftAttach.localPosition;
+                leftAttach.localPosition = localPositionLeft;
+                leftAttach.rotation = leftPresence.rotation;
+            }
         }
         if(leftHandGrabbing)
         {

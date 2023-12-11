@@ -112,20 +112,23 @@ public class GrabHandPose : MonoBehaviour
 
                 for (int i = 0; i < newBonesRotation.Length; i++)
                 {
-                    Vector3 direction = finalFingerPositions[i] - h.fingerBones[i].gameObject.transform.position;
-                    RaycastHit hit;
-                    Physics.Raycast(h.fingerBones[i].gameObject.transform.position, direction, out hit);
-                    Vector3 point = hit.point;
-                    float distance = Vector3.Distance(point, h.fingerBones[i].gameObject.transform.position);
-                    if (distance > 0f)
+                    bool checkSphere = true;
+                    foreach (Collider collider in Physics.OverlapSphere(h.fingerBones[i].transform.position, 0.95f))
                     {
-                        float lerpSpeed = timer / poseTransitionDuration / distance;
+                        if (!collider.CompareTag("Interactable"))
+                        {
+                            checkSphere = false;
+                        }
+                        else
+                        {
+                            checkSphere = true;
+                        }
+                    }
+                    if (!checkSphere)
+                    {
+                        float lerpSpeed = timer / poseTransitionDuration;
                         Quaternion boneRotation = Quaternion.Lerp(startingBonesRotation[i], newBonesRotation[i], lerpSpeed);
                         h.fingerBones[i].localRotation = boneRotation;
-                    }
-                    if (distance == 0f)
-                    {
-                        newBonesRotation[i] = h.fingerBones[i].gameObject.transform.rotation;
                     }
                 }
 
