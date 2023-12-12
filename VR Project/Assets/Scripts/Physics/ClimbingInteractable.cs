@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -27,6 +28,18 @@ public class ClimbingInteractable : XRSimpleInteractable
         grabHandPose.SetupPose(args);
         controller = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         handPhysics = controller.handPhysics;
+        if (controller.CompareTag("LeftHand"))
+        {
+            handPhysics.transform.position = GetComponent<Collider>().ClosestPoint(controller.handCenter.position) + (-controller.transform.right / 25);
+        }
+        else
+        {
+            handPhysics.transform.position = GetComponent<Collider>().ClosestPoint(controller.handCenter.position) + (controller.transform.right / 25);
+        }
+        foreach(Collider collider in controller.colliders)
+        {
+            collider.enabled = false;
+        }
         isGrabbing = true;
         fixedJoint = handPhysics.AddComponent<FixedJoint>();
         fixedJoint.connectedAnchor = transform.position;
@@ -34,6 +47,10 @@ public class ClimbingInteractable : XRSimpleInteractable
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        foreach (Collider collider in controller.colliders)
+        {
+            collider.enabled = true;
+        }
         controller = args.interactorObject.transform.GetComponent<ControllerInteractors>();
         controller.isClimbing = false;
         grabHandPose.UnSetPose(args);
@@ -43,7 +60,19 @@ public class ClimbingInteractable : XRSimpleInteractable
     private void OnSelectSecond(SelectEnterEventArgs args)
     {
         controller = args.interactorObject.transform.GetComponent<ControllerInteractors>();
+        foreach (Collider collider in controller.colliders)
+        {
+            collider.enabled = false;
+        }
         handPhysics = controller.handPhysics;
+        if (controller.CompareTag("LeftHand"))
+        {
+            handPhysics.transform.position = GetComponent<Collider>().ClosestPoint(controller.handCenter.position) + (-controller.transform.right / 25);
+        }
+        else
+        {
+            handPhysics.transform.position = GetComponent<Collider>().ClosestPoint(controller.handCenter.position) + (controller.transform.right / 25);
+        }
         isGrabbing = true;
         fixedJoint = handPhysics.AddComponent<FixedJoint>();
         fixedJoint.connectedAnchor = transform.position;
@@ -52,6 +81,10 @@ public class ClimbingInteractable : XRSimpleInteractable
     private void OnSelectSecondExit(SelectExitEventArgs args)
     {
         controller = args.interactorObject.transform.GetComponent<ControllerInteractors>();
+        foreach (Collider collider in controller.colliders)
+        {
+            collider.enabled = true;
+        }
         controller.isClimbing = false;
         isGrabbing = false;
         Destroy(fixedJoint);

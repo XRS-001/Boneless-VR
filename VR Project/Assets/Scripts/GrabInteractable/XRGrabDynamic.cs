@@ -41,7 +41,14 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
-            GetComponent<Collider>().Raycast(new Ray(rightPresence.position, directionRight), out rightHit, float.PositiveInfinity);
+            if (!GetComponent<Collider>())
+            {
+                GetComponentInChildren<Collider>().Raycast(new Ray(rightPresence.position, directionRight), out rightHit, float.PositiveInfinity);
+            }
+            else
+            {
+                GetComponent<Collider>().Raycast(new Ray(rightPresence.position, directionRight), out rightHit, float.PositiveInfinity);
+            }
             if (rightHit.collider)
             {
                 Vector3 positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightPresence.right / 25);
@@ -56,7 +63,14 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             Vector3 directionLeft = transform.position - leftPresence.gameObject.transform.position;
             RaycastHit leftHit;
-            GetComponent<Collider>().Raycast(new Ray(leftPresence.position, directionLeft), out leftHit, float.PositiveInfinity);
+            if (!GetComponent<Collider>())
+            {
+                GetComponentInChildren<Collider>().Raycast(new Ray(leftPresence.position, directionLeft), out leftHit, float.PositiveInfinity);
+            }
+            else
+            {
+                GetComponent<Collider>().Raycast(new Ray(leftPresence.position, directionLeft), out leftHit, float.PositiveInfinity);
+            }
             if (leftHit.collider)
             {
                 Vector3 positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (leftPresence.right / 25);
@@ -97,7 +111,7 @@ public class XRGrabDynamic : XRGrabInteractable
         base.OnSelectEntered(args);
         if (puppetFall)
         {
-            puppetMaster.muscles[7].props.mappingWeight *= 2;
+            puppetMaster.muscles[7].props.mappingWeight *= 4;
             puppetMaster.angularLimits = true;
             puppetMaster.muscleSpring /= 2;
             puppetFall.collisionResistance.floatValue = collisionResistanceGrabbing;
@@ -138,7 +152,7 @@ public class XRGrabDynamic : XRGrabInteractable
         }
         if (puppetFall && !leftController.isGrabbing && !rightController.isGrabbing)
         {
-            puppetMaster.muscles[7].props.mappingWeight /= 2;
+            puppetMaster.muscles[7].props.mappingWeight /= 4;
             puppetMaster.angularLimits = false;
             puppetMaster.muscleSpring *= 2;
             puppetFall.collisionResistance.floatValue = collisionResistance;

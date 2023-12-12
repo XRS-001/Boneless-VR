@@ -15,6 +15,7 @@ public class ControllerInteractors : XRDirectInteractor
     public Collider forearmCollider;
     public HandData handRig;
     public Collider[] colliders;
+    public Transform handCenter;
     private List<Collider> interactableColliders;
     private Rigidbody rb;
     private Transform attach;
