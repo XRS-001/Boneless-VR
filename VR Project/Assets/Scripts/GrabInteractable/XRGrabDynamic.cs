@@ -41,21 +41,24 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
+            RaycastHit rightHit2;
             if (!GetComponent<Collider>())
             {
                 GetComponentInChildren<Collider>().Raycast(new Ray(rightPresence.position, directionRight), out rightHit, float.PositiveInfinity);
+                GetComponentInChildren<Collider>().Raycast(new Ray(rightPresence.parent.position, transform.position - rightPresence.parent.position), out rightHit2, float.PositiveInfinity);
             }
             else
             {
                 GetComponent<Collider>().Raycast(new Ray(rightPresence.position, directionRight), out rightHit, float.PositiveInfinity);
+                GetComponent<Collider>().Raycast(new Ray(rightPresence.parent.position, transform.position - rightPresence.parent.position), out rightHit2, float.PositiveInfinity);
             }
             if (rightHit.collider)
             {
-                Vector3 positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightPresence.right / 25);
+                Vector3 positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightHit2.normal / 30);
                 rightAttach.position = positionRight;
                 Vector3 localPositionRight = rightAttach.localPosition;
                 rightAttach.localPosition = localPositionRight;
-                rightAttach.rotation = rightPresence.rotation;
+                rightAttach.rotation = Quaternion.LookRotation(-rightHit2.normal, rightPresence.up) * Quaternion.Euler(0, 90, 0);
             }
         }
 
@@ -63,21 +66,24 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             Vector3 directionLeft = transform.position - leftPresence.gameObject.transform.position;
             RaycastHit leftHit;
+            RaycastHit leftHit2;
             if (!GetComponent<Collider>())
             {
                 GetComponentInChildren<Collider>().Raycast(new Ray(leftPresence.position, directionLeft), out leftHit, float.PositiveInfinity);
+                GetComponentInChildren<Collider>().Raycast(new Ray(leftPresence.parent.position, transform.position - leftPresence.parent.position), out leftHit2, float.PositiveInfinity);
             }
             else
             {
                 GetComponent<Collider>().Raycast(new Ray(leftPresence.position, directionLeft), out leftHit, float.PositiveInfinity);
+                GetComponent<Collider>().Raycast(new Ray(leftPresence.parent.position, transform.position - leftPresence.parent.position), out leftHit2, float.PositiveInfinity);
             }
             if (leftHit.collider)
             {
-                Vector3 positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (leftPresence.right / 25);
+                Vector3 positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (-leftHit2.normal / 30);
                 leftAttach.position = positionLeft;
                 Vector3 localPositionLeft = leftAttach.localPosition;
                 leftAttach.localPosition = localPositionLeft;
-                leftAttach.rotation = leftPresence.rotation;
+                leftAttach.rotation = Quaternion.LookRotation(leftHit2.normal, leftPresence.up) * Quaternion.Euler(0, 90, 0);
             }
         }
         if(leftHandGrabbing)
@@ -130,7 +136,7 @@ public class XRGrabDynamic : XRGrabInteractable
             attachTransform = rightAttach;
         }
         base.OnSelectEntering(args);
-        if (isGrabbing)
+        if (rightHandGrabbing || leftHandGrabbing)
         {
             GetComponent<Rigidbody>().mass /= 2;
         }
