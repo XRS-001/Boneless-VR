@@ -76,6 +76,16 @@ public class PhysicsRig : MonoBehaviour
                 newDrive.positionSpring = YspringStartLeft / (leftController.weight / 10);
                 leftJoint.yDrive = newDrive;
             }
+            else
+            {
+                Vector3 targetVelocity = leftJoint.targetVelocity;
+                targetVelocity.y = -0.25f * leftController.weight / 200;
+                leftJoint.targetVelocity = targetVelocity;
+
+                JointDrive newDrive = leftJoint.yDrive;
+                newDrive.positionSpring = YspringStartLeft / (leftController.weight / 10);
+                leftJoint.yDrive = newDrive;
+            }
         }
         else
         {
@@ -111,6 +121,16 @@ public class PhysicsRig : MonoBehaviour
             {
                 Vector3 targetVelocity = rightJoint.targetVelocity;
                 targetVelocity.y = -0.25f * rightController.weight;
+                rightJoint.targetVelocity = targetVelocity;
+
+                JointDrive newDrive = rightJoint.yDrive;
+                newDrive.positionSpring = YspringStartRight / (rightController.weight / 10);
+                rightJoint.yDrive = newDrive;
+            }
+            else
+            {
+                Vector3 targetVelocity = rightJoint.targetVelocity;
+                targetVelocity.y = -0.25f * rightController.weight / 200;
                 rightJoint.targetVelocity = targetVelocity;
 
                 JointDrive newDrive = rightJoint.yDrive;

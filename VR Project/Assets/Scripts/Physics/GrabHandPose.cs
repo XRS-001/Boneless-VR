@@ -113,7 +113,7 @@ public class GrabHandPose : MonoBehaviour
                 for (int i = 0; i < newBonesRotation.Length; i++)
                 {
                     bool checkSphere = true;
-                    foreach (Collider collider in Physics.OverlapSphere(h.fingerBones[i].transform.position, 0.95f))
+                    foreach (Collider collider in Physics.OverlapSphere(h.fingerBones[i].transform.position, 1f))
                     {
                         if (!collider.CompareTag("Interactable"))
                         {
@@ -131,7 +131,6 @@ public class GrabHandPose : MonoBehaviour
                         h.fingerBones[i].localRotation = boneRotation;
                     }
                 }
-
                 timer += Time.deltaTime;
                 yield return null;
             }

@@ -54,7 +54,15 @@ public class XRGrabDynamic : XRGrabInteractable
             }
             if (rightHit.collider)
             {
-                Vector3 positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightHit2.normal / 30);
+                Vector3 positionRight;
+                if (!rightHit.transform.CompareTag("Pierceable"))
+                {
+                    positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightHit2.normal / 20);
+                }
+                else
+                {
+                    positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightHit2.normal / 40);
+                }
                 rightAttach.position = positionRight;
                 Vector3 localPositionRight = rightAttach.localPosition;
                 rightAttach.localPosition = localPositionRight;
@@ -79,7 +87,15 @@ public class XRGrabDynamic : XRGrabInteractable
             }
             if (leftHit.collider)
             {
-                Vector3 positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (-leftHit2.normal / 30);
+                Vector3 positionLeft;
+                if (!leftHit.transform.CompareTag("Pierceable"))
+                {
+                    positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (-leftHit2.normal / 20);
+                }
+                else
+                {
+                    positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (-leftHit2.normal / 40);
+                }
                 leftAttach.position = positionLeft;
                 Vector3 localPositionLeft = leftAttach.localPosition;
                 leftAttach.localPosition = localPositionLeft;
