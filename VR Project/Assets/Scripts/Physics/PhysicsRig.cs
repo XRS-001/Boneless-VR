@@ -79,7 +79,7 @@ public class PhysicsRig : MonoBehaviour
             else
             {
                 Vector3 targetVelocity = leftJoint.targetVelocity;
-                targetVelocity.y = -0.25f * leftController.weight / 200;
+                targetVelocity.y = -0.25f * leftController.weight / 75;
                 leftJoint.targetVelocity = targetVelocity;
 
                 JointDrive newDrive = leftJoint.yDrive;
@@ -130,7 +130,7 @@ public class PhysicsRig : MonoBehaviour
             else
             {
                 Vector3 targetVelocity = rightJoint.targetVelocity;
-                targetVelocity.y = -0.25f * rightController.weight / 200;
+                targetVelocity.y = -0.25f * rightController.weight / 75;
                 rightJoint.targetVelocity = targetVelocity;
 
                 JointDrive newDrive = rightJoint.yDrive;

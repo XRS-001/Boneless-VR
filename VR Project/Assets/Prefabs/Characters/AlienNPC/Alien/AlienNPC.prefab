@@ -585,7 +585,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -604,8 +604,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &7968493449199681843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,9 +619,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &5978387899972729720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,7 +1188,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -1205,8 +1207,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &6921314233450878113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,9 +1222,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &689780527669628334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,7 +1666,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -1681,8 +1685,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 5000
+  knockOutDistanceGrabbing: 100
 --- !u!114 &3924951387342295214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1696,9 +1700,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &8585148081845682084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2207,7 +2213,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -2226,8 +2232,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &5788428334932604458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2241,9 +2247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &8037151492439801294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2515,7 +2523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4958819552291209346
 Transform:
   m_ObjectHideFlags: 0
@@ -2906,7 +2914,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -2925,8 +2933,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &5959148886042856737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2940,9 +2948,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &1325906561502796581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3729,7 +3739,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -3748,8 +3758,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &3422174186440598847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3763,9 +3773,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &3314269791394618779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4107,7 +4119,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -4126,8 +4138,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &4978645850773237781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4141,9 +4153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &4539836474449996704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4519,7 +4533,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -4538,8 +4552,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 5000
+  knockOutDistanceGrabbing: 100
 --- !u!114 &7124506852762845901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4553,9 +4567,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &1577843845231640467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4898,7 +4914,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -4917,8 +4933,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &4892360860780409939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4932,9 +4948,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &1403373885910710347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5655,7 +5673,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -5674,8 +5692,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &7685286515559498768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5689,9 +5707,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &7577704503231911091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6023,10 +6043,10 @@ MonoBehaviour:
   unpinnedMuscleKnockout: 1
   dropProps: 1
   canGetUp: 1
-  getUpDelay: 1
+  getUpDelay: 0.5
   blendToAnimationTime: 1
   maxGetUpVelocity: 0.4
-  minGetUpDuration: 2
+  minGetUpDuration: 1
   getUpCollisionResistanceMlp: 2
   getUpRegainPinSpeedMlp: 1
   getUpKnockOutDistanceMlp: 1
@@ -7260,12 +7280,12 @@ MonoBehaviour:
   solverIterationCount: 1
   visualizeTargetPose: 0
   mappingWeight: 1
-  pinWeight: 1
+  pinWeight: 0.3
   muscleWeight: 1
   muscleSpring: 100
   muscleDamper: 100
   pinPow: 2
-  pinDistanceFalloff: 5
+  pinDistanceFalloff: 0
   angularPinning: 1
   updateJointAnchors: 0
   supportTranslationAnimation: 1
@@ -8081,7 +8101,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -8100,8 +8120,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &4805003385656918876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8115,9 +8135,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &722427732977045796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8627,7 +8649,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -8646,8 +8668,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &1395979722438498674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8661,9 +8683,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &2865901823788813359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9006,7 +9030,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -9025,8 +9049,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &6808151570908235442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9040,9 +9064,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &7753571615769434267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9640,7 +9666,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -9659,8 +9685,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 5000
+  knockOutDistanceGrabbing: 100
 --- !u!114 &1461288852530532997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9674,9 +9700,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &3982241491353978818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10484,7 +10512,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
@@ -10503,8 +10531,8 @@ MonoBehaviour:
   rightPresence: {fileID: 0}
   puppetMaster: {fileID: 245749453071543901}
   puppetFall: {fileID: 1167080224705625322}
-  collisionResistanceGrabbing: 1000
-  knockOutDistanceGrabbing: 0.001
+  collisionResistanceGrabbing: 1250
+  knockOutDistanceGrabbing: 25
 --- !u!114 &1234090641423480127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10518,9 +10546,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 2511644652822555798}
   leftHandPose: {fileID: 8195513223341766297}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &3828329077459354221
 MonoBehaviour:
   m_ObjectHideFlags: 0

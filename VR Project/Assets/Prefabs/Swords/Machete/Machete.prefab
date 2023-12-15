@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &316104166395282662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1465223121751352399}
+  m_Layer: 6
+  m_Name: Pierce
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1465223121751352399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316104166395282662}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.02723, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3836748446213129454}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &683217964832155325
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683217964870691773}
   m_LocalRotation: {x: -0.0661579, y: 0.0011242708, z: -0.016908245, w: 0.9976653}
-  m_LocalPosition: {x: 0.0031971077, y: 0.002221362, z: 0.0016589155}
+  m_LocalPosition: {x: -0.00217, y: 0.00013, z: -0.00707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -436,7 +467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683217965259021994}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.02108, z: -0.00297}
+  m_LocalPosition: {x: 0, y: -0.01322, z: -0.00297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -752,11 +783,19 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683217965724189758}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0019263873, y: 0.04715033, z: 0.0053577702}
-  m_Center: {x: -2.3382196e-18, y: 0.0012259978, z: 0.000016669415}
+  serializedVersion: 3
+  m_Size: {x: 0.0019263873, y: 0.050001986, z: 0.0053577702}
+  m_Center: {x: 0, y: -0.00019987123, z: 0.000016669434}
 --- !u!1 &683217965734902738
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683217965937466922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.00293, y: 0.00074, z: -0.00652}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1713,8 +1752,6 @@ GameObject:
   - component: {fileID: 3836748446213129454}
   - component: {fileID: 184935618166377291}
   - component: {fileID: 2699330453446279041}
-  - component: {fileID: 3836748446213130002}
-  - component: {fileID: 3836748446213130001}
   - component: {fileID: 3836748446213129452}
   - component: {fileID: 3836748446213129450}
   - component: {fileID: 3836748446213129449}
@@ -1745,8 +1782,9 @@ Transform:
   - {fileID: 683217965165804794}
   - {fileID: 683217966445985340}
   - {fileID: 683217965259021992}
+  - {fileID: 1465223121751352399}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: -18.969, z: -270}
 --- !u!33 &184935618166377291
 MeshFilter:
@@ -1798,32 +1836,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3836748446213130002
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4500519684304576084}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0032694396, y: 0.03800002, z: 0.0072485516}
-  m_Center: {x: 0.000033607597, y: -0.0059999977, z: 0.00023447475}
---- !u!135 &3836748446213130001
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4500519684304576084}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.0008876145
-  m_Center: {x: -0.000048801183, y: -0.023809876, z: 0.0016821538}
 --- !u!54 &3836748446213129452
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1831,10 +1843,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4500519684304576084}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1853,9 +1876,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseTransitionDuration: 0.2
-  dynamic: 0
   rightHandPose: {fileID: 683217964914360343}
   leftHandPose: {fileID: 683217966591063923}
+  dynamic: 0
+  rightHandTarget: {fileID: 0}
+  leftHandTarget: {fileID: 0}
 --- !u!114 &3836748446213129449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1872,12 +1897,11 @@ MonoBehaviour:
   audioSource: {fileID: 3836748446213130004}
   isPiercing: 0
   damper: 50
-  requiredSpeedToPierce: 3
+  requiredSpeedToPierce: 2
   limit: 0.55
   knifeCollider: {fileID: 683217965724189756}
-  bladeTipCollider: {fileID: 3836748446213130001}
-  stabbedCollider: {fileID: 0}
-  velocity: 0
+  pierce: {fileID: 1465223121751352399}
+  damage: 30
 --- !u!114 &3836748446213130005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1892,7 +1916,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 3836748446213130004}
   sliceSound: {fileID: 8300000, guid: 047caed4034a5c4459d8b6b4ec06bb90, type: 3}
-  speedNeededToSlice: 4
+  damage: 5
+  speedNeededToSlice: 2
   startSlicePoint: {fileID: 683217966445985340}
   endSlicePoint: {fileID: 683217965259021992}
   startSlicePointAlt: {fileID: 0}
@@ -1900,7 +1925,7 @@ MonoBehaviour:
   velocityEstimator: {fileID: 683217965259021993}
   sliceableLayer:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 1056768
   crossSectionMaterial: {fileID: 2100000, guid: 316d2b121a2b14442b365a5cd64d4f8f,
     type: 2}
 --- !u!82 &3836748446213130004
@@ -2116,7 +2141,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
+  m_ThrowVelocityScale: 1
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1

@@ -32,6 +32,7 @@ MonoBehaviour:
   m_FsrSharpness: 1
   m_EnableLODCrossFade: 1
   m_LODCrossFadeDitheringType: 1
+  m_ShEvalMode: 0
   m_MainLightRenderingMode: 1
   m_MainLightShadowsSupported: 1
   m_MainLightShadowmapResolution: 4096
@@ -48,7 +49,7 @@ MonoBehaviour:
   m_ShadowCascadeCount: 4
   m_Cascade2Split: 0.25
   m_Cascade3Split: {x: 0.1, y: 0.3}
-  m_Cascade4Split: {x: 0.35439998, y: 0.49439994, z: 0.68059325}
+  m_Cascade4Split: {x: 0.038399998, y: 0.67959327, z: 0.68059325}
   m_CascadeBorder: 0.020270273
   m_ShadowDepthBias: 1
   m_ShadowNormalBias: 0

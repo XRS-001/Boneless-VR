@@ -11,10 +11,13 @@ using UnityEditor;
 public class GrabHandPose : MonoBehaviour
 {
     public float poseTransitionDuration = 0.2f;
-    public bool dynamic;
 
     public HandData rightHandPose;
     public HandData leftHandPose;
+    public bool dynamic;
+    [Header("If Dynamic:")]
+    public Transform rightHandTarget;
+    public Transform leftHandTarget;
 
     XRBaseInteractable grabInteractable;
 
@@ -112,25 +115,37 @@ public class GrabHandPose : MonoBehaviour
 
                 for (int i = 0; i < newBonesRotation.Length; i++)
                 {
-                    bool checkSphere = true;
-                    foreach (Collider collider in Physics.OverlapSphere(h.fingerBones[i].transform.position, 1f))
+                    bool checkSphere = false;
+
+                    XRGrabDynamic xrGrab = grabInteractable as XRGrabDynamic;
+                    if (xrGrab.leftHandGrabbing)
                     {
-                        if (!collider.CompareTag("Interactable"))
+                        foreach (Collider collider in Physics.OverlapSphere(leftHandTarget.TransformPoint(h.fingerBones[i].transform.localPosition), 0.039f))
                         {
-                            checkSphere = false;
+                            if (collider.transform.CompareTag("Interactable"))
+                            {
+                                checkSphere = true;
+                            }
                         }
-                        else
+                    }
+                    else if (xrGrab.rightHandGrabbing)
+                    {
+                        foreach (Collider collider in Physics.OverlapSphere(rightHandTarget.TransformPoint(h.fingerBones[i].transform.localPosition), 0.039f))
                         {
-                            checkSphere = true;
+                            if (collider.transform.CompareTag("Interactable"))
+                            {
+                                checkSphere = true;
+                            }
                         }
                     }
                     if (!checkSphere)
                     {
                         float lerpSpeed = timer / poseTransitionDuration;
-                        Quaternion boneRotation = Quaternion.Lerp(startingBonesRotation[i], newBonesRotation[i], lerpSpeed);
+                        Quaternion boneRotation = Quaternion.Slerp(startingBonesRotation[i], newBonesRotation[i], lerpSpeed);
                         h.fingerBones[i].localRotation = boneRotation;
                     }
                 }
+
                 timer += Time.deltaTime;
                 yield return null;
             }

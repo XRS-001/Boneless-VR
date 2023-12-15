@@ -57,7 +57,7 @@ public class XRGrabDynamic : XRGrabInteractable
                 Vector3 positionRight;
                 if (!rightHit.transform.CompareTag("Pierceable"))
                 {
-                    positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightHit2.normal / 20);
+                    positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightHit2.normal / 17.5f);
                 }
                 else
                 {
@@ -90,7 +90,7 @@ public class XRGrabDynamic : XRGrabInteractable
                 Vector3 positionLeft;
                 if (!leftHit.transform.CompareTag("Pierceable"))
                 {
-                    positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (-leftHit2.normal / 20);
+                    positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (-leftHit2.normal / 17.5f);
                 }
                 else
                 {
@@ -134,7 +134,6 @@ public class XRGrabDynamic : XRGrabInteractable
         if (puppetFall)
         {
             puppetMaster.muscles[7].props.mappingWeight *= 4;
-            puppetMaster.angularLimits = true;
             puppetMaster.muscleSpring /= 2;
             puppetFall.collisionResistance.floatValue = collisionResistanceGrabbing;
             puppetFall.defaults.knockOutDistance = knockOutDistanceGrabbing;
@@ -175,7 +174,6 @@ public class XRGrabDynamic : XRGrabInteractable
         if (puppetFall && !leftController.isGrabbing && !rightController.isGrabbing)
         {
             puppetMaster.muscles[7].props.mappingWeight /= 4;
-            puppetMaster.angularLimits = false;
             puppetMaster.muscleSpring *= 2;
             puppetFall.collisionResistance.floatValue = collisionResistance;
             puppetFall.defaults.knockOutDistance = knockOutDistance;
