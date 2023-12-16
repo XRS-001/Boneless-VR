@@ -120,7 +120,7 @@ public class GrabHandPose : MonoBehaviour
                     XRGrabDynamic xrGrab = grabInteractable as XRGrabDynamic;
                     if (xrGrab.leftHandGrabbing)
                     {
-                        foreach (Collider collider in Physics.OverlapSphere(leftHandTarget.TransformPoint(h.fingerBones[i].transform.localPosition), 0.039f))
+                        foreach (Collider collider in Physics.OverlapSphere(leftHandTarget.TransformPoint(h.fingerBones[i].transform.localPosition), 0.03f))
                         {
                             if (collider.transform.CompareTag("Interactable"))
                             {
@@ -130,7 +130,7 @@ public class GrabHandPose : MonoBehaviour
                     }
                     else if (xrGrab.rightHandGrabbing)
                     {
-                        foreach (Collider collider in Physics.OverlapSphere(rightHandTarget.TransformPoint(h.fingerBones[i].transform.localPosition), 0.039f))
+                        foreach (Collider collider in Physics.OverlapSphere(rightHandTarget.TransformPoint(h.fingerBones[i].transform.localPosition), 0.03f))
                         {
                             if (collider.transform.CompareTag("Interactable"))
                             {

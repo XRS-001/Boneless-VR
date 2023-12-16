@@ -82,7 +82,7 @@ public class KnifePierce : MonoBehaviour
                 joint.angularZMotion = ConfigurableJointMotion.Locked;
             }
         }
-        if (isPiercing)
+        if (isPiercing && stabbedCollider)
         {
             float distanceHit = Vector3.Distance(pierce.position, hitPoint.position);
 
@@ -92,7 +92,7 @@ public class KnifePierce : MonoBehaviour
                 {
                     Physics.IgnoreCollision(stabbedCollider, knifeCollider, false);
                 }
-                else
+                else 
                 {
                     foreach (Collider collider in stabbedCollider.transform.GetComponent<JointCollision>().collidersOnNPC)
                     {
@@ -113,8 +113,9 @@ public class KnifePierce : MonoBehaviour
     {
         knifeCollider.enabled = false;
         yield return new WaitForSeconds(0.25f);
-        knifeCollider.enabled = true;
         isPiercing = false;
+
+        knifeCollider.enabled = true;
         Destroy(hitObject);
     }
 }

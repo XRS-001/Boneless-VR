@@ -32,6 +32,8 @@ public class XRGrabInteractableKnife : XRGrabInteractableTwoAttach
     void Update()
     {
         float leftAngle = Mathf.DeltaAngle(leftController.transform.localRotation.eulerAngles.x, transform.rotation.eulerAngles.x);
+        Debug.Log(leftAngle);
+
         if (leftAngle < 0)
         {
             leftAlt = true;

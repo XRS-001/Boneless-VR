@@ -5151,6 +5151,143 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1078325357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5095444319641089284, guid: df983215c8a8bed40848f97e48f80579,
+    type: 3}
+  m_PrefabInstance: {fileID: 5095444320361282656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1078325366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078325357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab920b9ddce6fd469a3e1bba2ff0084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 1589683537}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_CustomReticle: {fileID: 0}
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_AttachTransform: {fileID: 0}
+  m_UseDynamicAttach: 0
+  m_MatchAttachPosition: 1
+  m_MatchAttachRotation: 1
+  m_SnapToColliderVolume: 1
+  m_AttachEaseInTime: 0.15
+  m_MovementType: 0
+  m_VelocityDamping: 1
+  m_VelocityScale: 1
+  m_AngularVelocityDamping: 1
+  m_AngularVelocityScale: 1
+  m_TrackPosition: 0
+  m_SmoothPosition: 0
+  m_SmoothPositionAmount: 5
+  m_TightenPosition: 0.5
+  m_TrackRotation: 0
+  m_SmoothRotation: 0
+  m_SmoothRotationAmount: 5
+  m_TightenRotation: 0.5
+  m_ThrowOnDetach: 1
+  m_ThrowSmoothingDuration: 0.25
+  m_ThrowSmoothingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_ThrowVelocityScale: 1
+  m_ThrowAngularVelocityScale: 1
+  m_ForceGravityOnDetach: 0
+  m_RetainTransformParent: 1
+  m_AttachPointCompatibilityMode: 0
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
+  rightAttach: {fileID: 1967545344}
+  leftAttach: {fileID: 1496567753}
+  rightHandGrabbing: 0
+  leftHandGrabbing: 0
+  isGrabbing: 0
+  controllerGrabbing: {fileID: 0}
 --- !u!1 &1102944939
 GameObject:
   m_ObjectHideFlags: 0
@@ -6066,6 +6203,7 @@ GameObject:
   - component: {fileID: 1291383915}
   - component: {fileID: 1291383914}
   - component: {fileID: 1291383916}
+  - component: {fileID: 1291383917}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -6173,6 +6311,132 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &1291383917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291383913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LensFlareData: {fileID: 11400000, guid: 128b10ff21e9b2a48ac859712f1b429e, type: 2}
+  intensity: 1
+  maxAttenuationDistance: 100
+  maxAttenuationScale: 100
+  distanceAttenuationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  scaleByDistanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  attenuationByLightShape: 1
+  radialScreenAttenuationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useOcclusion: 1
+  occlusionRadius: 0.1
+  useBackgroundCloudOcclusion: 0
+  sampleCount: 32
+  occlusionOffset: 0.05
+  scale: 1
+  allowOffScreen: 1
+  volumetricCloudOcclusion: 0
+  occlusionRemapCurve:
+    <length>k__BackingField: 2
+    m_Loop: 0
+    m_ZeroValue: 1
+    m_Range: 1
+    m_Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!1 &1348021577
 GameObject:
   m_ObjectHideFlags: 0
@@ -7078,6 +7342,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5932975762157310664, guid: 1d6cdb9766bd7d740837bc04b0dfbd73,
     type: 3}
   m_PrefabInstance: {fileID: 1489301003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1496567753 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5095444319210664264, guid: df983215c8a8bed40848f97e48f80579,
+    type: 3}
+  m_PrefabInstance: {fileID: 5095444320361282656}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1532571660
 PrefabInstance:
@@ -8616,6 +8886,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1959308559}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1967545344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5095444319171826512, guid: df983215c8a8bed40848f97e48f80579,
+    type: 3}
+  m_PrefabInstance: {fileID: 5095444320361282656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2009985856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10043,6 +10319,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlashLight
       objectReference: {fileID: 0}
+    - target: {fileID: 1878202556912662303, guid: a17e1e1e889b54041bf3c3bffb2966da,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878202556912662303, guid: a17e1e1e889b54041bf3c3bffb2966da,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 53.922844
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878202556912662303, guid: a17e1e1e889b54041bf3c3bffb2966da,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 20.813953
+      objectReference: {fileID: 0}
     - target: {fileID: 2121783520298715631, guid: a17e1e1e889b54041bf3c3bffb2966da,
         type: 3}
       propertyPath: m_RootOrder
@@ -10848,10 +11139,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1066928109717861888, guid: df983215c8a8bed40848f97e48f80579, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5095444319641089284, guid: df983215c8a8bed40848f97e48f80579,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1078325366}
   m_SourcePrefab: {fileID: 100100000, guid: df983215c8a8bed40848f97e48f80579, type: 3}
 --- !u!1001 &5114707807592463069
 PrefabInstance:
@@ -11939,6 +12235,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1615955101568987748, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -11959,6 +12260,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 1615955101568987748, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1712760207607994360, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: m_Name
@@ -11984,6 +12290,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 1897584177553085189, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12004,6 +12315,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3054930810630243558, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12024,6 +12340,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 3054930810630243558, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3935084503144922411, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12044,6 +12365,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 3935084503144922411, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4958819552291209346, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: m_RootOrder
@@ -12119,6 +12445,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 5331425859134788618, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6059819924754283899, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12139,6 +12470,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 6059819924754283899, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6062802439508438704, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12159,6 +12495,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 6062802439508438704, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6094203920978574083, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12179,6 +12520,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 6094203920978574083, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6292830772337717093, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12199,6 +12545,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 6292830772337717093, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6477752376861424096, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12219,6 +12570,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 6477752376861424096, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7092366676965184115, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12239,6 +12595,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 7092366676965184115, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7920648092711094530, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12259,6 +12620,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 7920648092711094530, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8981700399777429773, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12279,6 +12645,11 @@ PrefabInstance:
       propertyPath: rightController
       value: 
       objectReference: {fileID: 1385314359}
+    - target: {fileID: 8981700399777429773, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_ThrowVelocityScale
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
