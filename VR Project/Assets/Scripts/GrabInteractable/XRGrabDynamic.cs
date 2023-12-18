@@ -17,6 +17,9 @@ public class XRGrabDynamic : XRGrabInteractable
     public ControllerInteractors rightController;
     public Transform leftPresence;
     public Transform rightPresence;
+    public Vector3 normalOffset;
+    public Vector3 surfaceClamp;
+    private bool isHovering;
     [Header("For NPC's Only:")]
 
     public PuppetMaster puppetMaster;
@@ -37,7 +40,7 @@ public class XRGrabDynamic : XRGrabInteractable
     // Update is called once per frame
     void Update()
     {
-        if (!rightController.isGrabbing)
+        if (!rightController.isGrabbing && isHovering)
         {
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
@@ -57,20 +60,26 @@ public class XRGrabDynamic : XRGrabInteractable
                 Vector3 positionRight;
                 if (!rightHit.transform.CompareTag("Pierceable"))
                 {
-                    positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightHit2.normal / 25f) - (rightAttach.forward / 15);
+                    positionRight = rightHit.collider.ClosestPoint(rightPresence.position);
                 }
                 else
                 {
-                    positionRight = rightHit.collider.ClosestPoint(rightPresence.position) + (rightHit2.normal / 40);
+                    positionRight = rightHit.collider.ClosestPoint(rightPresence.position);
                 }
                 rightAttach.position = positionRight;
                 Vector3 localPositionRight = rightAttach.localPosition;
+
+                localPositionRight.x = Mathf.Clamp(localPositionRight.x, -surfaceClamp.x, surfaceClamp.x);
+                localPositionRight.y = Mathf.Clamp(localPositionRight.y, -surfaceClamp.y, surfaceClamp.y);
+                localPositionRight.z = Mathf.Clamp(localPositionRight.z, -surfaceClamp.z, surfaceClamp.z);
+                localPositionRight += transform.InverseTransformDirection(new Vector3(rightHit2.normal.x * normalOffset.x, rightHit2.normal.y * normalOffset.y, rightHit2.normal.z * normalOffset.z));
+
                 rightAttach.localPosition = localPositionRight;
                 rightAttach.rotation = Quaternion.LookRotation(-rightHit2.normal, rightPresence.up) * Quaternion.Euler(0, 90, 0);
             }
         }
 
-        if (!leftController.isGrabbing)
+        if (!leftController.isGrabbing && isHovering)
         {
             Vector3 directionLeft = transform.position - leftPresence.gameObject.transform.position;
             RaycastHit leftHit;
@@ -90,14 +99,20 @@ public class XRGrabDynamic : XRGrabInteractable
                 Vector3 positionLeft;
                 if (!leftHit.transform.CompareTag("Pierceable"))
                 {
-                    positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (-leftHit2.normal / 25f) - (leftAttach.forward / 20);
+                    positionLeft = leftHit.collider.ClosestPoint(leftPresence.position);
                 }
                 else
                 {
-                    positionLeft = leftHit.collider.ClosestPoint(leftPresence.position) - (-leftHit2.normal / 40);
+                    positionLeft = leftHit.collider.ClosestPoint(leftPresence.position);
                 }
                 leftAttach.position = positionLeft;
                 Vector3 localPositionLeft = leftAttach.localPosition;
+
+                localPositionLeft.x = Mathf.Clamp(localPositionLeft.x, -surfaceClamp.x, surfaceClamp.x);
+                localPositionLeft.y = Mathf.Clamp(localPositionLeft.y, -surfaceClamp.y, surfaceClamp.y);
+                localPositionLeft.z = Mathf.Clamp(localPositionLeft.z, -surfaceClamp.z, surfaceClamp.z);
+                localPositionLeft -= transform.InverseTransformDirection(-new Vector3(leftHit2.normal.x * normalOffset.x, leftHit2.normal.y * normalOffset.y, leftHit2.normal.z * normalOffset.z));
+
                 leftAttach.localPosition = localPositionLeft;
                 leftAttach.rotation = Quaternion.LookRotation(leftHit2.normal, leftPresence.up) * Quaternion.Euler(0, 90, 0);
             }
@@ -110,6 +125,16 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             attachTransform = leftAttach;
         }
+    }
+    protected override void OnHoverEntered(HoverEnterEventArgs args)
+    {
+        isHovering = true;
+        base.OnHoverEntered(args);
+    }
+    protected override void OnHoverExited(HoverExitEventArgs args)
+    {
+        isHovering = false;
+        base.OnHoverExited(args);
     }
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
