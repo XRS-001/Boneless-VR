@@ -10491,17 +10491,17 @@ PrefabInstance:
     - target: {fileID: 5644256856351125002, guid: 820d73b4d9ef8454390e5ee9d1987334,
         type: 3}
       propertyPath: normalOffset.x
-      value: 0.05
+      value: 0.045
       objectReference: {fileID: 0}
     - target: {fileID: 5644256856351125002, guid: 820d73b4d9ef8454390e5ee9d1987334,
         type: 3}
       propertyPath: normalOffset.y
-      value: 0.175
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5644256856351125002, guid: 820d73b4d9ef8454390e5ee9d1987334,
         type: 3}
       propertyPath: normalOffset.z
-      value: 0.15
+      value: 0.045
       objectReference: {fileID: 0}
     - target: {fileID: 5644256856351125002, guid: 820d73b4d9ef8454390e5ee9d1987334,
         type: 3}
@@ -12351,6 +12351,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 245749453071543901, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: state
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12366,6 +12371,36 @@ PrefabInstance:
       propertyPath: leftController
       value: 
       objectReference: {fileID: 2012302097}
+    - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: normalOffset.x
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: normalOffset.y
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: normalOffset.z
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: surfaceClamp.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: surfaceClamp.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: surfaceClamp.z
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 614200846744743928, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: rightController
@@ -12406,6 +12441,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlienNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 1712760207607994360, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1897584177553085189, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12446,6 +12486,36 @@ PrefabInstance:
       propertyPath: leftController
       value: 
       objectReference: {fileID: 2012302097}
+    - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: normalOffset.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: normalOffset.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: normalOffset.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: surfaceClamp.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: surfaceClamp.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: surfaceClamp.z
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2150198426238148784, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: rightController
@@ -12736,6 +12806,11 @@ PrefabInstance:
       propertyPath: m_ThrowVelocityScale
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 7660852073037473624, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7920648092711094530, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
       propertyPath: leftPresence
@@ -12760,6 +12835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ThrowVelocityScale
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782024105312026447, guid: be4aba356e67aa94c8fa81695ebe9350,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8981700399777429773, guid: be4aba356e67aa94c8fa81695ebe9350,
         type: 3}
