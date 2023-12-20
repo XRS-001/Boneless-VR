@@ -40,7 +40,7 @@ public class XRGrabDynamic : XRGrabInteractable
     // Update is called once per frame
     void Update()
     {
-        if (!rightController.isGrabbing)
+        if (!rightController.isGrabbing && isHovering)
         {
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
@@ -75,11 +75,11 @@ public class XRGrabDynamic : XRGrabInteractable
                 localPositionRight += transform.InverseTransformDirection(new Vector3(rightHit2.normal.x * normalOffset.x, rightHit2.normal.y * normalOffset.y, rightHit2.normal.z * normalOffset.z));
 
                 rightAttach.localPosition = localPositionRight;
-                rightAttach.rotation = Quaternion.LookRotation(-rightHit2.normal, rightPresence.up) * Quaternion.Euler(0, 90, 0);
+                rightAttach.rotation = Quaternion.LookRotation(-rightHit2.normal, rightPresence.up) * Quaternion.Euler(0, 75, 0);
             }
         }
 
-        if (!leftController.isGrabbing)
+        if (!leftController.isGrabbing && isHovering)
         {
             Vector3 directionLeft = transform.position - leftPresence.gameObject.transform.position;
             RaycastHit leftHit;
@@ -114,7 +114,7 @@ public class XRGrabDynamic : XRGrabInteractable
                 localPositionLeft -= transform.InverseTransformDirection(-new Vector3(leftHit2.normal.x * normalOffset.x, leftHit2.normal.y * normalOffset.y, leftHit2.normal.z * normalOffset.z));
 
                 leftAttach.localPosition = localPositionLeft;
-                leftAttach.rotation = Quaternion.LookRotation(leftHit2.normal, leftPresence.up) * Quaternion.Euler(0, 90, 0);
+                leftAttach.rotation = Quaternion.LookRotation(leftHit2.normal, leftPresence.up) * Quaternion.Euler(0, 75, 0);
             }
         }
         if(leftHandGrabbing)
