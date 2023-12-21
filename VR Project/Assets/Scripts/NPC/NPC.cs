@@ -26,10 +26,22 @@ public class NPC : MonoBehaviour
 
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    public bool isGrabbing;
     private void Awake()
     {
         speed = agent.speed;
         player = GameObject.Find("Camera Offset").transform;
+    }
+    public void AngularLimits(bool set)
+    {
+        if (set && isGrabbing)
+        {
+            puppet.angularLimits = true;
+        }
+        else
+        {
+            puppet.angularLimits = false;
+        }
     }
     private void Patroling()
     {

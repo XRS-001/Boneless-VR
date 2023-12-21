@@ -48,14 +48,11 @@ public class ControllerInteractors : XRDirectInteractor
             || args.interactableObject is XRGrabInteractableRifle
             || args.interactableObject is TwoHandInteractable
             || args.interactableObject is XRGrabDynamic
+            || args.interactableObject is NPCJointGrab
             || args.interactableObject is XRGrabInteractableShotgun)
         {
             rb = args.interactableObject.transform.GetComponent<Rigidbody>();
             weight = rb.mass;
-            if (args.interactableObject.transform.gameObject.layer == 20)
-            {
-                weight *= 3;
-            }
             attach = args.interactableObject.transform.GetComponent<XRGrabInteractable>().attachTransform.transform;
             StartCoroutine(DelayEnter());
             configJoint = handPhysics.AddComponent<ConfigurableJoint>();

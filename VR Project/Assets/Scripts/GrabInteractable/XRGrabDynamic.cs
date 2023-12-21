@@ -158,6 +158,7 @@ public class XRGrabDynamic : XRGrabInteractable
         base.OnSelectEntered(args);
         if (puppetFall)
         {
+            puppetMaster.transform.parent.GetComponent<NPC>().isGrabbing = true;
             puppetMaster.muscles[7].props.mappingWeight *= 4;
             puppetMaster.muscleSpring /= 2;
             puppetFall.collisionResistance.floatValue = collisionResistanceGrabbing;
@@ -178,7 +179,15 @@ public class XRGrabDynamic : XRGrabInteractable
         base.OnSelectEntering(args);
         if (rightHandGrabbing || leftHandGrabbing)
         {
-            GetComponent<Rigidbody>().mass /= 2;
+            if (puppetFall)
+            {
+                if (leftHandGrabbing)
+                    leftController.weight *= 3;
+                else
+                    rightController.weight *= 3;
+            }
+            rightController.weight /= 2;
+            leftController.weight /= 2;
         }
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -198,6 +207,8 @@ public class XRGrabDynamic : XRGrabInteractable
         }
         if (puppetFall && !leftController.isGrabbing && !rightController.isGrabbing)
         {
+            puppetMaster.transform.parent.GetComponent<NPC>().isGrabbing = false;
+            puppetMaster.angularLimits = false;
             puppetMaster.muscles[7].props.mappingWeight /= 4;
             puppetMaster.muscleSpring *= 2;
             puppetFall.collisionResistance.floatValue = collisionResistance;
@@ -211,7 +222,6 @@ public class XRGrabDynamic : XRGrabInteractable
             {
                 collider.isTrigger = false;
             }
-            GetComponent<Rigidbody>().mass *= 2;
             isGrabbing = true;
         }
     }
