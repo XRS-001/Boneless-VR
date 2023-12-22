@@ -32,15 +32,29 @@ public class NPC : MonoBehaviour
         speed = agent.speed;
         player = GameObject.Find("Camera Offset").transform;
     }
-    public void AngularLimits(bool set)
+    // Update is called once per frame
+    void Update()
     {
-        if (set && isGrabbing)
+        if(!isGrabbing && health != 0)
+        {
+            puppet.angularLimits = false;
+        }
+        if(health == 0)
         {
             puppet.angularLimits = true;
         }
-        else
+        playerInSightRange = Physics.CheckCapsule(agent.transform.position, new Vector3(agent.transform.position.x, agent.height, agent.transform.position.z), sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckCapsule(agent.transform.position, new Vector3(agent.transform.position.x, agent.height, agent.transform.position.z), attackRange, whatIsPlayer);
+        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        health = Mathf.Clamp(health, 0, 100);
+    }
+    public void AngularLimits()
+    {
+        if (isGrabbing)
         {
-            puppet.angularLimits = false;
+            puppet.angularLimits = true;
         }
     }
     private void Patroling()
@@ -98,16 +112,6 @@ public class NPC : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        playerInSightRange = Physics.CheckCapsule(agent.transform.position, new Vector3(agent.transform.position.x, agent.height, agent.transform.position.z), sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckCapsule(agent.transform.position, new Vector3(agent.transform.position.x, agent.height, agent.transform.position.z), attackRange, whatIsPlayer);
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
-        health = Mathf.Clamp(health, 0, 100);
     }
     public void DealDamage(float damage, float delayTime)
     {

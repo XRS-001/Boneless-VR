@@ -29,14 +29,22 @@ public class NPCJointGrab : XRGrabInteractable
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
             GetComponentInChildren<Collider>().Raycast(new Ray(rightPresence.position, directionRight), out rightHit, float.PositiveInfinity);
-            Vector3 position = rightPresence.position;
-            position.x = (GetComponent<CapsuleCollider>().ClosestPoint(rightPresence.position) + (rightPresence.right / 10)).x;
-            position.z = (GetComponent<CapsuleCollider>().ClosestPoint(rightPresence.position) + (rightPresence.right / 10)).z;
+
+            Vector3 position = rightController.transform.position;
+            position.x = GetComponent<CapsuleCollider>().ClosestPoint(rightController.transform.position).x;
+            position.z = GetComponent<CapsuleCollider>().ClosestPoint(rightController.transform.position).z;
+            position += rightPresence.right / 25 + -(rightPresence.forward / 8.5f);
             rightAttach.position = position;
+
             Vector3 localPosition = rightAttach.localPosition;
-            localPosition.y = Mathf.Clamp(localPosition.y, -GetComponent<CapsuleCollider>().height / 6, GetComponent<CapsuleCollider>().height);
+            localPosition.y = Mathf.Clamp(localPosition.y, GetComponent<CapsuleCollider>().height / 4, GetComponent<CapsuleCollider>().height);
             rightAttach.localPosition = localPosition;
-            rightAttach.rotation = Quaternion.LookRotation(-rightHit.normal, transform.up) * Quaternion.Euler(45, 0, 200);
+
+            rightAttach.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, rightPresence.transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+
+            Quaternion localRotation = rightAttach.localRotation;
+            localRotation *= Quaternion.Euler(40, 15, 195);
+            rightAttach.localRotation = localRotation;
         }
 
         if (!leftController.isGrabbing)
@@ -54,7 +62,7 @@ public class NPCJointGrab : XRGrabInteractable
             localPosition.z = Mathf.Clamp(localPosition.z, -GetComponent<CapsuleCollider>().radius, GetComponent<CapsuleCollider>().radius);
             localPosition -= transform.InverseTransformDirection(-leftHit.normal / 8.5f);
             leftAttach.localPosition = localPosition;
-            leftAttach.rotation = Quaternion.LookRotation(-leftHit.normal, transform.up) * Quaternion.Euler(45, 0, 200);
+            leftAttach.rotation = Quaternion.LookRotation(-leftHit.normal, transform.up) * Quaternion.Euler(55, 0, 200);
         }
         if (leftHandGrabbing)
         {

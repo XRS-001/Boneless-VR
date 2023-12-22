@@ -60,7 +60,7 @@ public class PhysicsRig : MonoBehaviour
     void FixedUpdate()
     {
         float weightLeft = Mathf.Clamp(1 / (leftController.weight * 2), float.NegativeInfinity, 1);
-        Vector3 leftTargetPosition = Vector3.Lerp(leftJoint.targetPosition, leftController.transform.localPosition, weightLeft);
+        Vector3 leftTargetPosition = leftController.transform.localPosition;
         leftTargetPosition.x = Mathf.Clamp(leftTargetPosition.x, leftHand.localPosition.x, leftHand.localPosition.x);
         leftTargetPosition.y = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.y, leftHand.localPosition.y);
         leftTargetPosition.z = Mathf.Clamp(leftTargetPosition.y, leftHand.localPosition.z, leftHand.localPosition.z);
@@ -97,9 +97,10 @@ public class PhysicsRig : MonoBehaviour
             newDrive.positionSpring = YspringStartLeft;
             leftJoint.yDrive = newDrive;
         }
-        leftJoint.targetPosition = leftTargetPosition;
+        leftJoint.targetPosition = Vector3.Lerp(leftJoint.targetPosition, leftTargetPosition, weightLeft);
 
-        if(leftController.isGrabbing)
+
+        if (leftController.isGrabbing)
         {
             Vector3 leftPosition = leftJoint.GetComponent<Rigidbody>().position;
             leftPosition.x = Mathf.Clamp(leftPosition.x, leftHand.position.x, leftHand.position.x);
@@ -111,7 +112,7 @@ public class PhysicsRig : MonoBehaviour
         leftJoint.targetRotation = leftTargetRotation;
 
         float weightRight = Mathf.Clamp(1 / (rightController.weight * 2), float.NegativeInfinity, 1);
-        Vector3 rightTargetPosition = Vector3.Lerp(rightJoint.targetPosition, rightController.transform.localPosition, weightRight);
+        Vector3 rightTargetPosition = rightController.transform.localPosition;
         rightTargetPosition.x = Mathf.Clamp(rightTargetPosition.x, rightHand.localPosition.x, rightHand.localPosition.x);
         rightTargetPosition.y = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.y, rightHand.localPosition.y);
         rightTargetPosition.z = Mathf.Clamp(rightTargetPosition.y, rightHand.localPosition.z, rightHand.localPosition.z);
@@ -148,7 +149,7 @@ public class PhysicsRig : MonoBehaviour
             newDrive.positionSpring = YspringStartRight;
             rightJoint.yDrive = newDrive;
         }
-        rightJoint.targetPosition = rightTargetPosition;
+        rightJoint.targetPosition = Vector3.Lerp(rightJoint.targetPosition, rightTargetPosition, weightRight);
 
         if (rightController.isGrabbing)
         {
