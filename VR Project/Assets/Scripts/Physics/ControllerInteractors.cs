@@ -111,6 +111,7 @@ public class ControllerInteractors : XRDirectInteractor
                 collider.enabled = false;
             }
         }
+        bodyRb.isKinematic = true;
         yield return new WaitForSeconds(0.05f);
         newColliderParent = Instantiate(colliders[0].transform.parent.transform.parent.gameObject, colliders[0].transform.parent.transform.parent.transform.position, colliders[0].transform.parent.transform.parent.transform.rotation);
         newColliderParent.transform.parent = objectGrabbing.transform;
@@ -124,6 +125,8 @@ public class ControllerInteractors : XRDirectInteractor
                 }
             }
         }
+        yield return new WaitForSeconds(0.05f);
+        bodyRb.isKinematic = false;
     }
     public IEnumerator DelayExit()
     {
@@ -131,7 +134,8 @@ public class ControllerInteractors : XRDirectInteractor
         {
             Destroy(newColliderParent);
         }
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(0.4f);
         if(!isGrabbing)
         {
             foreach(Collider collider in colliders)

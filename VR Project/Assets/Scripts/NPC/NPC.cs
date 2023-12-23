@@ -52,10 +52,24 @@ public class NPC : MonoBehaviour
     }
     public void AngularLimits()
     {
+        if(puppet.pinWeight < 1)
+        {
+            puppet.pinWeight = 1;
+        }
+        else
+        {
+            StartCoroutine(Delay());
+        }
         if (isGrabbing)
         {
             puppet.angularLimits = true;
         }
+    }
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(5f);
+
+        puppet.pinWeight = 0.3f;
     }
     private void Patroling()
     {

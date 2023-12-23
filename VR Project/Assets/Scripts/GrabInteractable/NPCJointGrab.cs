@@ -52,17 +52,22 @@ public class NPCJointGrab : XRGrabInteractable
             Vector3 directionLeft = transform.position - leftPresence.gameObject.transform.position;
             RaycastHit leftHit;
             GetComponentInChildren<Collider>().Raycast(new Ray(leftPresence.position, directionLeft), out leftHit, float.PositiveInfinity);
-            Vector3 position = leftPresence.position;
-            position.x = GetComponent<CapsuleCollider>().ClosestPoint(leftPresence.position).x + 0.045f;
-            position.z = GetComponent<CapsuleCollider>().ClosestPoint(leftPresence.position).z + 0.045f;
+
+            Vector3 position = leftController.transform.position;
+            position.x = GetComponent<CapsuleCollider>().ClosestPoint(leftController.transform.position).x;
+            position.z = GetComponent<CapsuleCollider>().ClosestPoint(leftController.transform.position).z;
+            position += leftPresence.right / 25 + -(leftPresence.forward / 8.5f);
             leftAttach.position = position;
+
             Vector3 localPosition = leftAttach.localPosition;
-            localPosition.x = Mathf.Clamp(localPosition.x, -GetComponent<CapsuleCollider>().radius, GetComponent<CapsuleCollider>().radius);
-            localPosition.y = Mathf.Clamp(localPosition.y, -GetComponent<CapsuleCollider>().height / 6, GetComponent<CapsuleCollider>().height);
-            localPosition.z = Mathf.Clamp(localPosition.z, -GetComponent<CapsuleCollider>().radius, GetComponent<CapsuleCollider>().radius);
-            localPosition -= transform.InverseTransformDirection(-leftHit.normal / 8.5f);
+            localPosition.y = Mathf.Clamp(localPosition.y, GetComponent<CapsuleCollider>().height / 4, GetComponent<CapsuleCollider>().height);
             leftAttach.localPosition = localPosition;
-            leftAttach.rotation = Quaternion.LookRotation(-leftHit.normal, transform.up) * Quaternion.Euler(55, 0, 200);
+
+            leftAttach.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, leftPresence.transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+
+            Quaternion localRotation = leftAttach.localRotation;
+            localRotation *= Quaternion.Euler(40, 15, 195);
+            leftAttach.localRotation = localRotation;
         }
         if (leftHandGrabbing)
         {
@@ -107,7 +112,10 @@ public class NPCJointGrab : XRGrabInteractable
         {
             puppetMaster.transform.parent.GetComponent<NPC>().isGrabbing = true;
             puppetMaster.muscles[7].props.mappingWeight *= 4;
-            puppetMaster.muscleSpring /= 2;
+            if (!rightHandGrabbing || !leftHandGrabbing)
+            {
+                puppetMaster.muscleSpring /= 2;
+            }
             puppetFall.collisionResistance.floatValue = collisionResistanceGrabbing;
             puppetFall.defaults.knockOutDistance = knockOutDistanceGrabbing;
             puppetFall.canGetUp = false;

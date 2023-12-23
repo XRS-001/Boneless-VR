@@ -40,7 +40,7 @@ public class XRGrabDynamic : XRGrabInteractable
     // Update is called once per frame
     void Update()
     {
-        if (!rightController.isGrabbing && isHovering)
+        if (!rightController.isGrabbing)
         {
             Vector3 directionRight = transform.position - rightPresence.gameObject.transform.position;
             RaycastHit rightHit;
@@ -71,11 +71,11 @@ public class XRGrabDynamic : XRGrabInteractable
 
                 localPositionRight.x = Mathf.Clamp(localPositionRight.x, -surfaceClamp.x, surfaceClamp.x);
                 localPositionRight.y = Mathf.Clamp(localPositionRight.y, -surfaceClamp.y, surfaceClamp.y);
-                localPositionRight.z = Mathf.Clamp(localPositionRight.z, -surfaceClamp.y, surfaceClamp.z);
+                localPositionRight.z = Mathf.Clamp(localPositionRight.z, -surfaceClamp.z, surfaceClamp.z);
                 localPositionRight += transform.InverseTransformDirection(new Vector3(rightHit2.normal.x * normalOffset.x, rightHit2.normal.y * normalOffset.y, rightHit2.normal.z * normalOffset.z));
 
                 rightAttach.localPosition = localPositionRight;
-                rightAttach.rotation = Quaternion.LookRotation(-rightHit2.normal, rightPresence.up) * Quaternion.Euler(0, 75, 0);
+                rightAttach.rotation = Quaternion.LookRotation(-rightHit2.normal, rightPresence.up) * Quaternion.Euler(0, 90, 0);
             }
         }
 
@@ -110,11 +110,11 @@ public class XRGrabDynamic : XRGrabInteractable
 
                 localPositionLeft.x = Mathf.Clamp(localPositionLeft.x, -surfaceClamp.y, surfaceClamp.x);
                 localPositionLeft.y = Mathf.Clamp(localPositionLeft.y, -surfaceClamp.y, surfaceClamp.y);
-                localPositionLeft.z = Mathf.Clamp(localPositionLeft.z, -surfaceClamp.y, surfaceClamp.z);
+                localPositionLeft.z = Mathf.Clamp(localPositionLeft.z, -surfaceClamp.z, surfaceClamp.z);
                 localPositionLeft -= transform.InverseTransformDirection(-new Vector3(leftHit2.normal.x * normalOffset.x, leftHit2.normal.y * normalOffset.y, leftHit2.normal.z * normalOffset.z));
 
                 leftAttach.localPosition = localPositionLeft;
-                leftAttach.rotation = Quaternion.LookRotation(leftHit2.normal, leftPresence.up) * Quaternion.Euler(0, 75, 0);
+                leftAttach.rotation = Quaternion.LookRotation(leftHit2.normal, leftPresence.up) * Quaternion.Euler(0, 90, 0);
             }
         }
         if(leftHandGrabbing)
@@ -160,7 +160,10 @@ public class XRGrabDynamic : XRGrabInteractable
         {
             puppetMaster.transform.parent.GetComponent<NPC>().isGrabbing = true;
             puppetMaster.muscles[7].props.mappingWeight *= 4;
-            puppetMaster.muscleSpring /= 2;
+            if(!rightHandGrabbing || !leftHandGrabbing)
+            {
+                puppetMaster.muscleSpring /= 2;
+            }
             puppetFall.collisionResistance.floatValue = collisionResistanceGrabbing;
             puppetFall.defaults.knockOutDistance = knockOutDistanceGrabbing;
             puppetFall.canGetUp = false;
